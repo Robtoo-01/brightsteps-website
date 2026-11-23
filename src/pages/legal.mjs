@@ -22,7 +22,7 @@ export const pages = [
 
 <h2>1. About this privacy policy</h2>
 <p>This policy explains how ${site.name} (ABN ${site.abn}) ("BrightSteps", "we", "us") collects, uses, discloses and safeguards your personal information. It applies to everyone who interacts with us, including job candidates, employees, contractors, clients and website visitors.</p>
-<p>BrightSteps is an Australian-owned workforce solutions provider based in West Tamworth, NSW, led by Director ${site.director}. We specialise in industrial labour hire and community care.</p>
+<p>BrightSteps is an Australian-owned workforce solutions provider based in Tamworth, NSW, led by Director ${site.director}. We specialise in industrial labour hire and community care.</p>
 
 <h2>2. What personal information we collect</h2>
 <h3>2.1 Job candidates and employees</h3>
@@ -165,7 +165,7 @@ export const pages = [
   // Source: BrightSteps Legal Notice (PDF, January 2026), with ABN, address and contact details added.
   legalPage("terms.html", "Legal notice & terms",
     "Legal Notice & Website Terms | BrightSteps Recruitment",
-    "Legal notice, business details and website terms of use for BrightSteps Recruitment, West Tamworth NSW. ABN 71 374 775 561.",
+    "Legal notice, business details and website terms of use for BrightSteps Recruitment, Tamworth NSW. ABN 71 374 775 561.",
     "Legal notice and website terms",
     `Last updated: ${site.lastUpdated}`,
     `<h2>1. Company information</h2>

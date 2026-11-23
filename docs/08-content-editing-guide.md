@@ -67,7 +67,7 @@ For an event, include the date, time, address, who it's for and how to register.
 Placeholders are made with `photo("brief", "alt text")`. Replace the call with an image:
 
 ```html
-<img src="assets/img/team-west-tamworth.webp" alt="The BrightSteps team outside the West Tamworth office" width="1600" height="1200" loading="lazy" style="border-radius:var(--radius-lg)">
+<img src="assets/img/team-west-tamworth.webp" alt="The BrightSteps team outside the Tamworth office" width="1600" height="1200" loading="lazy" style="border-radius:var(--radius-lg)">
 ```
 
 Put the image file in `site/assets/img/`. Export it as WebP, about 1600 px wide. Write alt text that describes what matters in the photo. Get written consent from everyone pictured, especially support participants.

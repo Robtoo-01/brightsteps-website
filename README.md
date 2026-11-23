@@ -1,6 +1,6 @@
 # BrightSteps Recruitment: website rebuild
 
-A static, accessible, mobile-first website for BrightSteps Recruitment (West Tamworth NSW). It uses plain HTML, CSS and JavaScript with no frameworks or packages.
+A static, accessible, mobile-first website for BrightSteps Recruitment (Tamworth NSW). It uses plain HTML, CSS and JavaScript with no frameworks or packages.
 
 ## Deliverables
 

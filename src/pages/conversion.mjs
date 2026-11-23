@@ -80,11 +80,11 @@ ${ctaBand({ h2: "Get a quote for your exact needs", text: "Tell us the roles, ho
   {
     file: "news.html",
     title: "Events & News | BrightSteps Recruitment Tamworth",
-    description: "Workforce updates, hiring events and company news from BrightSteps Recruitment in West Tamworth, NSW, for local employers and job seekers.",
+    description: "Workforce updates, hiring events and company news from BrightSteps Recruitment in Tamworth, NSW, for local employers and job seekers.",
     crumbs: [["Events & news", ""]],
     plan: { purpose: "Local SEO and trust through regular, genuine updates (hiring days, community involvement, workforce tips).", audience: "Employers, candidates, local community.", imagery: "A real photo per article, 16:9, with descriptive alt text.", conversion: "Empty state and article footer CTAs.", schemaNote: "Blog / ItemList when posts exist; each post uses Article (or Event for events)." },
     schema: [{ "@context": "https://schema.org", "@type": "Blog", name: "BrightSteps Events & News", url: `${site.url}/news.html`, publisher: { "@id": `${site.url}/#organization` } }],
-    body: `${pageHero({ crumbs: [["Events & news", ""]], eyebrow: "Events & news", h1: "News and events from BrightSteps", lead: "Local workforce updates, hiring events and company news from West Tamworth." })}
+    body: `${pageHero({ crumbs: [["Events & news", ""]], eyebrow: "Events & news", h1: "News and events from BrightSteps", lead: "Local workforce updates, hiring events and company news from Tamworth." })}
 <section class="section">
   <div class="container">
     <!-- When you publish posts, replace the empty state with cards like this (copy news-article-template.html for each post):
@@ -135,8 +135,8 @@ ${ctaBand()}`,
   // ---------------- CONTACT ----------------
   {
     file: "contact.html",
-    title: "Contact BrightSteps Recruitment | 0424 234 925 | West Tamworth",
-    description: "Contact BrightSteps Recruitment at 6A Edinburgh Avenue, West Tamworth NSW 2340. Call 0424 234 925 any time, or send us a message online.",
+    title: "Contact BrightSteps Recruitment | 0424 234 925 | Tamworth",
+    description: "Contact BrightSteps Recruitment at 6A Edinburgh Avenue, Tamworth NSW 2340. Call 0424 234 925 any time, or send us a message online.",
     crumbs: [["Contact", ""]],
     plan: { purpose: "Make every contact method obvious; catch general enquiries.", audience: "Everyone.", imagery: "Exterior of the office for local recognition; embedded map.", conversion: "Phone and email links, contact form, routes to specialised forms.", schemaNote: "ContactPage + EmploymentAgency (address, phone), BreadcrumbList." },
     schema: [{ "@context": "https://schema.org", "@type": "ContactPage", name: "Contact BrightSteps Recruitment", url: `${site.url}/contact.html` }],
@@ -163,11 +163,11 @@ ${ctaBand()}`,
       <h2>Visit our office</h2>
       <p class="lead">${address}</p>
       <p>Please call ahead to arrange a time, so the right person is available to meet you.</p>
-      <p><a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=6A+Edinburgh+Avenue+West+Tamworth+NSW+2340" rel="noopener" target="_blank">Open in Google Maps (new tab)</a></p>
+      <p><a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=6A+Edinburgh+Avenue+Tamworth+NSW+2340" rel="noopener" target="_blank">Open in Google Maps (new tab)</a></p>
       <p><strong>ABN</strong> ${site.abn}</p>
     </div>
     <!-- Map loads from Google only when this section scrolls into view (loading="lazy"). Swap the src for your Google Business Profile embed once verified. -->
-    <iframe class="map-embed" title="Map showing BrightSteps Recruitment at 6A Edinburgh Avenue, West Tamworth NSW" src="https://www.google.com/maps?q=6A+Edinburgh+Avenue,+West+Tamworth+NSW+2340&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe class="map-embed" title="Map showing BrightSteps Recruitment at 6A Edinburgh Avenue, Tamworth NSW" src="https://www.google.com/maps?q=6A+Edinburgh+Avenue,+Tamworth+NSW+2340&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </section>`,
   },

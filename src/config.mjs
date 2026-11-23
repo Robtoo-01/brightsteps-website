@@ -10,7 +10,7 @@ export const site = {
   email: "info@brightstepsrecruitment.com.au",
   abn: "71 374 775 561",
   street: "6A Edinburgh Avenue",
-  locality: "West Tamworth",
+  locality: "Tamworth",
   region: "NSW",
   postcode: "2340",
   country: "AU",

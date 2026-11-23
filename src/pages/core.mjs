@@ -5,7 +5,7 @@ const trust = `<ul class="trust-list">
   <li>${icon.shield}<span>Police checked and WWCC verified workers</span></li>
   <li>${icon.clipboard}<span>Workers compensation and public liability insurance</span></li>
   <li>${icon.clock}<span>24/7 support when shifts change</span></li>
-  <li>${icon.pin}<span>Locally owned in West Tamworth, NSW</span></li>
+  <li>${icon.pin}<span>Locally owned in Tamworth, NSW</span></li>
 </ul>`;
 
 export const serviceCards = `<div class="grid grid--4">
@@ -52,7 +52,7 @@ const homeFaq = faq([
   ["How quickly can you supply staff?", "We specialise in fast mobilisation. Timing depends on the role, the number of workers, the location and the checks your site needs. Call <a href=\"" + tel + "\">" + site.phone + "</a> for urgent requests and we will tell you straight away what we can do."],
   ["Are your workers screened and insured?", "Yes. Our workforce is police checked and WWCC verified, and we provide workers compensation and public liability insurance for every contract."],
   ["What does it cost?", "Our indicative rates start from $65 an hour (ex GST) and include training, administration and insurance. See the <a href=\"pricing.html\">pricing schedule</a> or <a href=\"request-staff.html\">request a quote</a> for your exact needs."],
-  ["Which areas do you cover?", "We are based in West Tamworth, NSW, and supply staff to employers and providers across Australia. Tell us where you need people and we will confirm what we can do."],
+  ["Which areas do you cover?", "We are based in Tamworth, NSW, and supply staff to employers and providers across Australia. Tell us where you need people and we will confirm what we can do."],
   ["I'm looking for work. How do I apply?", "Register through our <a href=\"apply.html\">online application</a>. Tell us the type of work you want and your availability, and our team will be in touch about suitable roles."],
 ]);
 
@@ -61,7 +61,7 @@ export const pages = [
   {
     file: "index.html",
     title: "Labour Hire & Disability Support Staffing Tamworth | BrightSteps",
-    description: "Screened, insured labour hire and disability support staff from West Tamworth. Fast mobilisation and 24/7 support Australia-wide. Request staff or find work today.",
+    description: "Screened, insured labour hire and disability support staff from Tamworth. Fast mobilisation and 24/7 support Australia-wide. Request staff or find work today.",
     plan: {
       purpose: "Explain who BrightSteps serves in five seconds and route employers to Request Staff and candidates to Apply.",
       audience: "All: employers, care providers, procurement, job seekers.",
@@ -76,7 +76,7 @@ export const pages = [
     <div>
       
       <h1 id="hero-title">Reliable people. <em>Right when you need them.</em></h1>
-      <p class="lead">From West Tamworth, BrightSteps supplies screened, insured and supported workers for industrial sites, disability support and community services, with fast mobilisation and 24/7 support.</p>
+      <p class="lead">From Tamworth, BrightSteps supplies screened, insured and supported workers for industrial sites, disability support and community services, with fast mobilisation and 24/7 support.</p>
       <div class="btn-row">${btn("request-staff.html", "Request staff", "primary", "hero-request")}${btn("find-work.html", "Find work", "ghost", "hero-find-work")}</div>
       ${trust}
     </div>
@@ -205,7 +205,7 @@ ${site.showReviews ? `<section class="section section--sand" aria-labelledby="re
     <div>
       
       <h2 id="area-title">Based in Tamworth, working across Australia</h2>
-      <p class="lead">Our home is West Tamworth in regional NSW. From here we supply screened, supported workers to employers and providers in every state and territory.</p>
+      <p class="lead">Our home is Tamworth in regional NSW. From here we supply screened, supported workers to employers and providers in every state and territory.</p>
       <p>Find us at <a href="contact.html">${address}</a>.</p>
     </div>
     <div><ul class="chips">${site.areas.map((a) => `<li>${a}</li>`).join("")}</ul></div>
@@ -218,12 +218,12 @@ ${ctaBand()}`,
   // ---------------- ABOUT ----------------
   {
     file: "about.html",
-    title: "About BrightSteps Recruitment | Locally Owned, West Tamworth",
-    description: "Australian-owned workforce provider based in West Tamworth, led by Director Edwin Ngetich, connecting organisations across Australia with skilled, caring workers.",
+    title: "About BrightSteps Recruitment | Locally Owned, Tamworth",
+    description: "Australian-owned workforce provider based in Tamworth, led by Director Edwin Ngetich, connecting organisations across Australia with skilled, caring workers.",
     crumbs: [["About us", ""]],
-    plan: { purpose: "Build trust: who runs BrightSteps, why it exists and what it stands for.", audience: "Employers vetting a new supplier; candidates choosing an agency.", imagery: "Portrait of Edwin Ngetich in a real local setting; team photo outside the West Tamworth office.", conversion: "CTA band, links to services and Find Work.", schemaNote: "EmploymentAgency with founder; AboutPage." },
+    plan: { purpose: "Build trust: who runs BrightSteps, why it exists and what it stands for.", audience: "Employers vetting a new supplier; candidates choosing an agency.", imagery: "Portrait of Edwin Ngetich in a real local setting; team photo outside the Tamworth office.", conversion: "CTA band, links to services and Find Work.", schemaNote: "EmploymentAgency with founder; AboutPage." },
     schema: [{ "@context": "https://schema.org", "@type": "AboutPage", name: "About BrightSteps Recruitment", url: `${site.url}/about.html` }],
-    body: `${pageHero({ crumbs: [["About us", ""]], eyebrow: "About us", h1: "Bridging the gap between quality talent and community need", lead: "BrightSteps Recruitment is an Australian-owned workforce solutions provider based in West Tamworth, NSW. We believe recruitment should be more than a transaction." })}
+    body: `${pageHero({ crumbs: [["About us", ""]], eyebrow: "About us", h1: "Bridging the gap between quality talent and community need", lead: "BrightSteps Recruitment is an Australian-owned workforce solutions provider based in Tamworth, NSW. We believe recruitment should be more than a transaction." })}
 
 <section class="section">
   <div class="container split">
@@ -231,9 +231,9 @@ ${ctaBand()}`,
       <h2>Who we are</h2>
       <p>We work where industrial labour hire meets community care. One day that means a crew of general labourers for a construction site. The next it means a support worker who helps someone live more independently at home.</p>
       <p>What connects that work is people. We build lasting relationships with the organisations we supply and the workers we place, because reliable staffing depends on both.</p>
-      <p>We are proudly based in West Tamworth, and we supply people to employers and providers across Australia. Regional roots, national reach.</p>
+      <p>We are proudly based in Tamworth, and we supply people to employers and providers across Australia. Regional roots, national reach.</p>
     </div>
-    ${photo("The BrightSteps team outside the West Tamworth office, natural light, relaxed and approachable.", "Warehouse supervisor checking a roster on a tablet between shelving aisles", "warehouse-supervisor.webp")}
+    ${photo("The BrightSteps team outside the Tamworth office, natural light, relaxed and approachable.", "Warehouse supervisor checking a roster on a tablet between shelving aisles", "warehouse-supervisor.webp")}
   </div>
 </section>
 
@@ -394,7 +394,7 @@ ${ctaBand({ h2: "Request staff in two minutes", text: "Share your requirements a
         ["How do I get paid?", "Your hours are recorded on digital timesheets. We will explain pay rates and pay cycles before you start any role."],
         ["Does it cost anything to register?", "No. Registering with BrightSteps is free."],
       ], "Job seeker FAQs", "candidate-faq");
-      return `${pageHero({ crumbs: [["Find work", ""]], eyebrow: "For job seekers", h1: "Find work that fits your skills and your life", lead: "We place people in industrial, disability support, community and cleaning roles across Tamworth and NSW, and we support you every step of the way.", ctas: btn("apply.html", "Apply for work", "primary", "find-work-hero-apply") + callBtn(), accent: "cat-community" })}
+      return `${pageHero({ crumbs: [["Find work", ""]], eyebrow: "For job seekers", h1: "Find work that fits your skills and your life", lead: "We place people in industrial, disability support, community and cleaning roles in Tamworth and across Australia, and we support you every step of the way.", ctas: btn("apply.html", "Apply for work", "primary", "find-work-hero-apply") + callBtn(), accent: "cat-community" })}
 
 <section class="section">
   <div class="container">
@@ -413,7 +413,7 @@ ${ctaBand({ h2: "Request staff in two minutes", text: "Share your requirements a
       <h2>Why work with BrightSteps</h2>
       <ul class="check-list">
         <li>Flexible shifts: short-term, ongoing and on-call</li>
-        <li>A local team in West Tamworth who know you by name</li>
+        <li>A local team in Tamworth who know you by name</li>
         <li>Support available 24/7 while you're on shift</li>
         <li>Workers compensation and public liability insurance</li>
         <li>Clear digital timesheets</li>

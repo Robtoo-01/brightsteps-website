@@ -36,7 +36,7 @@ Status key: ✅ built into this site · ☐ needs action before or after launch.
 
 ## Local SEO and Google Business Profile
 
-- ☐ Claim and verify the Google Business Profile at 6A Edinburgh Avenue, West Tamworth. Primary category "Employment agency"; secondary categories "Temp agency" and "Recruiter"
+- ☐ Claim and verify the Google Business Profile at 6A Edinburgh Avenue, Tamworth. Primary category "Employment agency"; secondary categories "Temp agency" and "Recruiter"
 - ☐ Use exactly the same name, address and phone (NAP) everywhere: website, Google Business Profile, Facebook, LinkedIn, Yellow Pages, True Local, Hotfrog, ABN Lookup
 - ☐ List each service on the profile with links to the matching service page
 - ☐ Set the service area to the towns you actually cover, and update `areas` in `src/config.mjs` to match

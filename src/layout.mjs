@@ -204,7 +204,7 @@ ${page.body}
     <div class="footer-grid">
       <div>
         <a class="brand" href="index.html" style="--mark-accent:#7FD1C9">${mark()}<span><span class="brand-name">Bright<span>Steps</span></span><span class="brand-sub">RECRUITMENT</span></span></a>
-        <p>Locally owned workforce solutions from West Tamworth. Screened, insured and supported people for industrial sites, disability support and community services across Australia.</p>
+        <p>Locally owned workforce solutions from Tamworth. Screened, insured and supported people for industrial sites, disability support and community services across Australia.</p>
         ${site.social.length ? `<div class="social">${site.social.map((s) => `<a href="${s.url}" rel="noopener" target="_blank"><span class="visually-hidden">${s.name} (opens in a new tab)</span>${icon.people}</a>`).join("")}</div>` : ""}
       </div>
       <nav aria-labelledby="f-services">

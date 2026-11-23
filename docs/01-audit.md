@@ -6,21 +6,21 @@ Reviewed 23 November 2026. Pages read: Home, About Us, Pricing Schedule, Product
 
 | Item | Finding |
 |---|---|
-| Purpose | Lead generation for a West Tamworth labour-hire and community-care staffing agency |
+| Purpose | Lead generation for a Tamworth labour-hire and community-care staffing agency |
 | Positioning | "Labour-Hire & Industrial Solutions" plus "Community Care". Locally owned, 24/7 support, screened and insured workforce |
 | Services named | Disability support workers (in-home, community access, SIL, respite), community support workers, general labour, mining and construction labour, cleaning (residential, commercial, domestic support), transport and community access, support coordinator assistants. Short-term, emergency and contract staffing |
 | Audiences | Employers and project managers, disability and community providers. Candidates are barely addressed: one caption ("We get link you a job") and no way to apply |
 | Leadership | Director Edwin Ngetich (also called "CEO" on a button) |
 | Claims the owner makes | Police checked and WWCC verified workforce; workers compensation and public liability insurance; 24/7 support; Australian-owned; transparent digital timesheets; weekly or fortnightly invoicing |
 | Prices | $70/hr general labourer (mining/construction), $68/hr disability support worker, $65/hr transport and community access (vehicle costs negotiable). All ex GST. Shown only inside an FAQ answer |
-| Contact | 0424 234 925 · info@brighstepsrecruitment.com.au · 6A Edinburgh Avenue, West Tamworth NSW 2340 · ABN 71 374 775 561. No opening hours, no social profiles |
+| Contact | 0424 234 925 · info@brighstepsrecruitment.com.au · 6A Edinburgh Avenue, Tamworth NSW 2340 · ABN 71 374 775 561. No opening hours, no social profiles |
 
 ## Strengths to keep
 
 - A clear compliance message: screened, insured, supported workers.
 - A simple four-step process: Request → Allocate → Complete → Invoice.
 - Published indicative rates, which few competitors show.
-- A genuine local story: West Tamworth, locally owned, a named director.
+- A genuine local story: Tamworth, locally owned, a named director.
 - Real breadth: one supplier for both industrial and care staffing.
 
 ## Problems, ranked by impact on enquiries
@@ -42,7 +42,7 @@ Reviewed 23 November 2026. Pages read: Home, About Us, Pricing Schedule, Product
 
 | Area | Current | Fix in new build |
 |---|---|---|
-| Titles | "brightstepsrecruitment.com.au - West Tamworth NSW 2340" and "Page - domain" | Unique, keyword-led titles under 60 characters, brand last |
+| Titles | "brightstepsrecruitment.com.au - Tamworth NSW 2340" and "Page - domain" | Unique, keyword-led titles under 60 characters, brand last |
 | Meta descriptions | Not found in the page output | Unique 140–160 character descriptions on every page |
 | Headings | Duplicate H2/H3 pairs; taglines marked up as headings | One H1 per page, logical H2/H3 outline |
 | Alt text | Empty | Alt text written for every meaningful image; decorative images use `alt=""` |
