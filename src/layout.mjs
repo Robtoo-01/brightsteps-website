@@ -240,7 +240,7 @@ ${page.body}
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; <span data-year>2026</span> ${site.name}. ABN ${site.abn}.</p>
+      <p>&copy; <span data-year>2026</span> ${site.name}. ABN ${site.abn}.<span class="dev-credit"> Website developed by <a href="${site.developer.url}" target="_blank" rel="noopener" data-track="developer-credit">${site.developer.name}<span class="visually-hidden"> (opens in a new tab)</span></a></span></p>
       <ul>
         <li><a href="privacy.html">Privacy policy</a></li>
         <li><a href="terms.html">Legal notice &amp; terms</a></li>

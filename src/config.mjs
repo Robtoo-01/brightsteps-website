@@ -28,5 +28,7 @@ export const site = {
   areas: ["New South Wales", "Queensland", "Victoria", "Australian Capital Territory", "South Australia", "Western Australia", "Tasmania", "Northern Territory"],
   // Reviews section on the home page. Off until there are real, consented reviews.
   showReviews: false,
+  // Website developer credit shown in the footer.
+  developer: { name: "Agrikip", url: "https://agrikip.com" },
   lastUpdated: "23 November 2026",
 };

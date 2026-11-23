@@ -477,6 +477,9 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--t
 .site-footer address { font-style: normal; display: grid; gap: .35rem; }
 .footer-bottom { margin-top: var(--space-5); padding-top: var(--space-3); border-top: 1px solid rgb(255 255 255 / .1); display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); justify-content: space-between; }
 .footer-bottom ul { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; }
+.footer-bottom p { margin: 0; }
+.dev-credit { display: block; margin-top: .35rem; color: var(--footer-muted); }
+.site-footer .dev-credit a { text-decoration: underline; text-underline-offset: .2em; }
 .social { display: flex; gap: .5rem; margin-top: var(--space-2); }
 .social a { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; background: rgb(255 255 255 / .08); }
 .social svg { width: 1.2rem; height: 1.2rem; }
