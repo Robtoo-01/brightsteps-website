@@ -52,7 +52,7 @@ const homeFaq = faq([
   ["How quickly can you supply staff?", "We specialise in fast mobilisation. Timing depends on the role, the number of workers, the location and the checks your site needs. Call <a href=\"" + tel + "\">" + site.phone + "</a> for urgent requests and we will tell you straight away what we can do."],
   ["Are your workers screened and insured?", "Yes. Our workforce is police checked and WWCC verified, and we provide workers compensation and public liability insurance for every contract."],
   ["What does it cost?", "Our indicative rates start from $65 an hour (ex GST) and include training, administration and insurance. See the <a href=\"pricing.html\">pricing schedule</a> or <a href=\"request-staff.html\">request a quote</a> for your exact needs."],
-  ["Which areas do you cover?", "We are based in West Tamworth and support employers across Tamworth, the New England North West and wider New South Wales. Contact us about your location."],
+  ["Which areas do you cover?", "We are based in West Tamworth, NSW, and supply staff to employers and providers across Australia. Tell us where you need people and we will confirm what we can do."],
   ["I'm looking for work. How do I apply?", "Register through our <a href=\"apply.html\">online application</a>. Tell us the type of work you want and your availability, and our team will be in touch about suitable roles."],
 ]);
 
@@ -61,7 +61,7 @@ export const pages = [
   {
     file: "index.html",
     title: "Labour Hire & Disability Support Staffing Tamworth | BrightSteps",
-    description: "Screened, insured labour hire and disability support staff from West Tamworth. Fast mobilisation and 24/7 support across NSW. Request staff or find work today.",
+    description: "Screened, insured labour hire and disability support staff from West Tamworth. Fast mobilisation and 24/7 support Australia-wide. Request staff or find work today.",
     plan: {
       purpose: "Explain who BrightSteps serves in five seconds and route employers to Request Staff and candidates to Apply.",
       audience: "All: employers, care providers, procurement, job seekers.",
@@ -98,12 +98,12 @@ export const pages = [
   <div class="container split">
     <div class="reveal">
       
-      <h2 id="who-title">One local partner, from the worksite to the home</h2>
+      <h2 id="who-title">One trusted partner, from the worksite to the home</h2>
       <p class="lead">Staff shortages stall projects and leave people without the support they rely on. We close those gaps with dependable people who arrive ready to work.</p>
       <p>Site supervisors use us to keep crews at full strength. Disability and community providers trust us with workers who treat every participant with dignity, safety and professionalism. Our mission is the same in both settings: dependable staffing from fully screened, trained and supported workers.</p>
       <a class="text-link" href="about.html">About BrightSteps</a>
     </div>
-    ${photo("Two shots side by side: a BrightSteps crew on site in hi-vis, and a support worker and participant out in the community.", "BrightSteps workers on an industrial site and in a community support setting")}
+    ${photo("Two shots side by side: a BrightSteps crew on site in hi-vis, and a support worker and participant out in the community.", "Warehouse staff in hi-vis walking between pallet racks", "warehouse-team.webp")}
   </div>
 </section>
 
@@ -166,14 +166,14 @@ export const pages = [
       <div class="pathway pathway--candidate reveal">
         
         <h3>Find work that fits your life</h3>
-        <p>Industrial, disability support, community and cleaning roles across the Tamworth region and NSW.</p>
+        <p>Industrial, disability support, community and cleaning roles in Tamworth and across Australia.</p>
         <div class="btn-row">${btn("apply.html", "Apply for work", "secondary", "path-apply")}${btn("find-work.html", "What to expect", "ghost", "path-find-work")}</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section section--sand" aria-labelledby="reviews-title">
+${site.showReviews ? `<section class="section section--sand" aria-labelledby="reviews-title">
   <div class="container">
     <div class="section-head"><h2 id="reviews-title">Feedback from employers and workers</h2><p>We will publish genuine reviews here, with permission from the people who wrote them.</p></div>
     <!-- PLACEHOLDERS: replace each card with a real, consented testimonial (name, role, organisation) or a Google review embed. Do not invent reviews. -->
@@ -183,7 +183,7 @@ export const pages = [
       <figure class="quote-card"><span class="placeholder-tag">Placeholder: not a real review</span><blockquote><p>Space for a review from a BrightSteps worker about their experience being placed and supported.</p></blockquote><figcaption>Worker first name, role</figcaption></figure>
     </div>
   </div>
-</section>
+</section>` : ""}
 
 <section class="section" aria-labelledby="faq">
   <div class="container split split--top">
@@ -204,11 +204,11 @@ export const pages = [
   <div class="container split">
     <div>
       
-      <h2 id="area-title">Based in West Tamworth, working across NSW</h2>
-      <p class="lead">We are a local business with local knowledge, supporting employers and providers across Tamworth, the New England North West and wider New South Wales.</p>
+      <h2 id="area-title">Based in Tamworth, working across Australia</h2>
+      <p class="lead">Our home is West Tamworth in regional NSW. From here we supply screened, supported workers to employers and providers in every state and territory.</p>
       <p>Find us at <a href="contact.html">${address}</a>.</p>
     </div>
-    <div><ul class="chips">${site.areas.map((a) => `<li>${a}</li>`).join("")}<li>and wider NSW</li></ul></div>
+    <div><ul class="chips">${site.areas.map((a) => `<li>${a}</li>`).join("")}</ul></div>
   </div>
 </section>
 
@@ -219,7 +219,7 @@ ${ctaBand()}`,
   {
     file: "about.html",
     title: "About BrightSteps Recruitment | Locally Owned, West Tamworth",
-    description: "BrightSteps is an Australian-owned workforce provider in West Tamworth, led by Director Edwin Ngetich, connecting NSW organisations with skilled, caring workers.",
+    description: "Australian-owned workforce provider based in West Tamworth, led by Director Edwin Ngetich, connecting organisations across Australia with skilled, caring workers.",
     crumbs: [["About us", ""]],
     plan: { purpose: "Build trust: who runs BrightSteps, why it exists and what it stands for.", audience: "Employers vetting a new supplier; candidates choosing an agency.", imagery: "Portrait of Edwin Ngetich in a real local setting; team photo outside the West Tamworth office.", conversion: "CTA band, links to services and Find Work.", schemaNote: "EmploymentAgency with founder; AboutPage." },
     schema: [{ "@context": "https://schema.org", "@type": "AboutPage", name: "About BrightSteps Recruitment", url: `${site.url}/about.html` }],
@@ -231,9 +231,9 @@ ${ctaBand()}`,
       <h2>Who we are</h2>
       <p>We work where industrial labour hire meets community care. One day that means a crew of general labourers for a construction site. The next it means a support worker who helps someone live more independently at home.</p>
       <p>What connects that work is people. We build lasting relationships with the organisations we supply and the workers we place, because reliable staffing depends on both.</p>
-      <p>As a local West Tamworth business, we know the region, its employers and the communities they serve.</p>
+      <p>We are proudly based in West Tamworth, and we supply people to employers and providers across Australia. Regional roots, national reach.</p>
     </div>
-    ${photo("The BrightSteps team outside the West Tamworth office, natural light, relaxed and approachable.", "The BrightSteps Recruitment team in West Tamworth")}
+    ${photo("The BrightSteps team outside the West Tamworth office, natural light, relaxed and approachable.", "Warehouse supervisor checking a roster on a tablet between shelving aisles", "warehouse-supervisor.webp")}
   </div>
 </section>
 
@@ -250,7 +250,7 @@ ${ctaBand()}`,
 
 <section class="section">
   <div class="container split">
-    ${photo("Portrait of Director Edwin Ngetich, in a real local setting (office or client site), not a studio backdrop.", "Edwin Ngetich, Director of BrightSteps Recruitment")}
+    ${photo("", "Edwin Ngetich, Director of BrightSteps Recruitment", "edwin-ngetich.jpg", { portrait: true, w: 400, h: 400 })}
     <div class="reveal">
       
       <h2>Led by Director ${site.director}</h2>
@@ -328,7 +328,7 @@ ${ctaBand()}`,
   {
     file: "employers.html",
     title: "For Employers: Labour Hire & Support Staff on Demand | BrightSteps",
-    description: "Need screened, insured staff fast? BrightSteps supplies labour hire and support workers across NSW, with 24/7 support, digital timesheets and simple invoicing.",
+    description: "Need screened, insured staff fast? BrightSteps supplies labour hire and support workers across Australia, with 24/7 support, digital timesheets and simple invoicing.",
     crumbs: [["For employers", ""]],
     plan: { purpose: "Persuade employers and providers to submit a staffing request.", audience: "Site managers, operations managers, disability and community service managers, procurement.", imagery: "Supervisor briefing a BrightSteps crew; coordinator reviewing a roster with a support worker.", conversion: "Hero CTAs, process, FAQ, CTA band.", schemaNote: "FAQPage, BreadcrumbList." },
     audience: "employer",
@@ -381,7 +381,7 @@ ${ctaBand({ h2: "Request staff in two minutes", text: "Share your requirements a
   {
     file: "find-work.html",
     title: "Find Work in Tamworth: Labour & Support Worker Jobs | BrightSteps",
-    description: "Looking for labouring, disability support, community or cleaning work in Tamworth and NSW? Register with BrightSteps and get supported shifts that suit you.",
+    description: "Looking for labouring, disability support, community or cleaning work in Tamworth or across Australia? Register with BrightSteps for supported shifts that suit you.",
     crumbs: [["Find work", ""]],
     audience: "candidate",
     plan: { purpose: "Give job seekers a clear reason and path to register.", audience: "Labourers, support workers, community workers, cleaners, drivers, admin assistants.", imagery: "Workers in their own words: a labourer at the end of a shift, a support worker with a participant (consented).", conversion: "Apply CTA in hero, mobile bar and footer of page; requirements checklist reduces drop-off.", schemaNote: "FAQPage, BreadcrumbList. Add JobPosting schema per live vacancy when jobs are listed." },

@@ -20,8 +20,13 @@ export const site = {
   // Form endpoints (Formspree, Netlify Forms, Basin, your own API...). "#" = demo mode, nothing is sent.
   // GA4 measurement ID, e.g. "G-ABC123XYZ". Empty = no analytics. Loads only after cookie consent.
   analyticsId: "",
+  // Netlify Forms: the site is hosted on Netlify, so forms post there (enable form detection in the Netlify dashboard).
+  // Set to false and fill `forms` below to use another service.
+  netlifyForms: true,
   forms: { requestStaff: "#", apply: "#", contact: "#" },
-  // Towns listed in the service area section. Confirm coverage with the business before launch.
-  areas: ["Tamworth", "West Tamworth", "Gunnedah", "Quirindi", "Manilla", "Werris Creek", "Armidale", "Narrabri", "Moree", "Inverell", "Scone", "Muswellbrook"],
+  // Service area: based in Tamworth, serving clients across Australia (owner, 23 Nov 2026). Shown as chips and in schema.
+  areas: ["New South Wales", "Queensland", "Victoria", "Australian Capital Territory", "South Australia", "Western Australia", "Tasmania", "Northern Territory"],
+  // Reviews section on the home page. Off until there are real, consented reviews.
+  showReviews: false,
   lastUpdated: "23 November 2026",
 };

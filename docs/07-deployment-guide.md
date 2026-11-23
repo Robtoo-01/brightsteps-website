@@ -26,6 +26,14 @@ To update the site later, rebuild and drag `site/` onto **Deploys** again. Optio
 
 ## 3. Connect the forms
 
+**Already set up for Netlify.** `netlifyForms: true` in `src/config.mjs` marks all three forms for Netlify Forms. After deploying:
+
+1. In Netlify, open **Forms** and turn on form detection, then redeploy once.
+2. Under **Forms → Form notifications**, add an email notification to info@brightstepsrecruitment.com.au for each form.
+3. Submit a test from each form on the live site and confirm the email arrives.
+
+Forms run in demo mode on `localhost`, so local testing never sends anything. The options below are for hosting somewhere other than Netlify (set `netlifyForms: false` first).
+
 Choose one option and follow its steps.
 
 **Netlify Forms (simplest on Netlify)**

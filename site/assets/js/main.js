@@ -79,29 +79,24 @@
     if (notice) { notice.hidden = false; notice.querySelector("button")?.focus(); }
   }));
 
-  /* ---------- Accessible form validation and submission ---------- */
+  /* ---------- Accessible form validation, steps and submission ---------- */
   const messages = {
     valueMissing: (label) => `Enter ${label.toLowerCase()}`,
     typeMismatch: (label, input) => input.type === "email" ? "Enter an email address in the format name@example.com" : `Check ${label.toLowerCase()}`,
     patternMismatch: (label, input) => input.dataset.patternMsg || `Check ${label.toLowerCase()}`,
     tooShort: (label, input) => `${label} must be at least ${input.minLength} characters`,
-    rangeUnderflow: (label, input) => `${label} must be ${input.min} or more`,
+    rangeUnderflow: (label, input) => input.type === "date" ? "Choose today or a later date" : `${label} must be ${input.min} or more`,
     rangeOverflow: (label, input) => `${label} must be ${input.max} or less`,
   };
 
   const labelFor = (input) => {
     if (input.dataset.label) return input.dataset.label;
-    const group = input.closest("fieldset[data-group]");
-    if (group) return group.dataset.group;
     const l = input.id && document.querySelector(`label[for="${input.id}"]`);
-    return l ? l.textContent.replace(/\*|\(optional\)/g, "").trim() : input.name;
+    return l ? l.textContent.replace(/\(optional\)/g, "").trim() : input.name;
   };
 
   const errorFor = (input) => {
-    if (input.type === "checkbox" && input.dataset.group === undefined && input.required) {
-      if (!input.checked) return input.dataset.requiredMsg || "Tick this box to continue";
-      return "";
-    }
+    if (input.type === "checkbox" && input.required) return input.checked ? "" : (input.dataset.requiredMsg || "Tick this box to continue");
     if (input.type === "file" && input.files[0] && input.files[0].size > Number(input.dataset.maxBytes || Infinity)) {
       return `${labelFor(input)} must be smaller than ${Math.round(input.dataset.maxBytes / 1048576)} MB`;
     }
@@ -119,10 +114,7 @@
   };
 
   // Checkbox groups that need at least one tick: <fieldset data-min-one id="x"> ... <p id="x-error">
-  const groupError = (fs) => {
-    const ticked = fs.querySelectorAll("input:checked").length;
-    return ticked ? "" : (fs.dataset.requiredMsg || `Select at least one option`);
-  };
+  const groupError = (fs) => (fs.querySelector("input:checked") ? "" : (fs.dataset.requiredMsg || "Select at least one option"));
 
   // Builds summary list items with DOM methods (no innerHTML), so no text is ever parsed as HTML.
   const listItem = (text, href, linkText) => {
@@ -134,11 +126,104 @@
     return li;
   };
 
+  // Validates every field inside `scope` (a step or the whole form); returns [{id, msg}] in page order.
+  const validate = (scope) => {
+    const errors = [];
+    scope.querySelectorAll("input, select, textarea").forEach((input) => {
+      if (!input.id || input.type === "hidden" || input.closest(".hp-field") || input.closest("fieldset[data-min-one]") || input.type === "radio") return;
+      const msg = errorFor(input);
+      showError(input, msg);
+      if (msg) errors.push({ id: input.id, msg });
+    });
+    scope.querySelectorAll("fieldset[data-required-radio]").forEach((fs) => {
+      const msg = fs.querySelector("input:checked") ? "" : fs.dataset.requiredMsg;
+      document.getElementById(`${fs.id}-error`).textContent = msg;
+      if (msg) errors.push({ id: fs.querySelector("input").id, msg });
+    });
+    scope.querySelectorAll("fieldset[data-min-one]").forEach((fs) => {
+      fs.dataset.checked = "";
+      const msg = groupError(fs);
+      document.getElementById(`${fs.id}-error`).textContent = msg;
+      if (msg) errors.push({ id: fs.querySelector("input").id, msg });
+    });
+    return errors.sort((a, b) => document.getElementById(a.id).compareDocumentPosition(document.getElementById(b.id)) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1);
+  };
+
+  // Earliest start date is today (local time).
+  document.querySelectorAll('input[type="date"]').forEach((d) => {
+    const t = new Date();
+    d.min = new Date(t.getTime() - t.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  });
+
+  // Show the chosen file name in upload drop zones.
+  document.querySelectorAll(".dropzone input[type=file]").forEach((input) => {
+    const text = input.parentElement.querySelector(".dropzone-text");
+    const original = text.innerHTML;
+    input.addEventListener("change", () => {
+      const f = input.files[0];
+      if (f) { text.textContent = `Selected: ${f.name}`; input.parentElement.classList.add("has-file"); }
+      else { text.innerHTML = original; input.parentElement.classList.remove("has-file"); }
+    });
+  });
+
   document.querySelectorAll("form[data-validate]").forEach((form) => {
     form.noValidate = true;
     const startedAt = Date.now();
     const summary = form.querySelector(".form-summary");
     const submitBtn = form.querySelector("[type=submit]");
+    const steps = [...form.querySelectorAll(".form-step")];
+    const multi = form.classList.contains("form--steps") && steps.length > 1;
+    const final = form.querySelector(".form-final");
+    const back = form.querySelector("[data-step-back]");
+    const next = form.querySelector("[data-step-next]");
+    const bar = form.querySelector(".form-progress span");
+    const labels = [...form.querySelectorAll("[data-step-label]")];
+    let current = 0;
+
+    const showSummary = (heading, items) => {
+      summary.hidden = false;
+      summary.querySelector("h2").textContent = heading;
+      summary.querySelector("ul").replaceChildren(...items);
+      summary.focus();
+    };
+
+    const goTo = (i, focus = true) => {
+      current = i;
+      const last = i === steps.length - 1;
+      steps.forEach((s, n) => { s.hidden = n !== i; });
+      final.hidden = !last;
+      back.hidden = i === 0;
+      next.hidden = last;
+      submitBtn.hidden = !last;
+      bar.style.width = `${Math.round(((i + 1) / steps.length) * 100)}%`;
+      labels.forEach((l, n) => {
+        l.classList.toggle("is-done", n < i);
+        if (n === i) l.setAttribute("aria-current", "step"); else l.removeAttribute("aria-current");
+      });
+      summary.hidden = true;
+      if (focus) {
+        const title = steps[i].querySelector(".step-title");
+        title.tabIndex = -1;
+        title.focus({ preventScroll: true });
+        form.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+      }
+      track("form_step", { form: form.id, step: i + 1 });
+    };
+
+    if (multi) {
+      form.classList.add("is-stepped");
+      goTo(0, false);
+      next.addEventListener("click", () => {
+        const errors = validate(steps[current]);
+        if (errors.length) {
+          showSummary("Please check this step", errors.map((er) => listItem(er.msg, `#${er.id}`)));
+          track("form_error", { form: form.id, step: current + 1, errors: errors.length });
+          return;
+        }
+        goTo(current + 1);
+      });
+      back.addEventListener("click", () => goTo(current - 1));
+    }
 
     form.addEventListener("blur", (e) => {
       const input = e.target;
@@ -150,8 +235,11 @@
       const input = e.target;
       input.dataset.touched = "";
       if (input.getAttribute("aria-invalid") === "true") showError(input, errorFor(input));
-      const fs = input.closest("fieldset[data-min-one]");
-      if (fs && fs.dataset.checked !== undefined) document.getElementById(`${fs.id}-error`).textContent = groupError(fs);
+      const fs = input.closest("fieldset[data-min-one], fieldset[data-required-radio]");
+      if (fs && (fs.dataset.checked !== undefined || fs.matches("[data-required-radio]"))) {
+        const box = document.getElementById(`${fs.id}-error`);
+        if (box.textContent) box.textContent = fs.matches("[data-min-one]") ? groupError(fs) : "";
+      }
     });
 
     form.addEventListener("submit", async (e) => {
@@ -159,56 +247,37 @@
       // Spam traps: bots fill the hidden honeypot field or submit within seconds of page load.
       if (form.querySelector(".hp-field input")?.value || Date.now() - startedAt < 3000) return;
 
-      const errors = [];
-      form.querySelectorAll("input, select, textarea").forEach((input) => {
-        if (!input.id || input.closest(".hp-field") || input.closest("fieldset[data-min-one]") || input.type === "radio") return;
-        const msg = errorFor(input);
-        showError(input, msg);
-        if (msg) errors.push({ id: input.id, msg });
-      });
-      form.querySelectorAll("fieldset[data-required-radio]").forEach((fs) => {
-        const msg = fs.querySelector("input:checked") ? "" : fs.dataset.requiredMsg;
-        document.getElementById(`${fs.id}-error`).textContent = msg;
-        if (msg) errors.push({ id: fs.querySelector("input").id, msg });
-      });
-      form.querySelectorAll("fieldset[data-min-one]").forEach((fs) => {
-        fs.dataset.checked = "";
-        const msg = groupError(fs);
-        document.getElementById(`${fs.id}-error`).textContent = msg;
-        if (msg) errors.push({ id: fs.querySelector("input").id, msg });
-      });
-
+      // On the last step, check every step; jump back to the first step with a problem.
+      const errors = validate(form);
       if (errors.length) {
-        // List errors in page order (groups are checked after single fields above).
-        errors.sort((a, b) => document.getElementById(a.id).compareDocumentPosition(document.getElementById(b.id)) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1);
-        summary.hidden = false;
-        summary.querySelector("h2").textContent = "There is a problem";
-        summary.querySelector("ul").replaceChildren(...errors.map((er) => listItem(er.msg, `#${er.id}`)));
-        summary.focus();
+        if (multi) {
+          const first = steps.findIndex((s) => s.contains(document.getElementById(errors[0].id)));
+          if (first !== -1 && first !== current) goTo(first, false);
+        }
+        showSummary("There is a problem", errors.map((er) => listItem(er.msg, `#${er.id}`)));
         track("form_error", { form: form.id, errors: errors.length });
         return;
       }
       summary.hidden = true;
 
-      const endpoint = form.getAttribute("action");
+      const action = form.getAttribute("action");
+      const isNetlify = form.hasAttribute("data-netlify");
+      // shortcut: on localhost (and with no endpoint) forms show success without sending, so the site can be tested offline.
+      const demo = !action || action === "#" || (isNetlify && /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname));
       submitBtn.setAttribute("aria-busy", "true");
       const originalLabel = submitBtn.textContent;
       submitBtn.textContent = "Sending…";
       try {
-        // shortcut: with no endpoint configured the form shows success without sending; set action="https://…" before launch.
-        if (endpoint && endpoint !== "#") {
-          const res = await fetch(endpoint, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        if (demo) {
+          console.warn(`[BrightSteps] ${form.id}: demo mode, submission was not sent.`);
         } else {
-          console.warn(`[BrightSteps] ${form.id}: no form endpoint set, submission was not sent.`);
+          const res = await fetch(isNetlify ? "/" : action, { method: "POST", body: new FormData(form), headers: isNetlify ? {} : { Accept: "application/json" } });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
         }
         track("form_submit", { form: form.id });
         location.assign(`thank-you.html?form=${encodeURIComponent(form.id)}`);
       } catch (err) {
-        summary.hidden = false;
-        summary.querySelector("h2").textContent = "Your form could not be sent";
-        summary.querySelector("ul").replaceChildren(listItem("Please try again, or call ", `tel:${form.dataset.phone}`, form.dataset.phoneDisplay));
-        summary.focus();
+        showSummary("Your form could not be sent", [listItem("Please try again, or call ", `tel:${form.dataset.phone}`, form.dataset.phoneDisplay)]);
         track("form_failure", { form: form.id });
       } finally {
         submitBtn.removeAttribute("aria-busy");

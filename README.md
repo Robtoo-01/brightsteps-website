@@ -17,6 +17,7 @@ A static, accessible, mobile-first website for BrightSteps Recruitment (West Tam
 | – | Content editing guide (prices, news, photos, pages) | [docs/08-content-editing-guide.md](docs/08-content-editing-guide.md) |
 | – | Forms and data handling procedure (privacy in practice) | [docs/09-forms-and-data-handling.md](docs/09-forms-and-data-handling.md) |
 | – | Four website themes, comparison and recommendation (Human & Community is live) | [docs/10-website-themes.md](docs/10-website-themes.md) · screenshots: [docs/themes/index.html](docs/themes/index.html) |
+| – | Photo credits and licences (Unsplash) | [docs/photo-credits.md](docs/photo-credits.md) |
 | – | Letterhead (Word template and PDF) | [brand/letterhead/](brand/letterhead/) |
 | – | All documentation in one Word file and PDF | [docs/BrightSteps-Website-Documentation.docx](docs/BrightSteps-Website-Documentation.docx) · [.pdf](docs/BrightSteps-Website-Documentation.pdf) |
 
@@ -78,6 +79,6 @@ python -m http.server 8080 --directory site
 Read section 9 of the docs (`docs/06-pre-launch-audit.md`) and section 8 (`docs/05-checklists.md`). In short:
 
 - Set up the mailbox info@brightstepsrecruitment.com.au and send it a test email.
-- Connect the forms (they send nothing until you do).
+- In Netlify, turn on form detection and add email notifications (the forms are already set up for Netlify Forms).
 - Have an adviser check the website additions to the privacy policy and terms.
-- Replace the placeholder photos and testimonials with real, consented ones.
+- Add a real team photo and Director portrait; turn reviews back on (`showReviews` in `src/config.mjs`) once you have real, consented reviews.

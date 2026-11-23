@@ -72,7 +72,7 @@ The website is plain HTML, CSS and JavaScript files served from a CDN. It has no
 
 ## Must-do list before go-live
 
-1. Connect the three forms (see the forms and data handling guide). Until then submissions are **not sent anywhere**.
+1. Turn on Netlify form detection and email notifications (deployment guide, step 3). The forms are already marked for Netlify Forms.
 2. If the form service stores data overseas, keep the overseas sentence in the privacy policy. Delete it if all data stays in Australia.
 3. Add photos with alt text, real reviews and the team photo, or leave the labelled placeholders until you have them.
 4. Turn on HTTPS and two-factor authentication on every account.

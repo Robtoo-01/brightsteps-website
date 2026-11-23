@@ -144,7 +144,7 @@ ${ctaBand()}`,
 <section class="section">
   <div class="container form-layout">
     ${form({
-      id: "contact-form", endpoint: site.forms.contact, submit: "Send message",
+      id: "contact-form", endpoint: site.forms.contact, submit: "Send message", time: "Takes about a minute",
       body: `<fieldset><legend>Your message</legend><div class="field-grid">
         ${field("c-name", "Full name", { required: true, attrs: 'autocomplete="name"', requiredMsg: "Enter your full name" })}
         ${field("c-email", "Email", { type: "email", required: true, attrs: 'autocomplete="email" spellcheck="false"', requiredMsg: "Enter your email address" })}
@@ -184,7 +184,7 @@ ${ctaBand()}`,
 <section class="section">
   <div class="container form-layout">
     ${form({
-      id: "request-staff-form", endpoint: site.forms.requestStaff, submit: "Send staffing request",
+      id: "request-staff-form", endpoint: site.forms.requestStaff, submit: "Send staffing request", time: "3 short steps · about 2 minutes",
       body: `<fieldset><legend>1. Your details</legend><div class="field-grid">
         ${field("r-name", "Full name", { required: true, attrs: 'autocomplete="name"', requiredMsg: "Enter your full name" })}
         ${field("r-org", "Organisation", { required: true, attrs: 'autocomplete="organization"', requiredMsg: "Enter your organisation name" })}
@@ -221,7 +221,7 @@ ${ctaBand()}`,
   {
     file: "apply.html",
     title: "Apply for Work | Register as a Candidate | BrightSteps Recruitment",
-    description: "Register with BrightSteps for labouring, disability support, community, transport and cleaning work in Tamworth and NSW. Free and takes about five minutes.",
+    description: "Register with BrightSteps for labouring, disability support, community, transport and cleaning work across Australia. Free and takes about five minutes.",
     crumbs: [["Find work", "find-work.html"], ["Apply for work", ""]],
     audience: "candidate",
     plan: { purpose: "Primary candidate conversion: capture registrations with skills, checks and availability.", audience: "Job seekers, support workers, labourers, contractors.", imagery: "None; keep focus on the form.", conversion: "Grouped form, checkboxes over free text, optional resume, success message.", schemaNote: "BreadcrumbList." },
@@ -230,7 +230,7 @@ ${ctaBand()}`,
 <section class="section">
   <div class="container form-layout">
     ${form({
-      id: "apply-form", endpoint: site.forms.apply, submit: "Submit application",
+      id: "apply-form", endpoint: site.forms.apply, submit: "Submit application", time: "3 short steps · about 5 minutes · free",
       body: `<fieldset><legend>1. About you</legend><div class="field-grid">
         ${field("a-first", "First name", { required: true, attrs: 'autocomplete="given-name"', requiredMsg: "Enter your first name" })}
         ${field("a-last", "Last name", { required: true, attrs: 'autocomplete="family-name"', requiredMsg: "Enter your last name" })}

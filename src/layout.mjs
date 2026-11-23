@@ -59,8 +59,9 @@ export function pageHero({ crumbs, eyebrow, h1, lead, ctas = "", accent = "" }) 
 </section>`;
 }
 
-export function photo(brief, alt) {
-  // Swap for <img src="..." alt="${alt}" width="..." height="..." loading="lazy"> once real photography exists.
+export function photo(brief, alt, src = "", { portrait = false, w = 1200, h = 900 } = {}) {
+  // With src: a real photo (stock photos are credited in docs/photo-credits.md). Without: a labelled placeholder.
+  if (src) return `<figure class="photo${portrait ? " photo--portrait" : ""}"><img src="assets/img/photos/${src}" alt="${alt}" width="${w}" height="${h}" loading="lazy" decoding="async"></figure>`;
   return `<figure class="photo-ph" role="img" aria-label="Photo placeholder: ${alt}"><figcaption><strong>Photo placeholder</strong>${brief}</figcaption></figure>`;
 }
 
@@ -85,7 +86,7 @@ export function serviceSchema(name, description, url, serviceType) {
     "@context": "https://schema.org", "@type": "Service", name, description, serviceType,
     url: `${site.url}/${url}`,
     provider: { "@id": `${site.url}/#organization` },
-    areaServed: { "@type": "State", name: "New South Wales" },
+    areaServed: { "@type": "Country", name: "Australia" },
   };
 }
 
@@ -117,8 +118,8 @@ const orgSchema = {
   email: site.email,
   taxID: `ABN ${site.abn}`,
   address: { "@type": "PostalAddress", streetAddress: site.street, addressLocality: site.locality, addressRegion: site.region, postalCode: site.postcode, addressCountry: site.country },
-  areaServed: [...site.areas.map((name) => ({ "@type": "City", name })), { "@type": "State", name: "New South Wales" }],
-  founder: { "@type": "Person", name: site.director, jobTitle: "Director" },
+  areaServed: [{ "@type": "Country", name: "Australia" }, ...site.areas.map((name) => ({ "@type": "State", name })), { "@type": "City", name: "Tamworth" }],
+  founder: { "@type": "Person", name: site.director, jobTitle: "Director", image: `${site.url}/assets/img/photos/edwin-ngetich.jpg` },
   ...(site.social.length ? { sameAs: site.social.map((s) => s.url) } : {}),
 };
 
@@ -203,7 +204,7 @@ ${page.body}
     <div class="footer-grid">
       <div>
         <a class="brand" href="index.html" style="--mark-accent:#7FD1C9">${mark()}<span><span class="brand-name">Bright<span>Steps</span></span><span class="brand-sub">RECRUITMENT</span></span></a>
-        <p>Locally owned workforce solutions from West Tamworth. Screened, insured and supported people for industrial sites, disability support and community services across NSW.</p>
+        <p>Locally owned workforce solutions from West Tamworth. Screened, insured and supported people for industrial sites, disability support and community services across Australia.</p>
         ${site.social.length ? `<div class="social">${site.social.map((s) => `<a href="${s.url}" rel="noopener" target="_blank"><span class="visually-hidden">${s.name} (opens in a new tab)</span>${icon.people}</a>`).join("")}</div>` : ""}
       </div>
       <nav aria-labelledby="f-services">

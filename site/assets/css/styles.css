@@ -309,6 +309,12 @@ body.nav-open { overflow: hidden; }
 .photo-ph figcaption { position: relative; background: rgb(255 255 255 / .92); border-radius: var(--radius); padding: .75rem 1rem; font-size: .875rem; color: var(--slate); max-width: 34ch; }
 .photo-ph figcaption strong { display: block; color: var(--navy); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; }
 
+.photo { margin: 0; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius-lg); background: var(--sand); }
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+.photo--portrait { aspect-ratio: 1; max-width: 22rem; justify-self: center; margin-inline: auto; }
+@media (max-width: 63.99em) { .split > * + * { margin-top: var(--space-4); } } /* stacked two-column sections need a gap on phones and tablets */
+.photo--portrait img { object-position: center top; }
+
 /* ---------- FAQ ---------- */
 .faq { max-width: 50rem; }
 .faq details { border-bottom: 1px solid var(--line); }
@@ -411,6 +417,50 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--t
 .contact-list strong { display: block; color: var(--navy); }
 .contact-list a { word-break: break-word; }
 .map-embed { border: 0; width: 100%; aspect-ratio: 4 / 3; border-radius: var(--radius-lg); background: var(--sand); }
+
+/* ---------- Form steps, tracker, tiles and upload ---------- */
+.form-head { margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--line); }
+.form-meta { font-weight: 700; color: var(--teal); margin: 0 0 .75rem; }
+.form-head .hint { margin: 0; }
+.stepper { list-style: none; margin: 0 0 .9rem; padding: 0; display: flex; gap: .75rem; }
+.stepper li { flex: 1; display: flex; align-items: center; gap: .55rem; font-weight: 700; font-size: .9375rem; color: var(--slate); line-height: 1.25; }
+.stepper-num { flex: none; display: inline-grid; place-items: center; width: 2.1rem; height: 2.1rem; border-radius: 50%; border: 2px solid var(--line); background: var(--white); font-size: .875rem; color: var(--slate); }
+.stepper li[aria-current] { color: var(--navy); }
+.stepper li[aria-current] .stepper-num { background: var(--teal); border-color: var(--teal); color: #FFFFFF; }
+.stepper li.is-done .stepper-num { border-color: var(--teal); color: var(--teal); }
+.form-progress { height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; margin-bottom: .9rem; }
+.form-progress span { display: block; height: 100%; background: var(--teal); transition: width .3s ease; }
+.form:not(.is-stepped) .form-progress { display: none; }
+@media (max-width: 40em) {
+  /* Small screens: only the current step's name is shown; the others stay available to screen readers. */
+  .form.is-stepped .stepper li:not([aria-current]) .stepper-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .form.is-stepped .stepper li:not([aria-current]) { flex: 0 0 auto; }
+}
+.form .form-step { margin-bottom: 0; }
+.form:not(.is-stepped) .form-step + .form-step { margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--line); }
+.form legend.step-title { display: flex; flex-direction: column; gap: .3rem; font-size: clamp(1.3rem, 1.15rem + .6vw, 1.6rem); margin-bottom: var(--space-3); }
+.step-count { font: 700 .8125rem/1.2 var(--font-body); letter-spacing: .06em; text-transform: uppercase; color: var(--teal); }
+.step-title:focus { outline: none; }
+.form legend.label { font: 700 1rem/1.4 var(--font-body); color: var(--navy); margin-bottom: .5rem; }
+.form-final { margin-top: var(--space-3); }
+.form-final > .field:not(.consent) { margin-bottom: var(--space-3); }
+.form .consent { margin-bottom: 0; }
+.form-actions { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--line); }
+.form-actions [type="submit"], .form-actions [data-step-next] { margin-left: auto; min-width: 13rem; }
+@media (max-width: 40em) { .form-actions .btn { flex: 1 1 100%; } .form-actions [type="submit"], .form-actions [data-step-next] { order: -1; margin-left: 0; } }
+.field-grid { gap: var(--space-3); }
+.choice { align-items: center; min-height: 3.25rem; padding: .8rem 1rem; background: var(--white); transition: border-color .15s ease, background-color .15s ease; }
+.choice span { font-weight: 600; }
+.choice input { margin-top: 0; }
+.choice:focus-within { border-color: var(--teal); box-shadow: 0 0 0 3px rgb(11 110 105 / .18); }
+.consent .choice { align-items: flex-start; }
+.consent .choice span { font-weight: 400; }
+.dropzone { position: relative; display: grid; place-items: center; min-height: 6.5rem; padding: 1.25rem; text-align: center; border: 2px dashed #6B7785; border-radius: var(--radius); background: var(--white); color: var(--slate); }
+.dropzone input[type="file"] { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; opacity: 0; cursor: pointer; border: 0; padding: 0; }
+.dropzone:focus-within { outline: 3px solid var(--teal); outline-offset: 2px; }
+.dropzone strong { color: var(--teal); }
+.dropzone.has-file { border-style: solid; border-color: var(--teal); background: var(--teal-tint); color: var(--navy); font-weight: 700; }
+.dropzone:has([aria-invalid="true"]) { border-color: var(--error); }
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--footer-bg); color: var(--footer-text); padding-block: var(--space-6) var(--space-3); font-size: var(--step--1); }

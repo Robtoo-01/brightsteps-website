@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="assets/css/themes/human.css">
 <script>document.documentElement.classList.add("js")</script>
 <script src="assets/js/main.js" defer></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"EmploymentAgency","@id":"https://brightstepsrecruitment.com.au/#organization","name":"BrightSteps Recruitment","url":"https://brightstepsrecruitment.com.au/","logo":"https://brightstepsrecruitment.com.au/assets/img/logo-horizontal.svg","image":"https://brightstepsrecruitment.com.au/assets/img/og-image.png","telephone":"+61424234925","email":"info@brightstepsrecruitment.com.au","taxID":"ABN 71 374 775 561","address":{"@type":"PostalAddress","streetAddress":"6A Edinburgh Avenue","addressLocality":"West Tamworth","addressRegion":"NSW","postalCode":"2340","addressCountry":"AU"},"areaServed":[{"@type":"City","name":"Tamworth"},{"@type":"City","name":"West Tamworth"},{"@type":"City","name":"Gunnedah"},{"@type":"City","name":"Quirindi"},{"@type":"City","name":"Manilla"},{"@type":"City","name":"Werris Creek"},{"@type":"City","name":"Armidale"},{"@type":"City","name":"Narrabri"},{"@type":"City","name":"Moree"},{"@type":"City","name":"Inverell"},{"@type":"City","name":"Scone"},{"@type":"City","name":"Muswellbrook"},{"@type":"State","name":"New South Wales"}],"founder":{"@type":"Person","name":"Edwin Ngetich","jobTitle":"Director"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"EmploymentAgency","@id":"https://brightstepsrecruitment.com.au/#organization","name":"BrightSteps Recruitment","url":"https://brightstepsrecruitment.com.au/","logo":"https://brightstepsrecruitment.com.au/assets/img/logo-horizontal.svg","image":"https://brightstepsrecruitment.com.au/assets/img/og-image.png","telephone":"+61424234925","email":"info@brightstepsrecruitment.com.au","taxID":"ABN 71 374 775 561","address":{"@type":"PostalAddress","streetAddress":"6A Edinburgh Avenue","addressLocality":"West Tamworth","addressRegion":"NSW","postalCode":"2340","addressCountry":"AU"},"areaServed":[{"@type":"Country","name":"Australia"},{"@type":"State","name":"New South Wales"},{"@type":"State","name":"Queensland"},{"@type":"State","name":"Victoria"},{"@type":"State","name":"Australian Capital Territory"},{"@type":"State","name":"South Australia"},{"@type":"State","name":"Western Australia"},{"@type":"State","name":"Tasmania"},{"@type":"State","name":"Northern Territory"},{"@type":"City","name":"Tamworth"}],"founder":{"@type":"Person","name":"Edwin Ngetich","jobTitle":"Director","image":"https://brightstepsrecruitment.com.au/assets/img/photos/edwin-ngetich.jpg"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Contact BrightSteps Recruitment","url":"https://brightstepsrecruitment.com.au/contact.html"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://brightstepsrecruitment.com.au/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://brightstepsrecruitment.com.au/contact.html"}]}</script>
 </head>
@@ -76,18 +76,22 @@
 <section class="section">
   <div class="container form-layout">
     <div class="form-wrap">
-<form class="form" id="contact-form" action="#" method="post" data-validate data-phone="+61424234925" data-phone-display="0424 234 925" enctype="multipart/form-data">
+<form class="form" id="contact-form" action="thank-you.html?form=contact-form" method="post" data-validate data-phone="+61424234925" data-phone-display="0424 234 925" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="website" name="contact-form">
+  <div class="form-head">
+    <p class="form-meta">Takes about a minute</p>
+    
+    <p class="hint">All fields are required unless marked (optional).</p>
+  </div>
   <div class="form-summary" tabindex="-1" role="alert" hidden><h2>There is a problem</h2><ul></ul></div>
-  <p class="hint">Fields marked <span class="req">*</span> are required.</p>
-  <fieldset><legend>Your message</legend><div class="field-grid">
+  <fieldset class="form-step" data-step="1"><legend class="step-title"><span class="step-count">Step 1 of 1</span>Your message</legend><div class="field-grid">
         <div class="field">
-  <label for="c-name">Full name <span class="req" aria-hidden="true">*</span></label>
+  <label for="c-name">Full name</label>
   
   <input type="text" id="c-name" name="c-name" aria-describedby="c-name-error" required data-required-msg="Enter your full name" autocomplete="name" maxlength="254">
   <p class="field-error" id="c-name-error" aria-live="polite"></p>
 </div>
         <div class="field">
-  <label for="c-email">Email <span class="req" aria-hidden="true">*</span></label>
+  <label for="c-email">Email</label>
   
   <input type="email" id="c-email" name="c-email" aria-describedby="c-email-error" required data-required-msg="Enter your email address" autocomplete="email" spellcheck="false" maxlength="254">
   <p class="field-error" id="c-email-error" aria-live="polite"></p>
@@ -99,25 +103,31 @@
   <p class="field-error" id="c-phone-error" aria-live="polite"></p>
 </div>
         <div class="field">
-  <label for="c-type">I am <span class="req" aria-hidden="true">*</span></label>
+  <label for="c-type">I am</label>
   
   <select id="c-type" name="c-type" aria-describedby="c-type-error" required data-required-msg="Choose who you are" ><option value="">Please choose</option><option>An employer or service provider</option><option>Looking for work</option><option>Something else</option></select>
   <p class="field-error" id="c-type-error" aria-live="polite"></p>
 </div>
         <div class="field field--full">
-  <label for="c-message">How can we help? <span class="req" aria-hidden="true">*</span></label>
+  <label for="c-message">How can we help?</label>
   
   <textarea id="c-message" name="c-message" aria-describedby="c-message-error" required data-required-msg="Enter your message"  maxlength="4000"></textarea>
   <p class="field-error" id="c-message-error" aria-live="polite"></p>
 </div>
       </div></fieldset>
+  <div class="form-final">
+    
       <div class="field consent">
-  <label class="choice" for="c-consent"><input type="checkbox" id="c-consent" name="c-consent" value="yes" required aria-describedby="c-consent-error" data-required-msg="Confirm you have read the privacy policy"> <span>I have read the <a href="privacy.html" target="_blank" rel="noopener">privacy policy (opens in a new tab)</a> and agree to BrightSteps contacting me about this enquiry. <span class="req" aria-hidden="true">*</span></span></label>
+  <label class="choice choice--checkbox" for="c-consent"><input type="checkbox" id="c-consent" name="c-consent" value="yes" required aria-describedby="c-consent-error" data-required-msg="Confirm you have read the privacy policy"> <span>I have read the <a href="privacy.html" target="_blank" rel="noopener">privacy policy (opens in a new tab)</a> and agree to BrightSteps contacting me about this enquiry.</span></label>
   <p class="field-error" id="c-consent-error" aria-live="polite"></p>
 </div>
+  </div>
   <div class="hp-field" aria-hidden="true"><label for="contact-form-website">Leave this field empty</label><input type="text" id="contact-form-website" name="website" tabindex="-1" autocomplete="off"></div>
-  <input type="hidden" name="form-name" value="contact-form"><!-- "form-name" is what Netlify Forms expects; other services ignore it -->
-  <button class="btn btn--primary btn--block" type="submit" data-track="contact-form-submit">Send message</button>
+  <input type="hidden" name="form-name" value="contact-form">
+  <div class="form-actions">
+    
+    <button class="btn btn--primary" type="submit" data-track="contact-form-submit">Send message</button>
+  </div>
 </form>
 </div>
     <aside class="form-aside card" style="background:var(--sand);border:0" aria-labelledby="aside-title">
@@ -151,7 +161,7 @@
     <div class="footer-grid">
       <div>
         <a class="brand" href="index.html" style="--mark-accent:#7FD1C9"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g transform="translate(0 56) skewX(-14) translate(0 -56)"><rect x="6" y="38" width="11" height="18" rx="5.5" fill="currentColor"/><rect x="21" y="29" width="11" height="27" rx="5.5" fill="currentColor"/><rect x="36" y="20" width="11" height="36" rx="5.5" fill="var(--mark-accent, #0B6E69)"/><circle cx="41.5" cy="9" r="6" fill="#F5A524"/></g></svg><span><span class="brand-name">Bright<span>Steps</span></span><span class="brand-sub">RECRUITMENT</span></span></a>
-        <p>Locally owned workforce solutions from West Tamworth. Screened, insured and supported people for industrial sites, disability support and community services across NSW.</p>
+        <p>Locally owned workforce solutions from West Tamworth. Screened, insured and supported people for industrial sites, disability support and community services across Australia.</p>
         
       </div>
       <nav aria-labelledby="f-services">

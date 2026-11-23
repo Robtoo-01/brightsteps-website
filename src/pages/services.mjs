@@ -3,7 +3,7 @@ import { icon, btn, callBtn, pageHero, photo, faq, ctaBand, serviceSchema } from
 import { standard, processSteps } from "./core.mjs";
 
 // One template for the four service pages; copy differs, structure stays consistent.
-function servicePage({ file, crumb, title, description, eyebrow, h1, lead, accent, iconName, roles, settings, benefitsTitle, benefits, photoBrief, photoAlt, faqs, schemaType, related, plan }) {
+function servicePage({ file, crumb, title, description, eyebrow, h1, lead, accent, iconName, roles, settings, benefitsTitle, benefits, photoBrief, photoAlt, photoSrc = "", faqs, schemaType, related, plan }) {
   const f = faq(faqs, "Common questions", "service-faq");
   return {
     file, title, description, plan,
@@ -19,7 +19,7 @@ function servicePage({ file, crumb, title, description, eyebrow, h1, lead, accen
       <ul class="check-list">${roles.map((r) => `<li>${r}</li>`).join("")}</ul>
       ${settings ? `<h3>Where our people work</h3><p>${settings}</p>` : ""}
     </div>
-    ${photo(photoBrief, photoAlt)}
+    ${photo(photoBrief, photoAlt, photoSrc)}
   </div>
 </section>
 
@@ -72,14 +72,14 @@ export const pages = [
     file: "industrial-labour-hire.html",
     crumb: "Industrial labour hire",
     title: "Industrial Labour Hire Tamworth: Mining & Construction | BrightSteps",
-    description: "General labourers for mining, construction, warehousing and logistics in Tamworth and NSW. Police checked, insured and mobilised fast. Request labour hire today.",
+    description: "General labourers for mining, construction, warehousing and logistics across Australia, from our Tamworth base. Police checked, insured and mobilised fast.",
     eyebrow: "Industrial labour hire",
     h1: "Labour hire that keeps your site moving",
     lead: "Reliable, experienced labourers for mining, construction, warehousing and logistics, mobilised fast and backed by 24/7 support.",
     accent: "cat-industrial",
     iconName: "hardhat",
     roles: ["General labourers", "Mining labourers", "Construction labourers", "Warehouse and logistics workers", "Site clean-up and support crews"],
-    settings: "Mining operations, construction sites, warehouses, distribution centres and industrial facilities across the Tamworth region and NSW.",
+    settings: "Mining operations, construction sites, warehouses, distribution centres and industrial facilities in Tamworth and across Australia.",
     benefitsTitle: "Why site managers call BrightSteps",
     benefits: [
       ["bolt", "High-speed mobilisation", "We specialise in getting crews on site quickly when projects ramp up or plans change."],
@@ -87,7 +87,8 @@ export const pages = [
       ["clock", "24/7 support", "Around-the-clock support and fast responses when you need replacements or extra hands."],
     ],
     photoBrief: "A BrightSteps crew in hi-vis on a regional NSW site, mid-task, natural light. No posed thumbs-up.",
-    photoAlt: "BrightSteps labourers working on a construction site near Tamworth",
+    photoAlt: "Construction worker in a hard hat, face shield and hi-vis vest measuring timber on a workbench",
+    photoSrc: "industrial-worker.webp",
     faqs: [
       ["Can you supply workers with specific tickets or licences?", "Yes. Tell us what your site needs (for example a White Card, forklift licence or specific inductions) and we will match workers who hold them."],
       ["What does a general labourer cost?", "Our indicative rate for a general labourer for mining or construction is $70 an hour, excluding GST. It includes training, administration and insurance costs. <a href=\"pricing.html\">See pricing</a>."],
@@ -101,14 +102,14 @@ export const pages = [
     file: "disability-support-staffing.html",
     crumb: "Disability support staffing",
     title: "Disability Support Workers Tamworth: In-Home & SIL | BrightSteps",
-    description: "Screened disability support workers for in-home care, community access, SIL and respite in Tamworth and NSW. Police checked, WWCC verified, supported 24/7.",
+    description: "Screened disability support workers for in-home care, community access, SIL and respite across Australia. Police checked, WWCC verified, supported 24/7.",
     eyebrow: "Disability support staffing",
     h1: "Disability support workers who put people first",
     lead: "Compassionate, screened support workers for in-home care, community access, Supported Independent Living (SIL) and respite.",
     accent: "cat-disability",
     iconName: "heart",
     roles: ["Disability support workers", "In-home care support", "Community access support", "Supported Independent Living (SIL) support", "Respite support"],
-    settings: "Participants' homes, SIL houses, respite settings and community activities across the Tamworth region and NSW.",
+    settings: "Participants' homes, SIL houses, respite settings and community activities in Tamworth and across Australia.",
     benefitsTitle: "Support built on dignity and safety",
     benefits: [
       ["heart", "Respectful, person-centred care", "Our workers support participants' choice, independence and dignity in everyday life."],
@@ -116,7 +117,8 @@ export const pages = [
       ["clock", "Reliable cover", "24/7 support so shifts are covered and continuity of care is protected."],
     ],
     photoBrief: "A support worker and participant doing an everyday activity together (shopping, cooking, a walk), with the participant leading. Written consent required.",
-    photoAlt: "A support worker and participant shopping together at a local market",
+    photoAlt: "Support worker kneeling beside a woman in a wheelchair as she lifts hand weights at home",
+    photoSrc: "disability-support.webp",
     faqs: [
       ["What checks do your support workers have?", "Our workforce is police checked and WWCC verified. Tell us about any additional screening your organisation or participants need, such as an NDIS Worker Screening Check, and we will confirm which workers meet it."],
       ["What does a disability support worker cost?", "Our indicative rate for a disability support worker is $68 an hour, excluding GST, including training, administration and insurance costs. <a href=\"pricing.html\">See pricing</a>."],
@@ -130,14 +132,14 @@ export const pages = [
     file: "community-services-staffing.html",
     crumb: "Community services staffing",
     title: "Community Services Staffing Tamworth | BrightSteps",
-    description: "Community support workers, transport and community access, cleaning and support coordinator assistants for NSW community organisations. Request staff today.",
+    description: "Community support workers, transport, cleaning and support coordinator assistants for community organisations Australia-wide. Request staff today.",
     eyebrow: "Community services staffing",
     h1: "Dependable people for community programs",
     lead: "Experienced community support workers, transport and community access, cleaning and domestic support, and support coordinator assistants.",
     accent: "cat-community",
     iconName: "people",
     roles: ["Community support workers", "Transport and community access", "Residential and commercial cleaners", "Domestic support workers", "Support coordinator assistants"],
-    settings: "Community organisations, local programs, clients' homes and commercial premises across Tamworth and NSW.",
+    settings: "Community organisations, local programs, clients' homes and commercial premises in Tamworth and across Australia.",
     benefitsTitle: "Support that makes a positive impact",
     benefits: [
       ["people", "Experienced personnel", "Workers who understand community settings and the people they serve."],
@@ -145,7 +147,8 @@ export const pages = [
       ["doc", "Organised administration", "Support coordinator assistants who keep paperwork, scheduling and billing on track."],
     ],
     photoBrief: "A community support worker helping a client into a vehicle for an outing, or a cleaner in a bright home. Consent required.",
-    photoAlt: "A community support worker helping a client on a community outing",
+    photoAlt: "Carer holding hands and laughing with an older woman in a lounge room",
+    photoSrc: "community-care.webp",
     faqs: [
       ["What does transport and community access cost?", "Our indicative rate is $65 an hour, excluding GST. The hourly rate is fixed and vehicle costs are negotiable. <a href=\"pricing.html\">See pricing</a>."],
       ["Do you provide cleaning for both homes and businesses?", "Yes. We supply residential and commercial cleaners, plus domestic support with daily household tasks."],
@@ -158,8 +161,8 @@ export const pages = [
   servicePage({
     file: "emergency-short-term-staffing.html",
     crumb: "Emergency & short-term staffing",
-    title: "Emergency & Short-Term Staffing NSW: 24/7 Cover | BrightSteps",
-    description: "Urgent shift cover, short-term and contract staffing for industrial, disability and community services in Tamworth and NSW. 24/7 support. Call 0424 234 925.",
+    title: "Emergency & Short-Term Staffing Australia: 24/7 Cover | BrightSteps",
+    description: "Urgent shift cover, short-term and contract staffing for industrial, disability and community services, Tamworth and Australia-wide. 24/7 support. Call 0424 234 925.",
     eyebrow: "Emergency & short-term staffing",
     h1: "When a shift falls through, call us",
     lead: "Rapid cover for sudden gaps, staff leave and peak periods, plus contract staffing for the length of your project. Our team is available 24/7.",
@@ -174,7 +177,8 @@ export const pages = [
       ["calendar", "Flexible terms", "One shift, a few weeks or a full contract. Engage us the way you need."],
     ],
     photoBrief: "A BrightSteps team member taking a call at night or early morning, with a roster on screen. Shows that someone is there.",
-    photoAlt: "A BrightSteps coordinator arranging urgent shift cover",
+    photoAlt: "Coordinator on the phone while checking a laptop at her desk",
+    photoSrc: "coordinator-phone.webp",
     faqs: [
       ["How fast can you fill an urgent shift?", "We specialise in fast mobilisation and work to fill urgent shifts as quickly as possible. Timing depends on the role, location and requirements, so call <a href=\"tel:" + site.phoneIntl + "\">" + site.phone + "</a> and we'll tell you straight away what we can do."],
       ["Is there a minimum engagement?", "Talk to us about your needs. We supply everything from single shifts to longer contracts."],
