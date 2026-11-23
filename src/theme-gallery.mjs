@@ -36,7 +36,7 @@ const sections = Object.entries(themes).map(([key, t], i) => {
   return `<section class="theme" id="${key}" aria-labelledby="${key}-h">
   <div class="wrap">
     <p class="tag">Theme ${i + 1}</p>
-    <h2 id="${key}-h">${t.name}${key === site.theme ? '<span class="recommended">RECOMMENDED · LIVE THEME</span>' : ""}</h2>
+    <h2 id="${key}-h">${t.name}${key === site.theme ? '<span class="recommended">LIVE THEME</span>' : ""}${key === "studio" && key !== site.theme ? '<span class="recommended" style="background:#6B6F73">ORIGINAL RECOMMENDATION</span>' : ""}</h2>
     <p>${d.line}</p>
     <h3>Palette</h3>
     <ul class="swatches">${d.palette.map(([n, hex]) => `<li><span style="background:${hex}"></span><strong>${n}</strong><br>${hex}</li>`).join("")}</ul>

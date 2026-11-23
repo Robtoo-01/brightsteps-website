@@ -2,7 +2,7 @@
 
 Prepared 23 November 2026. All four themes are built and working. They share the same 20 pages, content, forms, schema and accessibility features; only the visual layer changes. Screenshots of every theme are in `docs/themes/` (open `docs/themes/index.html`). To switch the live site, set `theme` in `src/config.mjs` and run `node src/build.mjs`.
 
-**Recommended and now live: Theme 4, Modern Australian Studio.**
+**Live theme: Theme 2, Human & Community**, chosen by BrightSteps on 23 November 2026. The original recommendation, Theme 4 (Modern Australian Studio), stays available with a one-line switch.
 
 Business details are unchanged, with one exception: the email address is **info@brightstepsrecruitment.com.au**. The brief pasted for this task still listed the old misspelled address ("brighsteps…"); the site keeps the corrected address you chose on 23 November.
 
@@ -389,10 +389,15 @@ Full-width, editorial photography of real BrightSteps people across both sectors
 
 **Modern Australian Studio.**
 
-BrightSteps' advantage is breadth: one trusted local partner for both the worksite and the home. Quiet Professional and Industrial Precision speak well to one audience, and Human & Community to another. Studio is the only theme that is equally credible to a site supervisor and a support coordinator, and its restraint and colour feel local and premium rather than templated. It is now the live theme.
+BrightSteps' advantage is breadth: one trusted local partner for both the worksite and the home. Quiet Professional and Industrial Precision speak well to one audience, and Human & Community to another. Studio is the only theme that is equally credible to a site supervisor and a support coordinator, and its restraint and colour feel local and premium rather than templated.
+
+**Decision:** BrightSteps chose **Human & Community** as the live theme, putting disability and community services and candidate recruitment first. What this means in practice:
+- "Find work" is now as prominent as "Request staff" in the hero.
+- Body text is larger and set in Atkinson Hyperlegible throughout.
+- For industrial clients, rely on the Industrial labour hire and Emergency pages and real photos of crews on site, which balance the softer look.
 
 Keep the others available:
-- **Human & Community:** for a future candidate-recruitment campaign.
+- **Modern Australian Studio:** if the business later wants one look that leans equally to both audiences.
 - **Industrial Precision:** for a dedicated labour-hire landing page.
 
 Switching takes one line in `src/config.mjs`.

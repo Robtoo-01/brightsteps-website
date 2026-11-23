@@ -2,7 +2,7 @@
 export const site = {
   name: "BrightSteps Recruitment",
   // Visual theme: "quiet", "human", "industrial" or "studio" (see src/themes.mjs and docs/10-website-themes.md).
-  theme: "studio",
+  theme: "human",
   url: "https://brightstepsrecruitment.com.au",
   phone: "0424 234 925",
   phoneIntl: "+61424234925",
