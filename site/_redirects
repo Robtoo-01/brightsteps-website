@@ -1,0 +1,10 @@
+/about-us              /about.html            301
+/pricing-schedule-8    /pricing.html          301
+/products              /services.html         301
+/services/             /services.html         301
+/events-news           /news.html             301
+/privacy               /privacy.html          301
+/Classes               /request-staff.html    301
+/images/document/22319576/BrightStepsPrivacyPolicy-J5S4wulODMCXSGtDo1gifQ.pdf  /privacy.html  301
+/images/document/22321807/BrightStepsLegalNotice-AchkSWtX5VGYCrH51NZIvw.pdf    /terms.html    301
+/images/document/*     /privacy.html          301
