@@ -1,0 +1,93 @@
+/* Theme 2: Human & Community. Warm, plain-language, people-first. Soft but never childish. */
+:root {
+  --navy: #2F2A26;        /* warm charcoal headings */
+  --navy-2: #46403A;
+  --ink: #2B2A28;
+  --slate: #5B544D;
+  --teal: #3E6A56;        /* deep sage: links, highlights, candidate actions */
+  --teal-light: #CFE3D7;
+  --teal-tint: #E7F0EA;
+  --amber: #B04A2F;       /* terracotta call to action (white text) */
+  --amber-dark: #8C3923;
+  --amber-tint: #F7E4DC;
+  --clay: #B04A2F;
+  --clay-tint: #F7E4DC;
+  --sand: #F4EADF;
+  --line: #E5D8C8;
+  --white: #FFFFFF;
+
+  --inverse-bg: #2F4F41;  /* deep eucalypt */
+  --inverse-text: #F2EEE6;
+  --inverse-muted: #DCE6DE;
+  --inverse-heading: #FFFFFF;
+  --inverse-accent: #F2C9B9;
+  --inverse-link: #F2C9B9;
+  --inverse-tint: rgb(255 255 255 / .1);
+  --inverse-line: rgb(255 255 255 / .2);
+  --hero-bg: #FFF9F2;
+  --footer-bg: #2B2A28;
+  --footer-text: #D8D1C7;
+  --footer-link: #FFF9F2;
+  --footer-muted: #B3AA9F;
+  --cta-hover: #9C412A;
+  --cta-shadow: none;
+  --cta-text: #FFFFFF;
+  --footer-heading: #F2C9B9;
+  --btn-radius: 999px;
+  --head-weight: 600;
+  --head-tracking: -.015em;
+
+  --font-head: "Lexend", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  --font-body: "Atkinson Hyperlegible", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  --step-0: 1.125rem;     /* slightly larger body text for readability */
+  --radius: 14px;
+  --radius-lg: 20px;
+  --shadow: 0 1px 2px rgb(47 42 38 / .06);
+}
+body { background: #FFF9F2; line-height: 1.65; }
+:focus-visible { outline-color: var(--teal); }
+
+.btn--primary { color: #FFFFFF; }
+.btn:hover { transform: none; }
+.site-header { background: #FFF9F2; }
+
+/* Hero: warm and light. "Find work" is given equal weight to "Request staff". */
+.hero { background: linear-gradient(180deg, #FFF9F2 0%, #F4EADF 100%); color: var(--ink); }
+.hero::before { display: none; }
+.hero h1 { color: var(--navy); }
+.hero h1 em { color: var(--teal); }
+.hero .lead { color: var(--slate); }
+.hero .btn--ghost { background: var(--teal); color: #FFFFFF; border-color: var(--teal); }
+.hero .btn--ghost:hover { background: #335A48; color: #FFFFFF; border-color: #335A48; }
+.hero :focus-visible { outline-color: var(--teal); }
+.trust-list li { color: var(--navy); font-weight: 400; }
+.trust-list svg { color: var(--teal); }
+.hero-card { box-shadow: none; border: 1px solid var(--line); }
+.hero-path { border-width: 1px; }
+.hero-path:hover { border-color: var(--teal); background: var(--teal-tint); }
+
+/* Cards: rounded, flat, tinted backgrounds rather than shadows */
+.section--sand { background: #F7EFE5; }
+.section--sand .card { box-shadow: none; border: 1px solid var(--line); }
+.card { border-color: var(--line); }
+.service-card:hover { transform: none; box-shadow: none; border-color: var(--teal); }
+.cat-industrial { --tint: #F3E7D5; --accent-text: #7A4E12; }
+.cat-disability { --tint: var(--teal-tint); --accent-text: var(--teal); }
+.cat-community { --tint: var(--clay-tint); --accent-text: var(--clay); }
+.cat-emergency { --tint: #ECE6F2; --accent-text: #5B3F82; }
+.icon-badge { border-radius: 50%; }
+.steps li { border-color: var(--line); }
+.steps li::before { color: var(--clay); }
+.pathway--candidate { background: var(--teal-tint); }
+.quote-card { border-color: #C9B9A5; }
+.faq summary { font-weight: 600; }
+.faq summary::after { background: var(--teal-tint); color: var(--teal); }
+
+.cta-band { background: var(--teal-tint); }
+.cta-band .btn--primary { background: var(--amber); color: #FFFFFF; box-shadow: none; }
+.cta-band .btn--primary:hover { background: var(--cta-hover); }
+
+.page-hero { background: #F7EFE5; }
+.photo-ph { background: linear-gradient(135deg, #E7F0EA, #F7E4DC); }
+.chips li { border-color: var(--line); }
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], input[type="file"], select, textarea { border-color: #7A7067; border-radius: 12px; }

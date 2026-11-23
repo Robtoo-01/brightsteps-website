@@ -1,4 +1,4 @@
-"""Combines docs/01-09 into one branded HTML file that Word turns into .docx and .pdf.
+"""Combines the numbered docs (01-, 02-, … 10-) into one branded HTML file that Word turns into .docx and .pdf.
 
 Run:  python src/compile-docs.py   (needs the "markdown" package: pip install markdown)
 Then: src/compile-docs.ps1          (Edge prints the .pdf, Word saves the .docx)
@@ -12,7 +12,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
 # Embedded as a data URI so the .docx and .pdf carry the logo with no link to a local file.
 LOGO = "data:image/png;base64," + base64.b64encode((ROOT / "brand" / "letterhead" / "logo-horizontal.png").read_bytes()).decode()
-FILES = sorted(DOCS.glob("0[1-9]-*.md"))
+FILES = sorted(DOCS.glob("[0-9][0-9]-*.md"))
 
 css = """
 @page { size: A4; margin: 18mm 18mm 20mm; }

@@ -1,0 +1,104 @@
+/* Theme 1: Quiet Professional. Editorial, corporate-minimal. Layout and type do the work; no decoration. */
+:root {
+  --navy: #1E2124;        /* charcoal: headings, primary buttons */
+  --navy-2: #33373B;
+  --ink: #1E2124;
+  --slate: #4F5357;
+  --teal: #1D4F91;        /* the one accent: cobalt, for links and highlights */
+  --teal-light: #A9C2E6;
+  --teal-tint: #E8EDF4;
+  --amber: #1E2124;       /* calls to action are charcoal, not loud */
+  --amber-dark: #000000;
+  --amber-tint: #ECE8E0;
+  --sand: #ECE8E0;        /* stone */
+  --line: #D6D0C4;
+  --white: #FFFFFF;
+
+  --inverse-bg: #1E2124;
+  --inverse-text: #E9E6E0;
+  --inverse-muted: #C7C3BB;
+  --inverse-heading: #F7F5F0;
+  --inverse-accent: #A9C2E6;
+  --inverse-link: #A9C2E6;
+  --inverse-tint: rgb(255 255 255 / .06);
+  --inverse-line: rgb(255 255 255 / .18);
+  --hero-bg: #F7F5F0;
+  --footer-bg: #17191B;
+  --footer-text: #C7C3BB;
+  --footer-link: #F7F5F0;
+  --footer-muted: #A19C93;
+  --cta-hover: #33373B;
+  --cta-shadow: none;
+  --cta-text: #FFFFFF;
+  --footer-heading: #A9C2E6;
+  --btn-radius: 2px;
+  --head-weight: 500;
+  --head-tracking: -.01em;
+
+  --font-head: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "Source Sans 3", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  --radius: 2px;
+  --radius-lg: 4px;
+  --shadow: none;
+}
+body { background: #F7F5F0; }
+:focus-visible { outline-color: var(--teal); }
+h1, h2 { line-height: 1.08; }
+h3 { font-weight: 600; }
+
+/* Buttons: rectangular, charcoal primary, hairline secondary */
+.btn { font-weight: 600; letter-spacing: .01em; }
+.btn:hover { transform: none; }
+.btn--primary { color: #FFFFFF; }
+.btn--ghost { border-width: 1px; }
+
+/* Header and sections: hairline rules instead of colour blocks */
+.site-header { background: #F7F5F0; border-bottom-color: var(--navy); }
+.section + .section { border-top: 1px solid var(--line); }
+.section--sand { background: #F0EDE6; }
+
+/* Hero: light, left-aligned, editorial; the path card becomes a bordered index */
+.hero { color: var(--ink); border-bottom: 1px solid var(--navy); }
+.hero::before { display: none; }
+.hero h1 { color: var(--navy); font-size: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem); max-width: 14ch; }
+.hero h1 em { color: var(--teal); font-style: italic; }
+.hero .lead { color: var(--slate); }
+.hero .btn--ghost { color: var(--navy); }
+.hero .btn--ghost:hover { background: var(--navy); color: #FFFFFF; border-color: var(--navy); }
+.hero :focus-visible { outline-color: var(--teal); }
+.trust-list { border-top: 1px solid var(--line); padding-top: var(--space-3); }
+.trust-list li { color: var(--navy); font-weight: 600; }
+.trust-list svg { color: var(--teal); }
+.hero-card { box-shadow: none; border: 1px solid var(--navy); background: #FFFFFF; }
+.hero-path { border: 0; border-top: 1px solid var(--line); border-radius: 0; padding-inline: 0; }
+.hero-path:hover { background: transparent; }
+.hero-path:hover strong { text-decoration: underline; }
+.hero-path .icon-badge { display: none; }
+
+/* Cards and icons: flat, outlined, monochrome */
+.card, .section--sand .card { box-shadow: none; border: 1px solid var(--line); }
+.service-card { border-top: 3px solid var(--navy); }
+.service-card:hover { transform: none; box-shadow: none; border-color: var(--navy); }
+.cat-industrial, .cat-disability, .cat-community, .cat-emergency { --accent: var(--navy); --tint: transparent; --accent-text: var(--teal); }
+.icon-badge { background: transparent; border: 1px solid var(--line); border-radius: 2px; width: 2.75rem; height: 2.75rem; }
+.icon-badge svg { width: 1.35rem; height: 1.35rem; }
+.steps li { border-radius: 0; border: 0; border-top: 2px solid var(--navy); background: transparent; padding-inline: 0; }
+.steps li::before { left: 0; color: var(--teal); font-family: var(--font-head); font-weight: 500; }
+.pathway { border-radius: 0; }
+.pathway--candidate { background: #FFFFFF; border: 1px solid var(--navy); }
+.quote-card { border-style: dashed; border-width: 1px; border-radius: 0; }
+.faq summary { font-family: var(--font-head); font-weight: 600; }
+.faq summary::after { border-radius: 0; background: transparent; border: 1px solid var(--line); color: var(--navy); }
+.chips li { border-radius: 2px; }
+
+/* Final call to action: a ruled band, not a coloured slab */
+.cta-band { background: #FFFFFF; border: 1px solid var(--navy); border-top: 4px solid var(--teal); border-radius: 0; }
+.cta-band .btn--primary { background: var(--navy); box-shadow: none; }
+
+.page-hero { background: #F7F5F0; border-bottom-color: var(--navy); }
+.photo-ph { border-radius: 0; background: repeating-linear-gradient(135deg, #ECE8E0 0 12px, #E6E1D7 12px 24px); }
+.form { border-radius: 0; border-color: var(--navy); }
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], input[type="file"], select, textarea { border-radius: 2px; border-width: 1px; border-color: #6B6F73; }
+.choice { border-radius: 2px; }
+.rate-table { box-shadow: none; border: 1px solid var(--navy); border-radius: 0; }
+.cookie-notice { border-radius: 0; border-color: var(--navy); }

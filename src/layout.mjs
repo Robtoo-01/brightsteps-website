@@ -1,4 +1,5 @@
 import { site } from "./config.mjs";
+import { themes, fontsHref } from "./themes.mjs";
 
 const p = (d) => `<path d="${d}"/>`;
 const svg = (inner) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${inner}</svg>`;
@@ -121,7 +122,8 @@ const orgSchema = {
   ...(site.social.length ? { sameAs: site.social.map((s) => s.url) } : {}),
 };
 
-export function render(page) {
+export function render(page, themeKey = site.theme) {
+  const theme = themes[themeKey];
   const url = page.file === "index.html" ? `${site.url}/` : `${site.url}/${page.file}`;
   const isActive = (href, sub = []) => href === page.file || sub.some(([, h]) => h === page.file);
   const schemas = [orgSchema, ...(page.schema || [])];
@@ -144,7 +146,7 @@ ${page.file === "404.html" ? '<base href="/">' /* 404 is served at any depth; re
 <title>${page.title}</title>
 <meta name="description" content="${page.description}">
 ${page.noindex ? '<meta name="robots" content="noindex, follow">' : `<link rel="canonical" href="${url}">`}
-<meta name="theme-color" content="#0F2A44">
+<meta name="theme-color" content="${theme.themeColor}">
 <meta property="og:type" content="${page.ogType || "website"}">
 <meta property="og:site_name" content="${site.name}">
 <meta property="og:locale" content="en_AU">
@@ -162,8 +164,9 @@ ${page.noindex ? '<meta name="robots" content="noindex, follow">' : `<link rel="
 <link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap">
+<link rel="stylesheet" href="${fontsHref(themeKey)}">
 <link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/themes/${themeKey}.css">
 <script>document.documentElement.classList.add("js")</script>
 <script src="assets/js/main.js" defer></script>
 ${schemas.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join("\n")}

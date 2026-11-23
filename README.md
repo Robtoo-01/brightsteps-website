@@ -16,6 +16,7 @@ A static, accessible, mobile-first website for BrightSteps Recruitment (West Tam
 | – | Deployment guide (Netlify / Cloudflare, domain, HTTPS, forms) | [docs/07-deployment-guide.md](docs/07-deployment-guide.md) |
 | – | Content editing guide (prices, news, photos, pages) | [docs/08-content-editing-guide.md](docs/08-content-editing-guide.md) |
 | – | Forms and data handling procedure (privacy in practice) | [docs/09-forms-and-data-handling.md](docs/09-forms-and-data-handling.md) |
+| – | Four website themes, comparison and recommendation (Modern Australian Studio is live) | [docs/10-website-themes.md](docs/10-website-themes.md) · screenshots: [docs/themes/index.html](docs/themes/index.html) |
 | – | Letterhead (Word template and PDF) | [brand/letterhead/](brand/letterhead/) |
 | – | All documentation in one Word file and PDF | [docs/BrightSteps-Website-Documentation.docx](docs/BrightSteps-Website-Documentation.docx) · [.pdf](docs/BrightSteps-Website-Documentation.pdf) |
 
@@ -25,7 +26,8 @@ A static, accessible, mobile-first website for BrightSteps Recruitment (West Tam
 brightsteps-website/
 ├── docs/                      strategy, plans, checklists
 ├── src/
-│   ├── config.mjs             business details, form endpoints, service area: edit here
+│   ├── config.mjs             business details, theme, form endpoints, service area: edit here
+│   ├── themes.mjs             the four themes (fonts, names); styles in site/assets/css/themes/
 │   ├── layout.mjs             <head>, header, footer, schema, shared blocks, icons
 │   ├── forms.mjs              accessible form field builders
 │   ├── pages/                 page content (core, services, conversion, legal)
