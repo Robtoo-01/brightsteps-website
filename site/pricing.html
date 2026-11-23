@@ -160,7 +160,7 @@
         <li><a href="privacy.html">Privacy policy</a></li>
         <li><a href="terms.html">Legal notice &amp; terms</a></li>
         <li><a href="accessibility.html">Accessibility</a></li>
-        <li><button type="button" class="link-btn" data-reset-consent>Cookie settings</button></li>
+        <li><button type="button" class="link-btn" data-cookie-settings aria-haspopup="dialog">Cookie settings</button></li>
       </ul>
     </div>
   </div>
@@ -172,6 +172,35 @@
   <h2 id="cookie-title">Your privacy</h2>
   <p>We use essential storage to run this site. With your permission we'd also use analytics cookies to understand which pages help people most. <a href="privacy.html#cookies">Read our privacy policy</a>.</p>
   <div class="btn-row"><button class="btn btn--secondary" type="button" data-consent="accepted">Accept analytics</button><button class="btn btn--ghost" type="button" data-consent="declined">Essential only</button></div>
+  <p class="cookie-manage"><button type="button" class="link-btn" data-cookie-settings aria-haspopup="dialog">Manage cookie settings</button></p>
 </section>
+
+<dialog class="cookie-dialog" id="cookie-settings" aria-labelledby="cookie-settings-title" aria-describedby="cookie-settings-intro">
+  <form method="dialog">
+    <div class="cookie-dialog-head">
+      <h2 id="cookie-settings-title">Cookie settings</h2>
+      <button class="cookie-close" type="submit" value="cancel" aria-label="Close cookie settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <p id="cookie-settings-intro">Choose which cookies we can use. You can change this at any time from "Cookie settings" at the bottom of every page. <a href="privacy.html#cookies">Read our privacy policy</a>.</p>
+    <div class="cookie-option">
+      <div>
+        <h3 id="cookie-essential-label">Essential</h3>
+        <p id="cookie-essential-desc">Needed for the site to work, such as remembering your cookie choice. These can't be turned off.</p>
+      </div>
+      <span class="cookie-always">Always on</span>
+    </div>
+    <div class="cookie-option">
+      <div>
+        <h3><label for="cookie-analytics">Analytics</label></h3>
+        <p id="cookie-analytics-desc">Anonymous statistics about which pages people visit, so we can improve the site. Never used for advertising.</p>
+      </div>
+      <input class="switch" type="checkbox" id="cookie-analytics" role="switch" aria-describedby="cookie-analytics-desc">
+    </div>
+    <div class="cookie-dialog-actions">
+      <button class="btn btn--ghost" type="submit" value="save">Save my choices</button>
+      <button class="btn btn--secondary" type="submit" value="accept-all">Accept all</button>
+    </div>
+  </form>
+</dialog>
 </body>
 </html>

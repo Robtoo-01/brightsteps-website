@@ -133,7 +133,7 @@ export const pages = [
 
 <h2 id="cookies">8. Cookies and website analytics</h2>
 <p>Our website uses essential browser storage to remember your privacy choice. With your permission, we also use analytics cookies to understand website traffic and usage patterns so we can improve the site.</p>
-<p>Analytics cookies are only set if you select "Accept analytics" in the privacy notice. You can change your choice at any time using <button type="button" class="link-btn" data-reset-consent>Cookie settings</button>, or control cookies through your browser settings. Disabling cookies does not stop the website from working.</p>
+<p>Analytics cookies are only set if you select "Accept analytics" in the privacy notice, or turn analytics on in Cookie settings. You can change your choice at any time using <button type="button" class="link-btn" data-cookie-settings aria-haspopup="dialog">Cookie settings</button>, or control cookies through your browser settings. Disabling cookies does not stop the website from working.</p>
 
 <h2>9. Sensitive information</h2>
 <p>We only collect sensitive information, such as health information, criminal records or information about racial or ethnic origin, when:</p>

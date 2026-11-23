@@ -59,25 +59,48 @@
     s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`;
     document.head.appendChild(s);
   };
-  const notice = document.getElementById("cookie-notice");
-  let consent = null;
-  try { consent = localStorage.getItem(CONSENT_KEY); } catch { /* storage blocked: show notice each visit */ }
-  if (consent === "accepted") loadAnalytics();
-  if (notice && !consent) {
-    notice.hidden = false;
-    notice.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-consent]");
-      if (!btn) return;
-      const value = btn.dataset.consent;
-      try { localStorage.setItem(CONSENT_KEY, value); } catch { /* ignore */ }
-      if (value === "accepted") loadAnalytics();
-      notice.hidden = true;
+  // Removes Google Analytics cookies when analytics is turned off.
+  const clearAnalyticsCookies = () => {
+    const host = location.hostname.replace(/^www./, "");
+    document.cookie.split(";").map((c) => c.trim().split("=")[0]).filter((n) => /^_ga|^_gid/.test(n)).forEach((name) => {
+      for (const domain of ["", `; domain=${host}`, `; domain=.${host}`]) document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${domain}`;
     });
-  }
-  document.querySelectorAll("[data-reset-consent]").forEach((b) => b.addEventListener("click", () => {
-    try { localStorage.removeItem(CONSENT_KEY); } catch { /* ignore */ }
-    if (notice) { notice.hidden = false; notice.querySelector("button")?.focus(); }
-  }));
+  };
+  const notice = document.getElementById("cookie-notice");
+  const dialog = document.getElementById("cookie-settings");
+  const analyticsSwitch = document.getElementById("cookie-analytics");
+  const getConsent = () => { try { return localStorage.getItem(CONSENT_KEY); } catch { return null; } }; // storage blocked: ask each visit
+  const setConsent = (value) => {
+    try { localStorage.setItem(CONSENT_KEY, value); } catch { /* ignore */ }
+    if (value === "accepted") loadAnalytics(); else clearAnalyticsCookies();
+    if (notice) notice.hidden = true;
+    track("consent_updated", { analytics: value === "accepted" });
+  };
+
+  if (getConsent() === "accepted") loadAnalytics();
+  if (notice && !getConsent()) notice.hidden = false;
+
+  // Notice buttons (always wired, so they work however the notice was opened)
+  notice?.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-consent]");
+    if (btn) setConsent(btn.dataset.consent);
+  });
+
+  // Cookie settings dialog: opened from the footer, the notice and the privacy policy
+  document.addEventListener("click", (e) => {
+    const opener = e.target.closest("[data-cookie-settings]");
+    if (!opener || !dialog) return;
+    analyticsSwitch.checked = getConsent() === "accepted";
+    if (typeof dialog.showModal === "function") dialog.showModal(); else dialog.setAttribute("open", "");
+  });
+  dialog?.addEventListener("close", () => {
+    const choice = dialog.returnValue;
+    if (choice === "save") setConsent(analyticsSwitch.checked ? "accepted" : "declined");
+    if (choice === "accept-all") setConsent("accepted");
+    dialog.returnValue = "";
+  });
+  // Clicking the dimmed backdrop closes without changing anything
+  dialog?.addEventListener("click", (e) => { if (e.target === dialog) dialog.close("cancel"); });
 
   /* ---------- Accessible form validation, steps and submission ---------- */
   const messages = {
