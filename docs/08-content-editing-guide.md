@@ -8,12 +8,13 @@ For anyone updating the website. The site is a set of JavaScript files that a bu
 |---|---|
 | Phone, email, address, ABN, director, towns served, form endpoints, analytics ID | `src/config.mjs` |
 | Home, About, Services, For employers, Find work | `src/pages/core.mjs` |
-| The four service pages | `src/pages/services.mjs` |
+| The six service pages | `src/pages/services.mjs` |
 | Pricing, News, Contact, Request staff, Apply, Thank you | `src/pages/conversion.mjs` |
-| Privacy, Terms, Accessibility, 404 | `src/pages/legal.mjs` |
+| Privacy, Terms, Client terms, Complaints, Accessibility, 404 | `src/pages/legal.mjs` |
 | Header, footer, navigation, shared blocks and icons | `src/layout.mjs` |
 | Form fields and their behaviour | `src/forms.mjs`, `site/assets/js/main.js` |
-| Colours, fonts, spacing, layout | `site/assets/css/styles.css` (edited directly; not generated) |
+| Colours, spacing, layout | `site/assets/css/styles.css` (edited directly; not generated) |
+| Fonts | Self-hosted in `site/assets/fonts/`, loaded by `site/assets/css/fonts.css`. No Google Fonts requests. |
 
 ## The edit cycle
 
@@ -47,17 +48,18 @@ In `src/pages/conversion.mjs`, find the `pricing.html` page:
 
 ### Change the phone number or email
 
-Edit `src/config.mjs` only. Every page, schema and form updates on the next build. Then also update the letterhead: edit `src/letterhead.cjs`, run `node src/letterhead.cjs`, and export the PDF.
+Edit `src/config.mjs` only. Every page, schema and form updates on the next build. Keep the non-breaking spaces in the phone number (`\u00a0`), so it never splits across two lines. Then also update the letterhead: edit `src/letterhead.cjs`, run `node src/letterhead.cjs`, and export the PDF.
 
 ### Add or remove towns in the service area
 
-Edit the `areas` list in `src/config.mjs`. It feeds the home page chips and the local business schema. List only towns you actually serve.
+Edit the `areas` list in `src/config.mjs`. It feeds the home page chips and the local business schema. It lists New South Wales only: add another state only once BrightSteps holds that state's labour hire licence, and update the "across New South Wales" wording in the pages.
 
 ### Publish a news post
 
 1. In `src/pages/conversion.mjs`, copy the whole `news-article-template.html` page object.
 2. Give it a new `file` name (for example `news-tamworth-hiring-day-2027.html`), plus a new title, description, date and text. Remove `noindex: true` and the template notice.
 3. On the `news.html` page, replace the empty state with a card that links to the post. The example card is in the comment there.
+4. News is hidden while it has no posts. Once it has two or more, remove `noindex: true` from the `news.html` page and add News back to the menu and footer in `src/layout.mjs`.
 4. Build and deploy. The post is added to the sitemap automatically.
 
 For an event, include the date, time, address, who it's for and how to register. Change the schema `@type` from `Article` to `Event`, with `startDate` and `location`.
@@ -79,6 +81,16 @@ On the home page, replace a `quote-card` block's quote and name, and delete its 
 ### Add a new page
 
 Copy a similar page object, give it a unique `file`, `title` (under 65 characters), `description` (110–165 characters) and exactly one `<h1>`. Then link to it from the navigation in `src/layout.mjs`, the footer, or a related page.
+
+## Check before you deploy
+
+```powershell
+node src/build.mjs
+npm test
+npm run lint
+```
+
+`npm test` checks the built site (service area, screening wording, forms, menu, ABN and GST wording). `npm run lint` validates every page's HTML and the JavaScript. Run `npm install` once first, so the lint tools are available.
 
 ## Writing style
 
