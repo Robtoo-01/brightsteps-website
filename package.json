@@ -5,11 +5,17 @@
   "description": "BrightSteps Recruitment website (static HTML/CSS/JS) and brand documents",
   "scripts": {
     "build": "node src/build.mjs",
+    "test": "node --test",
     "preview": "python -m http.server 8080 --directory site",
-    "letterhead": "node src/letterhead.cjs"
+    "letterhead": "node src/letterhead.cjs",
+    "lint": "html-validate \"site/*.html\" && eslint ."
   },
   "devDependencies": {
-    "docx": "^9.0.0"
+    "@eslint/js": "^9.39.5",
+    "docx": "^9.0.0",
+    "eslint": "^9.39.5",
+    "globals": "^15.15.0",
+    "html-validate": "^9.7.1"
   },
   "engines": {
     "node": ">=18"

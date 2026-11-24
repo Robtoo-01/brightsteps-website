@@ -74,6 +74,20 @@ node src/build.mjs
 python -m http.server 8080 --directory site
 ```
 
+```powershell
+npm test
+```
+
+```powershell
+npm run lint
+```
+
+`npm test` checks the built site (run `node src/build.mjs` first): service area, screening wording, new pages, forms, menu, and that the ABN and GST wording are unchanged. `npm run lint` validates the HTML of every page (html-validate) and the JavaScript (ESLint); run `npm install` once first.
+
+## Environment variables
+
+None. This is a static site with no server code, API keys or passwords. Form submissions go to Netlify Forms, which is set up in the Netlify dashboard, not in code. If you add analytics, put the GA4 ID in `analyticsId` in `src/config.mjs`; it is public by design and only loads after cookie consent.
+
 ## Before you launch
 
 Read section 9 of the docs (`docs/06-pre-launch-audit.md`) and section 8 (`docs/05-checklists.md`). In short:
