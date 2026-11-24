@@ -168,11 +168,36 @@ a:hover { text-decoration-thickness: 2px; }
 .nav-list a[aria-current="page"] { color: var(--teal); }
 .nav-sub { list-style: none; margin: 0; padding: 0 0 .5rem 1rem; }
 .nav-sub a { font-weight: 400; font-size: 1rem; padding: .6rem .25rem; border: 0; }
-.nav-mobile-ctas { display: grid; gap: .75rem; margin-top: var(--space-3); }
+/* Mobile menu, option A: actions first, Services folds open, call card last */
+.site-nav.is-open { padding-top: var(--space-2); }
+.nav-mobile-ctas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .625rem; margin-bottom: var(--space-1); }
+.nav-mobile-ctas .btn { padding-inline: .5rem; }
+.btn--apply { background: var(--teal); color: #FFFFFF; }
+.btn--apply:hover { background: var(--navy); color: #FFFFFF; }
+.nav-list .nav-sub-link { display: none; }
+.nav-sub-toggle { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: var(--space-2); padding: .8rem .25rem; background: none; border: 0; border-bottom: 1px solid var(--line); font: inherit; color: var(--navy); text-align: left; cursor: pointer; }
+.nav-sub-label { display: block; font-weight: 700; font-size: 1.125rem; }
+.nav-sub-hint { display: block; font-size: .875rem; color: var(--slate); }
+.nav-chevron { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 2rem; height: 2rem; border-radius: 50%; background: var(--sand); transition: transform .2s ease; }
+.nav-chevron svg { width: 1.1rem; height: 1.1rem; }
+.nav-sub-toggle[aria-expanded="true"] .nav-chevron { transform: rotate(180deg); }
+.has-sub .nav-sub { border-bottom: 1px solid var(--line); }
+.nav-call-card { display: flex; align-items: center; gap: .875rem; margin-top: var(--space-3); padding: .875rem 1rem; border-radius: var(--radius); background: var(--teal-tint); color: var(--navy); text-decoration: none; }
+.nav-call-card strong { display: block; font-size: 1.0625rem; }
+.nav-call-card span span { display: block; font-size: .875rem; color: var(--slate); }
+.nav-call-icon { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--teal); color: #FFFFFF; }
+.nav-call-icon svg { width: 1.25rem; height: 1.25rem; }
+@media (max-width: 71.99em) {
+  .nav-list a { padding: .8rem .25rem; }
+  .nav-sub a { padding: .55rem .25rem; }
+  .js .nav-sub-toggle[aria-expanded="false"] + .nav-sub { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .nav-chevron { transition: none; } }
 body.nav-open { overflow: hidden; }
 
 @media (min-width: 72em) {
-  .nav-toggle, .nav-mobile-ctas { display: none; }
+  .nav-toggle, .nav-mobile-ctas, .nav-sub-toggle, .nav-sub-all, .nav-call-card { display: none; }
+  .nav-list .nav-sub-link { display: block; }
   .site-nav, .site-nav.is-open { display: block; position: static; padding: 0; overflow: visible; background: none; }
   .nav-list { display: flex; gap: .25rem; align-items: center; }
   .nav-list > li { position: relative; }
@@ -357,6 +382,7 @@ body.nav-open { overflow: hidden; }
 
 /* ---------- Prose (legal, article) ---------- */
 .prose { max-width: 46rem; }
+.prose a { overflow-wrap: anywhere; } /* long email addresses wrap on small phones (F6) */
 .prose h2 { font-size: 1.6rem; margin-top: var(--space-5); }
 .prose h3 { font-size: 1.2rem; margin-top: var(--space-4); }
 .prose ul, .prose ol { padding-left: 1.25rem; }
@@ -417,6 +443,9 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--t
 .contact-list strong { display: block; color: var(--navy); }
 .contact-list a { word-break: break-word; }
 .map-embed { border: 0; width: 100%; aspect-ratio: 4 / 3; border-radius: var(--radius-lg); background: var(--sand); }
+.map-consent { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-3); text-align: center; border: 2px dashed var(--line); background: var(--white); }
+.map-consent p { margin: 0; max-width: 32ch; }
+.collection-notice { margin-bottom: var(--space-2); }
 
 /* ---------- Form steps, tracker, tiles and upload ---------- */
 .form-head { margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--line); }

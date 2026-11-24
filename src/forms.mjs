@@ -37,8 +37,9 @@ export function choices(id, legend, items, { type = "checkbox", minOne = false, 
 }
 
 export function consent(id = "consent") {
-  return `<div class="field consent">
-  <label class="choice choice--checkbox" for="${id}"><input type="checkbox" id="${id}" name="${id}" value="yes" required aria-describedby="${id}-error" data-required-msg="Confirm you have read the privacy policy"> <span>I have read the <a href="privacy.html" target="_blank" rel="noopener">privacy policy (opens in a new tab)</a> and agree to BrightSteps contacting me about this enquiry.</span></label>
+  return `<p class="hint collection-notice" id="${id}-notice">We collect these details to respond to your enquiry or application, and to match people with work. Your form is stored by our form provider, Netlify, on servers in the United States, and sent to our email inbox. Read how we handle it in our <a href="privacy.html" target="_blank" rel="noopener">privacy policy (opens in a new tab)</a>.</p>
+<div class="field consent">
+  <label class="choice choice--checkbox"><input type="checkbox" id="${id}" name="${id}" value="yes" required aria-describedby="${id}-error" data-required-msg="Confirm you have read the privacy policy"> <span>I have read the <a href="privacy.html" target="_blank" rel="noopener">privacy policy (opens in a new tab)</a> and agree to BrightSteps contacting me about this enquiry.</span></label>
   <p class="field-error" id="${id}-error" aria-live="polite"></p>
 </div>`;
 }
@@ -67,7 +68,7 @@ export function form({ id, endpoint, submit, body, time = "" }) {
 <form class="form${multi ? " form--steps" : ""}" id="${id}" action="${action}" method="post" data-validate data-phone="${site.phoneIntl}" data-phone-display="${site.phone}" enctype="multipart/form-data"${netlify}>
   <div class="form-head">
     ${time ? `<p class="form-meta">${time}</p>` : ""}
-    ${multi ? `<ol class="stepper" aria-label="Form progress">${titles.map((t, i) => `<li data-step-label="${i + 1}"${i === 0 ? ' aria-current="step"' : ""}><span class="stepper-num" aria-hidden="true">${i + 1}</span><span class="stepper-text">${t}</span></li>`).join("")}</ol>
+    ${multi ? `<ol class="stepper" aria-hidden="true">${titles.map((t, i) => `<li data-step-label="${i + 1}"${i === 0 ? ' aria-current="step"' : ""}><span class="stepper-num" aria-hidden="true">${i + 1}</span><span class="stepper-text">${t}</span></li>`).join("")}</ol>
     <div class="form-progress" aria-hidden="true"><span style="width:${Math.round(100 / titles.length)}%"></span></div>` : ""}
     <p class="hint">All fields are required unless marked (optional).</p>
   </div>

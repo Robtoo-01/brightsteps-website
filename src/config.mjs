@@ -4,7 +4,7 @@ export const site = {
   // Visual theme: "quiet", "human", "industrial" or "studio" (see src/themes.mjs and docs/10-website-themes.md).
   theme: "human",
   url: "https://brightstepsrecruitment.com.au",
-  phone: "0424 234 925",
+  phone: "0424\u00a0234\u00a0925", // non-breaking spaces: the number never splits across two lines
   phoneIntl: "+61424234925",
   // Owner decision (23 Nov 2026): use the brightstepsrecruitment domain for email, matching the website.
   email: "info@brightstepsrecruitment.com.au",
@@ -24,11 +24,12 @@ export const site = {
   // Set to false and fill `forms` below to use another service.
   netlifyForms: true,
   forms: { requestStaff: "#", apply: "#", contact: "#" },
-  // Service area: based in Tamworth, serving clients across Australia (owner, 23 Nov 2026). Shown as chips and in schema.
-  areas: ["New South Wales", "Queensland", "Victoria", "Australian Capital Territory", "South Australia", "Western Australia", "Tasmania", "Northern Territory"],
+  // Service area: NSW only until labour hire licences are held in QLD, VIC, SA or the ACT (report R03, 24 Nov 2026).
+  // Add a state here only once BrightSteps holds that state's licence. Shown as chips and in schema.
+  areas: ["New South Wales"],
   // Reviews section on the home page. Off until there are real, consented reviews.
   showReviews: false,
   // Website developer credit shown in the footer.
   developer: { name: "Agrikip", url: "https://agrikip.com" },
-  lastUpdated: "23 November 2026",
+  lastUpdated: "24 November 2026",
 };

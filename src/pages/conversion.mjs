@@ -3,6 +3,9 @@ import { icon, btn, callBtn, pageHero, faq, ctaBand, tel, mailto, address } from
 import { field, choices, consent, form } from "../forms.mjs";
 import { processSteps } from "./core.mjs";
 
+// Phone fields accept the ways people actually type numbers: 0424 234 925, 0424-234-925, (02) 6766 1234, +61 424 234 925 (F2).
+const PHONE = 'pattern="\\+?\\(?[0-9]{1,4}\\)?([ \\-]?[0-9]){6,14}" data-pattern-msg="Enter a phone number, like 0424 234 925 or (02) 6766 1234"';
+
 const contactAside = (heading = "Prefer to talk?") => `<aside class="form-aside card" style="background:var(--sand);border:0" aria-labelledby="aside-title">
   <h2 id="aside-title" style="font-size:var(--step-1)">${heading}</h2>
   <p>Our team is available 24/7.</p>
@@ -18,6 +21,7 @@ const pricingFaq = faq([
   ["Why don't all roles show a rate?", "Cleaning, domestic support and support coordinator assistant rates depend on the scope of work. Request a quote and we will price it for you."],
   ["How are shifts recorded and billed?", "Shift completion is verified through digital timesheets. We invoice weekly or fortnightly."],
   ["Are there extra charges for nights, weekends or public holidays?", "Rates can vary with shift times, award conditions and location. Your quote will set out the rates that apply to your request before any work starts."],
+  ["Is there a minimum booking or a cancellation fee?", "Any minimum shift length, cancellation notice and charges are set out in your quote before work starts. Our <a href=\"client-terms.html\">client terms</a> explain how bookings, timesheets and invoices work."],
 ], "Pricing questions", "pricing-faq");
 
 const emptyNews = `<div class="empty-state">
@@ -36,7 +40,7 @@ export const pages = [
     crumbs: [["Pricing schedule", ""]],
     plan: { purpose: "Show published rates (a differentiator) and convert price-checkers into quote requests.", audience: "Procurement, finance, operations and service managers.", imagery: "None; a clean rate table builds trust.", conversion: "Rate table with 'Get a quote' CTAs, FAQ, CTA band.", schemaNote: "OfferCatalog (Offers with UnitPriceSpecification, AUD, ex GST), FAQPage, BreadcrumbList." },
     schema: [{
-      "@context": "https://schema.org", "@type": "OfferCatalog", name: "BrightSteps indicative hourly rates", url: `${site.url}/pricing.html`,
+      "@context": "https://schema.org", "@type": "OfferCatalog", name: "BrightSteps indicative hourly rates", url: `${site.url}/pricing`,
       itemListElement: [["General labourer (mining or construction)", 70], ["Disability support worker", 68], ["Transport and community access", 65]].map(([name, price]) => ({
         "@type": "Offer", itemOffered: { "@type": "Service", name }, seller: { "@id": `${site.url}/#organization` },
         priceSpecification: { "@type": "UnitPriceSpecification", price, priceCurrency: "AUD", unitCode: "HUR", valueAddedTaxIncluded: false },
@@ -51,16 +55,16 @@ export const pages = [
         <caption>Indicative hourly rates, excluding GST. Your quote confirms the final rate.</caption>
         <thead><tr><th scope="col">Role</th><th scope="col">What's included</th><th scope="col">Rate (ex GST)</th></tr></thead>
         <tbody>
-          <tr><th scope="row">General labourer<small>Mining and construction</small></th><td>Reliable, experienced staff who put on-site safety first. Fast mobilisation.</td><td><span class="rate">$70</span><small>per hour</small></td></tr>
-          <tr><th scope="row">Disability support worker<small>In-home, community access, SIL, respite</small></th><td>Screened, experienced personnel. Supported by our 24/7 team.</td><td><span class="rate">$68</span><small>per hour</small></td></tr>
-          <tr><th scope="row">Transport &amp; community access</th><td>Reliable transport backed by 24/7 management support. Vehicle costs negotiable.</td><td><span class="rate">$65</span><small>per hour + vehicle</small></td></tr>
+          <tr><th scope="row">General labourer<small>Mining and construction</small></th><td>Reliable, experienced staff who put on-site safety first.</td><td><span class="rate">$70</span><small>per hour</small></td></tr>
+          <tr><th scope="row">Disability support worker<small>In-home, community access, respite, registered SIL providers' homes</small></th><td>Screened, experienced personnel. Supported by our 24/7 team. Under review for the award increase from 1 December 2026.</td><td><span class="rate">$68</span><small>per hour</small></td></tr>
+          <tr><th scope="row"><a href="transport-community-access.html">Transport &amp; community access</a></th><td>Reliable transport backed by 24/7 management support. Vehicle costs negotiable.</td><td><span class="rate">$65</span><small>per hour + vehicle</small></td></tr>
           <tr><th scope="row">Community support worker</th><td>Experienced personnel for community programs.</td><td><a href="request-staff.html" data-track="pricing-quote-community">Get a quote</a></td></tr>
-          <tr><th scope="row">Cleaner / domestic support<small>Residential and commercial</small></th><td>Flexible solutions with full insurance.</td><td><a href="request-staff.html" data-track="pricing-quote-cleaning">Get a quote</a></td></tr>
+          <tr><th scope="row"><a href="cleaning-domestic-support.html">Cleaner / domestic support</a><small>Residential and commercial</small></th><td>Flexible solutions with full insurance.</td><td><a href="request-staff.html" data-track="pricing-quote-cleaning">Get a quote</a></td></tr>
           <tr><th scope="row">Support coordinator assistant</th><td>Administrative focus, streamlined timesheets and billing.</td><td><a href="request-staff.html" data-track="pricing-quote-sca">Get a quote</a></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="hint" style="margin-top:var(--space-2)">Rates are a guide and may vary with shift times, award conditions, location and requirements. Your written quote sets out the rates that apply before work starts.</p>
+    <p class="hint" style="margin-top:var(--space-2)">Rates are a guide and may vary with shift times, award conditions, location and requirements. Your written quote sets out the rates that apply before work starts. The disability support rate is being reviewed for the SCHADS Award increase that starts on 1 December 2026. See our <a href="client-terms.html">client terms</a>.</p>
   </div>
 </section>
 
@@ -81,9 +85,10 @@ ${ctaBand({ h2: "Get a quote for your exact needs", text: "Tell us the roles, ho
     file: "news.html",
     title: "Events & News | BrightSteps Recruitment Tamworth",
     description: "Workforce updates, hiring events and company news from BrightSteps Recruitment in Tamworth, NSW, for local employers and job seekers.",
+    noindex: true, // Hidden from search and the menu until there are real posts (report R17). Remove this line and re-add the nav/footer links when publishing.
     crumbs: [["Events & news", ""]],
     plan: { purpose: "Local SEO and trust through regular, genuine updates (hiring days, community involvement, workforce tips).", audience: "Employers, candidates, local community.", imagery: "A real photo per article, 16:9, with descriptive alt text.", conversion: "Empty state and article footer CTAs.", schemaNote: "Blog / ItemList when posts exist; each post uses Article (or Event for events)." },
-    schema: [{ "@context": "https://schema.org", "@type": "Blog", name: "BrightSteps Events & News", url: `${site.url}/news.html`, publisher: { "@id": `${site.url}/#organization` } }],
+    schema: [{ "@context": "https://schema.org", "@type": "Blog", name: "BrightSteps Events & News", url: `${site.url}/news`, publisher: { "@id": `${site.url}/#organization` } }],
     body: `${pageHero({ crumbs: [["Events & news", ""]], eyebrow: "Events & news", h1: "News and events from BrightSteps", lead: "Local workforce updates, hiring events and company news from Tamworth." })}
 <section class="section">
   <div class="container">
@@ -139,7 +144,7 @@ ${ctaBand()}`,
     description: "Contact BrightSteps Recruitment at 6A Edinburgh Avenue, Tamworth NSW 2340. Call 0424 234 925 any time, or send us a message online.",
     crumbs: [["Contact", ""]],
     plan: { purpose: "Make every contact method obvious; catch general enquiries.", audience: "Everyone.", imagery: "Exterior of the office for local recognition; embedded map.", conversion: "Phone and email links, contact form, routes to specialised forms.", schemaNote: "ContactPage + EmploymentAgency (address, phone), BreadcrumbList." },
-    schema: [{ "@context": "https://schema.org", "@type": "ContactPage", name: "Contact BrightSteps Recruitment", url: `${site.url}/contact.html` }],
+    schema: [{ "@context": "https://schema.org", "@type": "ContactPage", name: "Contact BrightSteps Recruitment", url: `${site.url}/contact` }],
     body: `${pageHero({ crumbs: [["Contact", ""]], eyebrow: "Contact us", h1: "Talk to the BrightSteps team", lead: "Call us any time, 24/7, or send a message and we'll get back to you. Need staff or looking for work? Use the quicker forms below." , ctas: btn("request-staff.html", "Request staff", "primary", "contact-hero-request") + btn("apply.html", "Apply for work", "ghost", "contact-hero-apply") })}
 <section class="section">
   <div class="container form-layout">
@@ -148,7 +153,7 @@ ${ctaBand()}`,
       body: `<fieldset><legend>Your message</legend><div class="field-grid">
         ${field("c-name", "Full name", { required: true, attrs: 'autocomplete="name"', requiredMsg: "Enter your full name" })}
         ${field("c-email", "Email", { type: "email", required: true, attrs: 'autocomplete="email" spellcheck="false"', requiredMsg: "Enter your email address" })}
-        ${field("c-phone", "Phone", { type: "tel", attrs: 'autocomplete="tel" pattern="[+]?[0-9 ]{8,}" data-pattern-msg="Enter a phone number, like 0424 234 925"' })}
+        ${field("c-phone", "Phone", { type: "tel", attrs: 'autocomplete="tel" ' + PHONE })}
         ${field("c-type", "I am", { type: "select", required: true, options: ["An employer or service provider", "Looking for work", "Something else"], requiredMsg: "Choose who you are" })}
         ${field("c-message", "How can we help?", { type: "textarea", required: true, full: true, requiredMsg: "Enter your message" })}
       </div></fieldset>
@@ -166,8 +171,11 @@ ${ctaBand()}`,
       <p><a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=6A+Edinburgh+Avenue+Tamworth+NSW+2340" rel="noopener" target="_blank">Open in Google Maps (new tab)</a></p>
       <p><strong>ABN</strong> ${site.abn}</p>
     </div>
-    <!-- Map loads from Google only when this section scrolls into view (loading="lazy"). Swap the src for your Google Business Profile embed once verified. -->
-    <iframe class="map-embed" title="Map showing BrightSteps Recruitment at 6A Edinburgh Avenue, Tamworth NSW" src="https://www.google.com/maps?q=6A+Edinburgh+Avenue,+Tamworth+NSW+2340&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <!-- Click-to-load map: nothing is requested from Google until the visitor chooses to show it (report R19). main.js swaps in the iframe. -->
+    <div class="map-embed map-consent" data-map-src="https://www.google.com/maps?q=6A+Edinburgh+Avenue,+Tamworth+NSW+2340&amp;output=embed" data-map-title="Map showing BrightSteps Recruitment at 6A Edinburgh Avenue, Tamworth NSW">
+      <p>The map is provided by Google. Showing it lets Google set cookies and see your IP address.</p>
+      <button class="btn btn--secondary" type="button" data-show-map>Show map</button>
+    </div>
   </div>
 </section>`,
   },
@@ -189,7 +197,7 @@ ${ctaBand()}`,
         ${field("r-name", "Full name", { required: true, attrs: 'autocomplete="name"', requiredMsg: "Enter your full name" })}
         ${field("r-org", "Organisation", { required: true, attrs: 'autocomplete="organization"', requiredMsg: "Enter your organisation name" })}
         ${field("r-email", "Work email", { type: "email", required: true, attrs: 'autocomplete="email" spellcheck="false"', requiredMsg: "Enter your email address" })}
-        ${field("r-phone", "Phone", { type: "tel", required: true, attrs: 'autocomplete="tel" pattern="[+]?[0-9 ]{8,}" data-pattern-msg="Enter a phone number, like 0424 234 925"', requiredMsg: "Enter your phone number" })}
+        ${field("r-phone", "Phone", { type: "tel", required: true, attrs: 'autocomplete="tel" ' + PHONE, requiredMsg: "Enter your phone number" })}
       </div></fieldset>
       <fieldset><legend>2. Who you need</legend><div class="field-grid">
         ${field("r-sector", "Type of work", { type: "select", required: true, options: ["Industrial / labour hire", "Mining or construction", "Warehousing or logistics", "Disability support", "Community support", "Transport & community access", "Cleaning or domestic support", "Support coordinator assistant", "Other"], requiredMsg: "Choose the type of work" })}
@@ -210,7 +218,8 @@ ${ctaBand()}`,
       ${contactAside("Urgent? Call us now")}
       <div class="card" style="margin-top:var(--space-3)">
         <h2 style="font-size:var(--step-1)">What happens next</h2>
-        <ol style="padding-left:1.2rem;margin:0"><li>We review your request.</li><li>We call to confirm the details and pricing.</li><li>We allocate screened, ready-to-work people.</li></ol>
+        <ol style="padding-left:1.2rem;margin:0"><li>We review your request.</li><li>We call to confirm the details and pricing.</li><li>We send a written quote with the terms that apply.</li><li>We allocate screened, ready-to-work people.</li></ol>
+        <p style="margin:var(--space-2) 0 0">Read our <a href="client-terms.html">client terms</a>.</p>
       </div>
     </div>
   </div>
@@ -221,7 +230,7 @@ ${ctaBand()}`,
   {
     file: "apply.html",
     title: "Apply for Work | Register as a Candidate | BrightSteps Recruitment",
-    description: "Register with BrightSteps for labouring, disability support, community, transport and cleaning work across Australia. Free and takes about five minutes.",
+    description: "Register with BrightSteps for labouring, disability support, community, transport and cleaning work across NSW. Free and takes about five minutes.",
     crumbs: [["Find work", "find-work.html"], ["Apply for work", ""]],
     audience: "candidate",
     plan: { purpose: "Primary candidate conversion: capture registrations with skills, checks and availability.", audience: "Job seekers, support workers, labourers, contractors.", imagery: "None; keep focus on the form.", conversion: "Grouped form, checkboxes over free text, optional resume, success message.", schemaNote: "BreadcrumbList." },
@@ -235,7 +244,7 @@ ${ctaBand()}`,
         ${field("a-first", "First name", { required: true, attrs: 'autocomplete="given-name"', requiredMsg: "Enter your first name" })}
         ${field("a-last", "Last name", { required: true, attrs: 'autocomplete="family-name"', requiredMsg: "Enter your last name" })}
         ${field("a-email", "Email", { type: "email", required: true, attrs: 'autocomplete="email" spellcheck="false"', requiredMsg: "Enter your email address" })}
-        ${field("a-phone", "Mobile", { type: "tel", required: true, attrs: 'autocomplete="tel" pattern="[+]?[0-9 ]{8,}" data-pattern-msg="Enter a phone number, like 0424 234 925"', requiredMsg: "Enter your mobile number" })}
+        ${field("a-phone", "Mobile", { type: "tel", required: true, attrs: 'autocomplete="tel" ' + PHONE, requiredMsg: "Enter your mobile number" })}
         ${field("a-suburb", "Town or suburb", { required: true, attrs: 'autocomplete="address-level2"', requiredMsg: "Enter your town or suburb" })}
         ${field("a-postcode", "Postcode", { required: true, attrs: 'autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{4}" data-pattern-msg="Enter a 4-digit postcode" maxlength="4"', requiredMsg: "Enter your postcode" })}
       </div></fieldset>
@@ -247,7 +256,7 @@ ${ctaBand()}`,
         ${choices("a-rights", "Do you have the right to work in Australia?", ["Yes", "No"], { type: "radio", requiredRadio: true, requiredMsg: "Tell us whether you have the right to work in Australia" })}
         ${choices("a-checks", "Checks, licences and tickets you currently hold", ["National police check", "Working With Children Check (WWCC)", "NDIS Worker Screening Check", "First aid / CPR", "Driver licence", "Own reliable vehicle", "White Card (construction induction)", "Forklift licence"], { hint: "Tick all that apply. Don't worry if you don't hold these yet." })}
         ${field("a-experience", "Tell us about your experience", { type: "textarea", full: true, hint: "Recent roles, skills and the kind of work you enjoy. Please don't include health or criminal history details here." })}
-        ${field("a-resume", "Upload your resume", { type: "file", full: true, hint: "PDF or Word, up to 5 MB.", attrs: 'accept=".pdf,.doc,.docx" data-max-bytes="5242880"' })}
+        ${field("a-resume", "Upload your resume", { type: "file", full: true, hint: "PDF or Word, up to 5 MB.", attrs: 'accept=".pdf,.doc,.docx" data-max-bytes="5242880" data-type-msg="Upload your résumé as a PDF or Word file" data-size-msg="Your résumé must be smaller than 5 MB"' })}
       </div></fieldset>
       ${consent("a-consent")}`,
     })}
@@ -272,8 +281,8 @@ ${ctaBand()}`,
     schema: [],
     body: `<section class="not-found"><div class="container">
   <span class="icon-badge" style="margin:0 auto var(--space-3);width:4.5rem;height:4.5rem">${icon.check}</span>
-  <h1>Thank you, we've got it</h1>
-  <p class="lead" data-for-default>Your message has been sent. Our team will be in touch soon.</p>
+  <h1>Thank you</h1>
+  <p class="lead" data-for-default>Thanks for getting in touch with BrightSteps. If you sent us a form, our team will be in touch soon.</p>
   <p class="lead" data-for="request-staff-form" hidden>We've received your staffing request. A member of our team will contact you to confirm availability and next steps.</p>
   <p class="lead" data-for="apply-form" hidden>We've received your application. Our team reviews every application and will contact you about suitable roles.</p>
   <p class="lead" data-for="contact-form" hidden>Your message has been sent. We'll get back to you as soon as we can.</p>

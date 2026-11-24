@@ -19,17 +19,25 @@
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.getElementById("site-nav");
   if (toggle && nav) {
+    // While the menu is open, the page behind it can't be reached by Tab or a screen reader (F4).
+    const behind = [document.querySelector("main"), document.querySelector(".site-footer"), document.querySelector(".mobile-cta-bar")].filter(Boolean);
     const setOpen = (open) => {
       toggle.setAttribute("aria-expanded", String(open));
       toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       nav.classList.toggle("is-open", open);
       document.body.classList.toggle("nav-open", open);
+      behind.forEach((el) => { el.inert = open; });
+      if (open) nav.querySelector("a, button")?.focus();
     };
     toggle.addEventListener("click", () => setOpen(toggle.getAttribute("aria-expanded") !== "true"));
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && nav.classList.contains("is-open")) { setOpen(false); toggle.focus(); }
     });
     nav.addEventListener("click", (e) => { if (e.target.closest("a")) setOpen(false); });
+    // Services folds open and closed inside the mobile menu
+    nav.querySelectorAll(".nav-sub-toggle").forEach((btn) => btn.addEventListener("click", () => {
+      btn.setAttribute("aria-expanded", String(btn.getAttribute("aria-expanded") !== "true"));
+    }));
     matchMedia("(min-width: 72em)").addEventListener("change", (mq) => { if (mq.matches) setOpen(false); });
   }
 
@@ -120,8 +128,12 @@
 
   const errorFor = (input) => {
     if (input.type === "checkbox" && input.required) return input.checked ? "" : (input.dataset.requiredMsg || "Tick this box to continue");
-    if (input.type === "file" && input.files[0] && input.files[0].size > Number(input.dataset.maxBytes || Infinity)) {
-      return `${labelFor(input)} must be smaller than ${Math.round(input.dataset.maxBytes / 1048576)} MB`;
+    if (input.type === "file" && input.files[0]) {
+      // The accept attribute only filters the file picker, so check the type here too (F7).
+      const name = input.files[0].name.toLowerCase();
+      const types = (input.accept || "").split(",").map((t) => t.trim().toLowerCase()).filter(Boolean);
+      if (types.length && !types.some((t) => name.endsWith(t))) return input.dataset.typeMsg || `Choose a ${types.join(", ")} file`;
+      if (input.files[0].size > Number(input.dataset.maxBytes || Infinity)) return input.dataset.sizeMsg || `Choose a file smaller than ${Math.round(input.dataset.maxBytes / 1048576)} MB`;
     }
     const v = input.validity;
     if (v.valid) return "";
@@ -268,7 +280,13 @@
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       // Spam traps: bots fill the hidden honeypot field or submit within seconds of page load.
-      if (form.querySelector(".hp-field input")?.value || Date.now() - startedAt < 3000) return;
+      if (form.querySelector(".hp-field input")?.value) return;
+      if (Date.now() - startedAt < 3000) {
+        const li = document.createElement("li");
+        li.textContent = `Please wait a few seconds, then press "${submitBtn.textContent.trim()}" again.`;
+        showSummary("Almost there", [li]);
+        return;
+      }
 
       // On the last step, check every step; jump back to the first step with a problem.
       const errors = validate(form);
@@ -299,7 +317,7 @@
         }
         track("form_submit", { form: form.id });
         location.assign(`thank-you.html?form=${encodeURIComponent(form.id)}`);
-      } catch (err) {
+      } catch {
         showSummary("Your form could not be sent", [listItem("Please try again, or call ", `tel:${form.dataset.phone}`, form.dataset.phoneDisplay)]);
         track("form_failure", { form: form.id });
       } finally {
@@ -321,6 +339,18 @@
   const sent = new URLSearchParams(location.search).get("form");
   document.querySelectorAll("[data-for]").forEach((el) => { el.hidden = el.dataset.for !== sent; });
   if (sent && document.querySelector(`[data-for="${CSS.escape(sent)}"]`)) document.querySelectorAll("[data-for-default]").forEach((el) => { el.hidden = true; });
+
+  /* Contact map: load Google Maps only after the visitor asks for it */
+  document.querySelectorAll("[data-show-map]").forEach((btn) => btn.addEventListener("click", () => {
+    const box = btn.closest(".map-consent");
+    const frame = document.createElement("iframe");
+    frame.className = "map-embed";
+    frame.title = box.dataset.mapTitle;
+    frame.src = box.dataset.mapSrc;
+    frame.referrerPolicy = "no-referrer-when-downgrade";
+    box.replaceWith(frame);
+    frame.focus();
+  }));
 
   /* Current year */
   document.querySelectorAll("[data-year]").forEach((el) => { el.textContent = new Date().getFullYear(); });

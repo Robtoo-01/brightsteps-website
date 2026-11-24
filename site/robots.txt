@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /news-article-template.html
+Disallow: /news-article-template
 
 Sitemap: https://brightstepsrecruitment.com.au/sitemap.xml

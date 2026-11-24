@@ -90,8 +90,7 @@ export const pages = [
   <li><strong>Emergency services:</strong> where there is a health or safety concern.</li>
 </ul>
 <h3>5.2 Overseas disclosure</h3>
-<!-- Check with your form and email providers: if they store data outside Australia, keep the second sentence; if all data stays in Australia, delete it. -->
-<p>We generally do not disclose personal information overseas. Some technology providers we use to run our website forms and email may store data on servers outside Australia. Where information is disclosed or stored overseas, we take reasonable steps to make sure appropriate safeguards are in place, and we obtain your consent where the law requires it.</p>
+<p>We generally do not disclose personal information overseas. Our website forms are processed and stored by Netlify, Inc. on servers in the United States, and a copy of each submission is sent to our email inbox. Our email provider may also store data outside Australia. Where information is disclosed or stored overseas, we take reasonable steps to make sure appropriate safeguards are in place, and we obtain your consent where the law requires it.</p>
 <p><strong>We will never sell your personal information to third parties for marketing purposes.</strong></p>
 
 <h2>6. Data security and storage</h2>
@@ -199,7 +198,7 @@ export const pages = [
 <h3>3.1 Recruitment services</h3>
 <p>BrightSteps provides workforce solutions in the industrial labour hire and community care sectors. While we work to match candidates with suitable positions and to provide clients with qualified personnel, we cannot guarantee employment outcomes or specific results.</p>
 <h3>3.2 Information accuracy and rates</h3>
-<p>We make every effort to keep the information on this website accurate and up to date, but we do not warrant its completeness, reliability or accuracy. Any reliance you place on it is at your own risk. Rates on our pricing schedule are indicative, exclude GST, and may vary with shift times, award conditions, location and requirements. A written quote or agreement confirms the terms of any engagement and takes priority over this website.</p>
+<p>We make every effort to keep the information on this website accurate and up to date, but we do not warrant its completeness, reliability or accuracy. Any reliance you place on it is at your own risk. Rates on our pricing schedule are indicative, exclude GST, and may vary with shift times, award conditions, location and requirements. A written quote or agreement confirms the terms of any engagement and takes priority over this website. Our <a href="client-terms.html">client terms</a> summarise how engagements work, and our <a href="complaints.html">feedback and complaints</a> page explains how to raise a concern.</p>
 
 <h2>4. Limitation of liability</h2>
 <p>To the fullest extent permitted by Australian law, ${site.name} is not liable for any direct, indirect, incidental, consequential or punitive damages arising from:</p>
@@ -259,7 +258,7 @@ export const pages = [
 </ul>
 
 <h2>Known limitations</h2>
-<p>Photos on this site are currently placeholders. When we add real photography we will write descriptive alternative text for each image. Some third-party content, such as embedded maps, may not be fully accessible.</p>
+<p>Most photos on this site are licensed stock images, not BrightSteps staff or clients. Each one has alternative text that describes the scene. Some third-party content, such as the Google map on our contact page, may not be fully accessible. Our address is always shown as text next to it.</p>
 
 <h2>Need help or found a barrier?</h2>
 <p>If you have trouble using any part of this website, or need information in another format, please tell us. We can complete a staffing request or job application with you over the phone.</p>
@@ -267,6 +266,90 @@ export const pages = [
 <p>If you are deaf, or have a hearing or speech impairment, you can contact us through the <a href="https://www.accesshub.gov.au/about-the-nrs" rel="noopener">National Relay Service</a>.</p>
 <p>This statement was last reviewed on ${site.lastUpdated}.</p>`,
     { purpose: "Show commitment to accessibility and give a path for help. This matters to disability-sector clients.", audience: "People with disability, providers, procurement.", imagery: "None.", conversion: "Phone and email for assisted applications.", schemaNote: "BreadcrumbList." }),
+
+  legalPage("client-terms.html", "Client terms",
+    "Client Terms: How Bookings Work | BrightSteps Recruitment",
+    "How BrightSteps bookings work: who employs the workers, quotes, cancellations, timesheets, invoices and safety on site. A plain-English summary for clients.",
+    "Client terms",
+    "A plain-English summary for organisations and households that book BrightSteps workers. Your written quote and our Labour Hire Services Agreement set the binding terms.",
+    `<!-- TO COMPLETE once approved by the partners and a lawyer (report R08): add the minimum shift length, cancellation notice and charge,
+     after-hours loadings, payment days, vehicle rate per km and any conversion fee. Until then this page points to the quote, so nothing here is invented. -->
+<div class="callout callout--info"><p>Your written quote, and any signed agreement, take priority over this summary. Questions? Call <a href="${tel}">${site.phone}</a>.</p></div>
+
+<h2>1. Who employs the workers</h2>
+<p>BrightSteps employs the workers we supply, usually as casual employees paid under the relevant award. We pay their wages and superannuation, hold workers compensation insurance for them, and manage their screening and timesheets. You direct their day-to-day work while they are with you.</p>
+
+<h2>2. Quotes and bookings</h2>
+<p>Before any work starts, we send a written quote. It confirms:</p>
+<ul>
+  <li>the hourly rate for each role;</li>
+  <li>any minimum shift length;</li>
+  <li>loadings for evenings, nights, weekends and public holidays;</li>
+  <li>any short-notice or emergency terms; and</li>
+  <li>for transport, the vehicle costs.</li>
+</ul>
+<p>Rates on our <a href="pricing.html">pricing schedule</a> are indicative. The quote sets the rates that apply to your booking.</p>
+
+<h2>3. Changes and cancellations</h2>
+<p>Tell us as soon as your needs change, by calling <a href="${tel}">${site.phone}</a> at any time. Any cancellation notice period and charge are set out in your quote.</p>
+
+<h2>4. Timesheets and invoices</h2>
+<p>Shifts are recorded on digital timesheets, which you verify. We invoice weekly or fortnightly with clear line items. Payment terms are shown on your quote and invoice.</p>
+
+<h2>5. Safety on site</h2>
+<p>Work health and safety duties are shared between you and BrightSteps.</p>
+<ul>
+  <li><strong>You:</strong> provide a safe workplace, a site or service induction, day-to-day supervision and any site-specific PPE, and tell us about hazards and incidents straight away.</li>
+  <li><strong>BrightSteps:</strong> checks that workers hold the tickets, licences and checks the role needs, briefs them before they start, follows up any incident with you, and can withdraw a worker if a site is unsafe.</li>
+</ul>
+
+<h2>6. Screening</h2>
+<p>Every worker is screened for their role, including a national police check, and a Working With Children Check and NDIS Worker Screening Check where the role requires them. Tell us about any extra requirements, such as inductions or vaccinations, when you book.</p>
+
+<h2>7. Disability and community settings</h2>
+<p>BrightSteps supplies workers to providers. Your organisation remains responsible for the supports you deliver, including participants' plans and records. Supported Independent Living must be delivered by a provider registered with the NDIS Quality and Safeguards Commission.</p>
+
+<h2>8. Replacements and concerns</h2>
+<p>If a worker can't make a shift, or you are not satisfied with a worker, call us and we will work to arrange a replacement. See <a href="complaints.html">feedback and complaints</a> for how we handle concerns.</p>
+
+<h2>9. Employing a worker directly</h2>
+<p>If you would like to employ one of our workers directly, please talk to us first. Any fee that applies is set out in your agreement.</p>
+
+<h2>10. Households</h2>
+<p>If you book cleaning or domestic support for your home, you have rights under the Australian Consumer Law that these terms do not exclude.</p>`,
+    { purpose: "Summarise client terms so bookings hold no surprises (report R08). Values to be added once approved.", audience: "Clients, procurement, households.", imagery: "None.", conversion: "Phone link; links to pricing and complaints.", schemaNote: "BreadcrumbList." }),
+
+  legalPage("complaints.html", "Feedback & complaints",
+    "Feedback & Complaints | BrightSteps Recruitment",
+    "How to give feedback or make a complaint to BrightSteps Recruitment, what happens next, and where to go if you are not satisfied with our response.",
+    "Feedback and complaints",
+    "We want to hear when something goes well, and especially when it doesn't. Anyone can raise a concern: clients, workers, participants, families and advocates.",
+    `<div class="callout"><p><strong>If someone is in immediate danger, call 000.</strong></p></div>
+
+<h2>How to tell us</h2>
+<ul>
+  <li>Phone: <a href="${tel}">${site.phone}</a> (any time)</li>
+  <li>Email: <a href="${mailto}">${site.email}</a></li>
+  <li>Post: Feedback, ${site.name}, ${address}</li>
+</ul>
+<p>You can ask someone to help you, such as a family member, friend or advocate. You can also raise a concern without giving your name, although that may limit how we follow it up. If you are deaf, or have a hearing or speech impairment, you can contact us through the <a href="https://www.accesshub.gov.au/about-the-nrs" rel="noopener">National Relay Service</a>.</p>
+
+<h2>What happens next</h2>
+<ol>
+  <li>We acknowledge your complaint within 7 business days.</li>
+  <li>We look into it fairly, and talk to the people involved.</li>
+  <li>We tell you what we found and what we will do, usually within 30 days.</li>
+</ol>
+<p>Making a complaint will not affect the service you receive or the shifts you are offered.</p>
+
+<h2>If you are not satisfied</h2>
+<ul>
+  <li><strong>NDIS supports:</strong> <a href="https://www.ndiscommission.gov.au/contact-us/make-complaint" rel="noopener">NDIS Quality and Safeguards Commission</a>, 1800 035 544.</li>
+  <li><strong>Pay and working conditions:</strong> <a href="https://www.fairwork.gov.au" rel="noopener">Fair Work Ombudsman</a>, 13 13 94.</li>
+  <li><strong>Privacy:</strong> <a href="https://www.oaic.gov.au" rel="noopener">Office of the Australian Information Commissioner</a>, 1300 363 992. See also our <a href="privacy.html">privacy policy</a>.</li>
+  <li><strong>Consumer issues (households):</strong> <a href="https://www.fairtrading.nsw.gov.au" rel="noopener">NSW Fair Trading</a>.</li>
+</ul>`,
+    { purpose: "Give clients, workers and participants a clear complaints path, including external bodies (report R09).", audience: "Clients, workers, participants, families.", imagery: "None.", conversion: "Phone and email.", schemaNote: "BreadcrumbList." }),
 
   {
     file: "404.html",

@@ -26,11 +26,16 @@ export const icon = {
   doc: svg(`${p("M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z")}${p("M14 2v6h6M8 13h8M8 17h5")}`),
   home: svg(`${p("m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z")}${p("M9 22V12h6v10")}`),
   menu: svg(p("M3 6h18M3 12h18M3 18h18")),
+  chevron: svg(p("m6 9 6 6 6-6")),
   close: svg(p("M18 6 6 18M6 6l12 12")),
   map: svg(`${p("M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z")}${p("M8 2v16M16 6v16")}`),
 };
 
 export const mark = (title = "") => `<svg viewBox="0 0 64 64" ${title ? `role="img" aria-label="${title}"` : 'aria-hidden="true" focusable="false"'}><g transform="translate(0 56) skewX(-14) translate(0 -56)"><rect x="6" y="38" width="11" height="18" rx="5.5" fill="currentColor"/><rect x="21" y="29" width="11" height="27" rx="5.5" fill="currentColor"/><rect x="36" y="20" width="11" height="36" rx="5.5" fill="var(--mark-accent, #0B6E69)"/><circle cx="41.5" cy="9" r="6" fill="#F5A524"/></g></svg>`;
+
+// Public address of a page, without ".html": Netlify serves /about for about.html, so canonical tags,
+// the sitemap and structured data use that form (F3).
+export const pageUrl = (file) => (file === "index.html" ? `${site.url}/` : `${site.url}/${file.replace(/\.html$/, "")}`);
 
 export const tel = `tel:${site.phoneIntl}`;
 export const mailto = `mailto:${site.email}`;
@@ -39,7 +44,7 @@ export const address = `${site.street}, ${site.locality} ${site.region} ${site.p
 // ---------- Reusable blocks ----------
 export const btn = (href, label, kind = "primary", track = "", extra = "") =>
   `<a class="btn btn--${kind}" href="${href}"${track ? ` data-track="${track}"` : ""}${extra}>${label}</a>`;
-export const callBtn = (kind = "ghost") => btn(tel, `${icon.phone}<span>Call ${site.phone}</span>`, kind, "call");
+export const callBtn = (kind = "ghost") => btn(tel, `${icon.phone}<span>Call\u00a0${site.phone}</span>`, kind, "call");
 
 export function breadcrumbs(crumbs) {
   const items = [["Home", "index.html"], ...crumbs];
@@ -47,7 +52,7 @@ export function breadcrumbs(crumbs) {
     i === items.length - 1 ? `<li><span aria-current="page">${label}</span></li>` : `<li><a href="${href}">${label}</a></li>`).join("")}</ol></nav>`;
 }
 
-export function pageHero({ crumbs, eyebrow, h1, lead, ctas = "", accent = "" }) {
+export function pageHero({ crumbs, h1, lead, ctas = "", accent = "" }) {
   return `<section class="page-hero${accent ? ` ${accent}` : ""}"${accent ? " data-accent" : ""}>
   <div class="container">
     ${breadcrumbs(crumbs)}
@@ -59,9 +64,9 @@ export function pageHero({ crumbs, eyebrow, h1, lead, ctas = "", accent = "" }) 
 </section>`;
 }
 
-export function photo(brief, alt, src = "", { portrait = false, w = 1200, h = 900 } = {}) {
+export function photo(brief, alt, src = "", { portrait = false, w = 1200, h = 900, eager = false } = {}) {
   // With src: a real photo (stock photos are credited in docs/photo-credits.md). Without: a labelled placeholder.
-  if (src) return `<figure class="photo${portrait ? " photo--portrait" : ""}"><img src="assets/img/photos/${src}" alt="${alt}" width="${w}" height="${h}" loading="lazy" decoding="async"></figure>`;
+  if (src) return `<figure class="photo${portrait ? " photo--portrait" : ""}"><img src="assets/img/photos/${src}" alt="${alt}" width="${w}" height="${h}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></figure>`; // eager: in the first screen (F10)
   return `<figure class="photo-ph" role="img" aria-label="Photo placeholder: ${alt}"><figcaption><strong>Photo placeholder</strong>${brief}</figcaption></figure>`;
 }
 
@@ -84,9 +89,9 @@ export function ctaBand({ h2 = "Need reliable people on the ground?", text = "Te
 export function serviceSchema(name, description, url, serviceType) {
   return {
     "@context": "https://schema.org", "@type": "Service", name, description, serviceType,
-    url: `${site.url}/${url}`,
+    url: pageUrl(url),
     provider: { "@id": `${site.url}/#organization` },
-    areaServed: { "@type": "Country", name: "Australia" },
+    areaServed: { "@type": "State", name: "New South Wales" },
   };
 }
 
@@ -97,12 +102,13 @@ const nav = [
     ["Disability support staffing", "disability-support-staffing.html"],
     ["Community services staffing", "community-services-staffing.html"],
     ["Emergency & short-term staffing", "emergency-short-term-staffing.html"],
+    ["Cleaning & domestic support", "cleaning-domestic-support.html"],
+    ["Transport & community access", "transport-community-access.html"],
   ]],
   ["For employers", "employers.html"],
   ["Find work", "find-work.html"],
   ["Pricing", "pricing.html"],
   ["About", "about.html"],
-  ["News", "news.html"],
   ["Contact", "contact.html"],
 ];
 
@@ -118,21 +124,21 @@ const orgSchema = {
   email: site.email,
   taxID: `ABN ${site.abn}`,
   address: { "@type": "PostalAddress", streetAddress: site.street, addressLocality: site.locality, addressRegion: site.region, postalCode: site.postcode, addressCountry: site.country },
-  areaServed: [{ "@type": "Country", name: "Australia" }, ...site.areas.map((name) => ({ "@type": "State", name })), { "@type": "City", name: "Tamworth" }],
+  areaServed: [...site.areas.map((name) => ({ "@type": "State", name })), { "@type": "City", name: "Tamworth" }],
   founder: { "@type": "Person", name: site.director, jobTitle: "Director", image: `${site.url}/assets/img/photos/edwin-ngetich.jpg` },
   ...(site.social.length ? { sameAs: site.social.map((s) => s.url) } : {}),
 };
 
 export function render(page, themeKey = site.theme) {
   const theme = themes[themeKey];
-  const url = page.file === "index.html" ? `${site.url}/` : `${site.url}/${page.file}`;
+  const url = pageUrl(page.file);
   const isActive = (href, sub = []) => href === page.file || sub.some(([, h]) => h === page.file);
   const schemas = [orgSchema, ...(page.schema || [])];
   if (page.crumbs) {
     const items = [["Home", "index.html"], ...page.crumbs];
     schemas.push({
       "@context": "https://schema.org", "@type": "BreadcrumbList",
-      itemListElement: items.map(([name, href], i) => ({ "@type": "ListItem", position: i + 1, name, item: href === "index.html" ? `${site.url}/` : `${site.url}/${href || page.file}` })),
+      itemListElement: items.map(([name, href], i) => ({ "@type": "ListItem", position: i + 1, name, item: pageUrl(href || page.file) })),
     });
   }
   const candidate = page.audience === "candidate";
@@ -163,9 +169,8 @@ ${page.noindex ? '<meta name="robots" content="noindex, follow">' : `<link rel="
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="${fontsHref(themeKey)}">
+${theme.localFonts ? "" : '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'}<link rel="stylesheet" href="${fontsHref(themeKey)}">
+${theme.localFonts ? ["lexend-latin-600-normal", "atkinson-hyperlegible-latin-400-normal", "atkinson-hyperlegible-latin-700-normal", "bricolage-grotesque-latin-800-normal"].map((f) => `<link rel="preload" href="assets/fonts/${f}.woff2" as="font" type="font/woff2" crossorigin>`).join("\n") : "" /* first-screen fonts arrive before first paint, so text doesn't jump (layout shift) */}
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="stylesheet" href="assets/css/themes/${themeKey}.css">
 <script>document.documentElement.classList.add("js")</script>
@@ -176,16 +181,19 @@ ${schemas.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</s
 <a class="skip-link" href="#main">Skip to main content</a>
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="index.html" aria-label="${site.name} home">${mark()}<span><span class="brand-name">Bright<span>Steps</span></span><span class="brand-sub">RECRUITMENT</span></span></a>
+    <a class="brand" href="index.html" aria-label="${site.name} home">${mark()}<span><span class="brand-name">Bright<span>Steps</span></span> <span class="brand-sub">RECRUITMENT</span></span></a>
     <nav class="site-nav" id="site-nav" aria-label="Main">
-      <ul class="nav-list">
-        ${nav.map(([label, href, sub]) => `<li><a href="${href}"${isActive(href) ? ' aria-current="page"' : ""}>${label}</a>${sub ? `<ul class="nav-sub">${sub.map(([l, h]) => `<li><a href="${h}"${h === page.file ? ' aria-current="page"' : ""}>${l}</a></li>`).join("")}</ul>` : ""}</li>`).join("\n        ")}
-      </ul>
       <div class="nav-mobile-ctas">
         ${btn("request-staff.html", "Request staff", "primary", "nav-request")}
-        ${btn("apply.html", "Apply for work", "secondary", "nav-apply")}
-        ${callBtn("ghost")}
+        ${btn("apply.html", "Apply for work", "apply", "nav-apply")}
       </div>
+      <ul class="nav-list">
+        ${nav.map(([label, href, sub]) => sub
+          // Desktop: the link with a hover dropdown. Mobile: a button that folds the list open (option A, 24 Nov 2026).
+          ? `<li class="has-sub"><a class="nav-sub-link" href="${href}"${isActive(href) ? ' aria-current="page"' : ""}>${label}</a><button class="nav-sub-toggle" type="button" aria-expanded="${isActive(href, sub) ? "true" : "false"}" aria-controls="nav-sub-${href.replace(".html", "")}"><span><span class="nav-sub-label">${label}</span><span class="nav-sub-hint">${sub.length} ways we can help</span></span><span class="nav-chevron">${icon.chevron}</span></button><ul class="nav-sub" id="nav-sub-${href.replace(".html", "")}"><li class="nav-sub-all"><a href="${href}"${href === page.file ? ' aria-current="page"' : ""}>All ${label.toLowerCase()}</a></li>${sub.map(([l, h]) => `<li><a href="${h}"${h === page.file ? ' aria-current="page"' : ""}>${l}</a></li>`).join("")}</ul></li>`
+          : `<li><a href="${href}"${isActive(href) ? ' aria-current="page"' : ""}>${label}</a></li>`).join("\n        ")}
+      </ul>
+      <a class="nav-call-card" href="${tel}" data-track="nav-call"><span class="nav-call-icon">${icon.phone}</span><span><strong>${site.phone}</strong><span>Call us any time, 24/7</span></span></a>
     </nav>
     <div class="header-actions">
       <a class="header-call" href="${tel}" data-track="header-call">${icon.phone}<span class="header-call-text">${site.phone}</span><span class="visually-hidden"> (call BrightSteps)</span></a>
@@ -203,8 +211,8 @@ ${page.body}
   <div class="container">
     <div class="footer-grid">
       <div>
-        <a class="brand" href="index.html" style="--mark-accent:#7FD1C9">${mark()}<span><span class="brand-name">Bright<span>Steps</span></span><span class="brand-sub">RECRUITMENT</span></span></a>
-        <p>Locally owned workforce solutions from Tamworth. Screened, insured and supported people for industrial sites, disability support and community services across Australia.</p>
+        <a class="brand" href="index.html" style="--mark-accent:#7FD1C9">${mark()}<span><span class="brand-name">Bright<span>Steps</span></span> <span class="brand-sub">RECRUITMENT</span></span></a>
+        <p>Locally owned workforce solutions from Tamworth. Screened, insured and supported people for industrial sites, disability support and community services across New South Wales.</p>
         ${site.social.length ? `<div class="social">${site.social.map((s) => `<a href="${s.url}" rel="noopener" target="_blank"><span class="visually-hidden">${s.name} (opens in a new tab)</span>${icon.people}</a>`).join("")}</div>` : ""}
       </div>
       <nav aria-labelledby="f-services">
@@ -214,6 +222,8 @@ ${page.body}
           <li><a href="disability-support-staffing.html">Disability support staffing</a></li>
           <li><a href="community-services-staffing.html">Community services staffing</a></li>
           <li><a href="emergency-short-term-staffing.html">Emergency &amp; short-term staffing</a></li>
+          <li><a href="cleaning-domestic-support.html">Cleaning &amp; domestic support</a></li>
+          <li><a href="transport-community-access.html">Transport &amp; community access</a></li>
           <li><a href="pricing.html">Pricing schedule</a></li>
         </ul>
       </nav>
@@ -223,7 +233,6 @@ ${page.body}
           <li><a href="about.html">About us</a></li>
           <li><a href="employers.html">For employers</a></li>
           <li><a href="find-work.html">Find work</a></li>
-          <li><a href="news.html">Events &amp; news</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -244,6 +253,8 @@ ${page.body}
       <ul>
         <li><a href="privacy.html">Privacy policy</a></li>
         <li><a href="terms.html">Legal notice &amp; terms</a></li>
+        <li><a href="client-terms.html">Client terms</a></li>
+        <li><a href="complaints.html">Feedback &amp; complaints</a></li>
         <li><a href="accessibility.html">Accessibility</a></li>
         <li><button type="button" class="link-btn" data-cookie-settings aria-haspopup="dialog">Cookie settings</button></li>
       </ul>
@@ -251,7 +262,7 @@ ${page.body}
   </div>
 </footer>
 
-<div class="mobile-cta-bar">${btn(tel, `${icon.phone}<span>Call</span>`, "secondary", "bar-call")}${barCta}</div>
+<nav class="mobile-cta-bar" aria-label="Quick actions">${btn(tel, `${icon.phone}<span>Call</span>`, "secondary", "bar-call")}${barCta}</nav>
 
 <section class="cookie-notice" id="cookie-notice" aria-labelledby="cookie-title" hidden>
   <h2 id="cookie-title">Your privacy</h2>

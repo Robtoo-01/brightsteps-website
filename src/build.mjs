@@ -6,7 +6,7 @@ import { createHash } from "node:crypto";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { site } from "./config.mjs";
-import { render } from "./layout.mjs";
+import { render, pageUrl } from "./layout.mjs";
 import { pages as core } from "./pages/core.mjs";
 import { pages as services } from "./pages/services.mjs";
 import { pages as conversion } from "./pages/conversion.mjs";
@@ -37,21 +37,20 @@ for (const page of pages) {
 const indexable = pages.filter((p) => !p.noindex);
 writeFileSync(join(out, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${indexable.map((p) => `  <url><loc>${site.url}/${p.file === "index.html" ? "" : p.file}</loc></url>`).join("\n")}
+${indexable.map((p) => `  <url><loc>${pageUrl(p.file)}</loc></url>`).join("\n")}
 </urlset>
 `);
-writeFileSync(join(out, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /news-article-template.html\n\nSitemap: ${site.url}/sitemap.xml\n`);
+writeFileSync(join(out, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /news-article-template\n\nSitemap: ${site.url}/sitemap.xml\n`);
 // Netlify / Cloudflare Pages format. Keeps old URLs (and their search ranking) working.
-writeFileSync(join(out, "_redirects"), `/about-us              /about.html            301
-/pricing-schedule-8    /pricing.html          301
-/products              /services.html         301
-/services/             /services.html         301
-/events-news           /news.html             301
-/privacy               /privacy.html          301
-/Classes               /request-staff.html    301
-/images/document/22319576/BrightStepsPrivacyPolicy-J5S4wulODMCXSGtDo1gifQ.pdf  /privacy.html  301
-/images/document/22321807/BrightStepsLegalNotice-AchkSWtX5VGYCrH51NZIvw.pdf    /terms.html    301
-/images/document/*     /privacy.html          301
+writeFileSync(join(out, "_redirects"), `/about-us              /about                 301
+/pricing-schedule-8    /pricing               301
+/products              /services              301
+/services/             /services              301
+/events-news           /news                  301
+/Classes               /request-staff         301
+/images/document/22319576/BrightStepsPrivacyPolicy-J5S4wulODMCXSGtDo1gifQ.pdf  /privacy  301
+/images/document/22321807/BrightStepsLegalNotice-AchkSWtX5VGYCrH51NZIvw.pdf    /terms    301
+/images/document/*     /privacy               301
 `);
 // ---- Security headers (Netlify / Cloudflare Pages `_headers` format) ----
 // CSP is derived from config so it stays correct when form endpoints or analytics are added.
@@ -62,8 +61,9 @@ const ga = site.analyticsId ? { script: " https://www.googletagmanager.com", con
 const csp = [
   "default-src 'self'",
   `script-src 'self' ${scriptHashes.join(" ")}${ga.script}`,
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "font-src 'self' https://fonts.gstatic.com",
+  // Google Fonts are allowed only when the live theme doesn't self-host its fonts (F5).
+  `style-src 'self' 'unsafe-inline'${themes[site.theme].localFonts ? "" : " https://fonts.googleapis.com"}`,
+  `font-src 'self'${themes[site.theme].localFonts ? "" : " https://fonts.gstatic.com"}`,
   `img-src 'self' data:${ga.img}`,
   `connect-src 'self' ${formOrigins.join(" ")}${ga.connect}`.trim(),
   "frame-src https://www.google.com",

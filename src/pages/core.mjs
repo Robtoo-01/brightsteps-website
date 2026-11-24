@@ -1,8 +1,8 @@
 import { site } from "../config.mjs";
-import { icon, btn, callBtn, pageHero, photo, faq, ctaBand, tel, mailto, address } from "../layout.mjs";
+import { icon, btn, callBtn, pageHero, photo, faq, ctaBand, tel, mailto, address, pageUrl } from "../layout.mjs";
 
 const trust = `<ul class="trust-list">
-  <li>${icon.shield}<span>Police checked and WWCC verified workers</span></li>
+  <li>${icon.shield}<span>Workers screened for their role, including police checks</span></li>
   <li>${icon.clipboard}<span>Workers compensation and public liability insurance</span></li>
   <li>${icon.clock}<span>24/7 support when shifts change</span></li>
   <li>${icon.pin}<span>Locally owned in Tamworth, NSW</span></li>
@@ -12,13 +12,13 @@ export const serviceCards = `<div class="grid grid--4">
   <article class="card service-card cat-industrial reveal">
     <span class="icon-badge">${icon.hardhat}</span>
     <h3>Industrial labour hire</h3>
-    <p>General labourers for mining, construction, warehousing and logistics, mobilised fast.</p>
+    <p>General labourers for mining, construction, warehousing and logistics, matched to your tickets and inductions.</p>
     <a class="text-link" href="industrial-labour-hire.html">Industrial staffing</a>
   </article>
   <article class="card service-card cat-disability reveal">
     <span class="icon-badge">${icon.heart}</span>
     <h3>Disability support</h3>
-    <p>Screened support workers for in-home care, community access, SIL and respite.</p>
+    <p>Screened support workers for in-home care, community access and respite, including in registered SIL providers' homes.</p>
     <a class="text-link" href="disability-support-staffing.html">Disability staffing</a>
   </article>
   <article class="card service-card cat-community reveal">
@@ -36,7 +36,7 @@ export const serviceCards = `<div class="grid grid--4">
 </div>`;
 
 export const standard = `<div class="grid grid--3">
-  <div class="feature reveal"><span class="icon-badge">${icon.shield}</span><div><h3>Fully screened</h3><p>Every member of our workforce is police checked and holds a verified Working With Children Check (WWCC).</p></div></div>
+  <div class="feature reveal"><span class="icon-badge">${icon.shield}</span><div><h3>Fully screened</h3><p>Every worker is screened for their role, including a national police check, and a Working With Children Check (WWCC) and NDIS Worker Screening Check where the role requires them.</p></div></div>
   <div class="feature reveal"><span class="icon-badge">${icon.clipboard}</span><div><h3>Insured and safe</h3><p>Workers compensation and public liability insurance cover every contract, so your project is protected.</p></div></div>
   <div class="feature reveal"><span class="icon-badge">${icon.clock}</span><div><h3>Supported around the clock</h3><p>Our team is available 24/7 to manage changes, replacements and urgent requests.</p></div></div>
 </div>`;
@@ -49,10 +49,10 @@ export const processSteps = `<ol class="steps steps--4">
 </ol>`;
 
 const homeFaq = faq([
-  ["How quickly can you supply staff?", "We specialise in fast mobilisation. Timing depends on the role, the number of workers, the location and the checks your site needs. Call <a href=\"" + tel + "\">" + site.phone + "</a> for urgent requests and we will tell you straight away what we can do."],
-  ["Are your workers screened and insured?", "Yes. Our workforce is police checked and WWCC verified, and we provide workers compensation and public liability insurance for every contract."],
+  ["How quickly can you supply staff?", "Timing depends on the role, the number of workers, the location and the checks your site needs. Call <a href=\"" + tel + "\">" + site.phone + "</a> for urgent requests and we will tell you straight away what we can do."],
+  ["Are your workers screened and insured?", "Yes. Every worker is screened for their role, including a national police check, and a Working With Children Check (WWCC) and NDIS Worker Screening Check where the role requires them. We provide workers compensation and public liability insurance for every contract."],
   ["What does it cost?", "Our indicative rates start from $65 an hour (ex GST) and include training, administration and insurance. See the <a href=\"pricing.html\">pricing schedule</a> or <a href=\"request-staff.html\">request a quote</a> for your exact needs."],
-  ["Which areas do you cover?", "We are based in Tamworth, NSW, and supply staff to employers and providers across Australia. Tell us where you need people and we will confirm what we can do."],
+  ["Which areas do you cover?", "We are based in Tamworth and supply staff to employers and providers across New South Wales. We only take on interstate work where we hold the labour hire licence that state requires. Tell us where you need people and we will confirm what we can do."],
   ["I'm looking for work. How do I apply?", "Register through our <a href=\"apply.html\">online application</a>. Tell us the type of work you want and your availability, and our team will be in touch about suitable roles."],
 ]);
 
@@ -61,7 +61,7 @@ export const pages = [
   {
     file: "index.html",
     title: "Labour Hire & Disability Support Staffing Tamworth | BrightSteps",
-    description: "Screened, insured labour hire and disability support staff from Tamworth. Fast mobilisation and 24/7 support Australia-wide. Request staff or find work today.",
+    description: "Screened, insured labour hire and disability support staff from Tamworth, supplied across NSW with 24/7 support. Request staff or find work today.",
     plan: {
       purpose: "Explain who BrightSteps serves in five seconds and route employers to Request Staff and candidates to Apply.",
       audience: "All: employers, care providers, procurement, job seekers.",
@@ -76,7 +76,7 @@ export const pages = [
     <div>
       
       <h1 id="hero-title">Reliable people. <em>Right when you need them.</em></h1>
-      <p class="lead">From Tamworth, BrightSteps supplies screened, insured and supported workers for industrial sites, disability support and community services, with fast mobilisation and 24/7 support.</p>
+      <p class="lead">From Tamworth, BrightSteps supplies screened, insured and supported workers for industrial sites, disability support and community services across New South Wales, with 24/7 support.</p>
       <div class="btn-row">${btn("request-staff.html", "Request staff", "primary", "hero-request")}${btn("find-work.html", "Find work", "ghost", "hero-find-work")}</div>
       ${trust}
     </div>
@@ -87,7 +87,7 @@ export const pages = [
         <div class="hero-paths">
           <a class="hero-path" href="request-staff.html" data-track="hero-path-employer"><span class="icon-badge">${icon.briefcase}</span><span><strong>I need staff</strong><span>Labour hire, support workers, urgent cover</span></span></a>
           <a class="hero-path cat-community" href="apply.html" data-track="hero-path-candidate"><span class="icon-badge">${icon.user}</span><span><strong>I'm looking for work</strong><span>Register for industrial or care roles</span></span></a>
-          <a class="hero-path cat-industrial" href="${tel}" data-track="hero-path-call"><span class="icon-badge">${icon.phone}</span><span><strong>Call ${site.phone}</strong><span>Speak to our team, 24/7</span></span></a>
+          <a class="hero-path cat-industrial" href="${tel}" data-track="hero-path-call"><span class="icon-badge">${icon.phone}</span><span><strong>Call\u00a0${site.phone}</strong><span>Speak to our team, 24/7</span></span></a>
         </div>
       </div>
     </div>
@@ -143,11 +143,11 @@ export const pages = [
 
 <section class="section section--navy on-dark" aria-labelledby="why-title">
   <div class="container">
-    <div class="section-head"><h2 id="why-title">The BrightSteps Standard</h2><p class="lead">Fast mobilisation. Careful screening. Support when every second counts.</p></div>
+    <div class="section-head"><h2 id="why-title">The BrightSteps Standard</h2><p class="lead">Quick responses. Careful screening. Support when every second counts.</p></div>
     <div class="grid grid--2">
-      <div class="feature reveal"><span class="icon-badge">${icon.bolt}</span><div><h3>Fast mobilisation</h3><p>We specialise in high-speed mobilisation for mining, construction, industrial and care settings.</p></div></div>
+      <div class="feature reveal"><span class="icon-badge">${icon.bolt}</span><div><h3>Quick to respond</h3><p>We work to fill shifts quickly for mining, construction, industrial and care settings.</p></div></div>
       <div class="feature reveal"><span class="icon-badge">${icon.clock}</span><div><h3>24/7 support</h3><p>Our team is available around the clock to manage replacements, changes and urgent requests.</p></div></div>
-      <div class="feature reveal"><span class="icon-badge">${icon.shield}</span><div><h3>Compliance focus</h3><p>Police checked and WWCC verified workers, plus workers compensation and public liability insurance on every contract.</p></div></div>
+      <div class="feature reveal"><span class="icon-badge">${icon.shield}</span><div><h3>Compliance focus</h3><p>Workers screened for their role, plus workers compensation and public liability insurance on every contract.</p></div></div>
       <div class="feature reveal"><span class="icon-badge">${icon.clipboard}</span><div><h3>Reliable, transparent service</h3><p>Digital timesheets, clear rates and simple weekly or fortnightly invoicing.</p></div></div>
     </div>
   </div>
@@ -166,7 +166,7 @@ export const pages = [
       <div class="pathway pathway--candidate reveal">
         
         <h3>Find work that fits your life</h3>
-        <p>Industrial, disability support, community and cleaning roles in Tamworth and across Australia.</p>
+        <p>Industrial, disability support, community and cleaning roles in Tamworth and across New South Wales.</p>
         <div class="btn-row">${btn("apply.html", "Apply for work", "secondary", "path-apply")}${btn("find-work.html", "What to expect", "ghost", "path-find-work")}</div>
       </div>
     </div>
@@ -190,7 +190,7 @@ ${site.showReviews ? `<section class="section section--sand" aria-labelledby="re
     <div>${homeFaq.html}</div>
     <div class="card reveal" style="background:var(--sand);border:0">
       <h3>Still have a question?</h3>
-      <p>Talk to a real person. We are here 24/7.</p>
+      <p>Talk to our team. We are here 24/7.</p>
       <ul class="contact-list">
         <li><span class="icon-badge">${icon.phone}</span><span><strong>Phone</strong><a href="${tel}" data-track="faq-call">${site.phone}</a></span></li>
         <li><span class="icon-badge">${icon.mail}</span><span><strong>Email</strong><a href="${mailto}" data-track="faq-email">${site.email}</a></span></li>
@@ -204,8 +204,8 @@ ${site.showReviews ? `<section class="section section--sand" aria-labelledby="re
   <div class="container split">
     <div>
       
-      <h2 id="area-title">Based in Tamworth, working across Australia</h2>
-      <p class="lead">Our home is Tamworth in regional NSW. From here we supply screened, supported workers to employers and providers in every state and territory.</p>
+      <h2 id="area-title">Based in Tamworth, working across New South Wales</h2>
+      <p class="lead">Our home is Tamworth in regional NSW. From here we supply screened, supported workers to employers and providers across New South Wales. We take on interstate work only where we hold the labour hire licence that state requires.</p>
       <p>Find us at <a href="contact.html">${address}</a>.</p>
     </div>
     <div><ul class="chips">${site.areas.map((a) => `<li>${a}</li>`).join("")}</ul></div>
@@ -219,10 +219,10 @@ ${ctaBand()}`,
   {
     file: "about.html",
     title: "About BrightSteps Recruitment | Locally Owned, Tamworth",
-    description: "Australian-owned workforce provider based in Tamworth, led by Director Edwin Ngetich, connecting organisations across Australia with skilled, caring workers.",
+    description: "Australian-owned workforce provider based in Tamworth, led by Director Edwin Ngetich, connecting organisations across NSW with skilled, caring workers.",
     crumbs: [["About us", ""]],
     plan: { purpose: "Build trust: who runs BrightSteps, why it exists and what it stands for.", audience: "Employers vetting a new supplier; candidates choosing an agency.", imagery: "Portrait of Edwin Ngetich in a real local setting; team photo outside the Tamworth office.", conversion: "CTA band, links to services and Find Work.", schemaNote: "EmploymentAgency with founder; AboutPage." },
-    schema: [{ "@context": "https://schema.org", "@type": "AboutPage", name: "About BrightSteps Recruitment", url: `${site.url}/about.html` }],
+    schema: [{ "@context": "https://schema.org", "@type": "AboutPage", name: "About BrightSteps Recruitment", url: `${site.url}/about` }],
     body: `${pageHero({ crumbs: [["About us", ""]], eyebrow: "About us", h1: "Bridging the gap between quality talent and community need", lead: "BrightSteps Recruitment is an Australian-owned workforce solutions provider based in Tamworth, NSW. We believe recruitment should be more than a transaction." })}
 
 <section class="section">
@@ -231,9 +231,9 @@ ${ctaBand()}`,
       <h2>Who we are</h2>
       <p>We work where industrial labour hire meets community care. One day that means a crew of general labourers for a construction site. The next it means a support worker who helps someone live more independently at home.</p>
       <p>What connects that work is people. We build lasting relationships with the organisations we supply and the workers we place, because reliable staffing depends on both.</p>
-      <p>We are proudly based in Tamworth, and we supply people to employers and providers across Australia. Regional roots, national reach.</p>
+      <p>We are proudly based in Tamworth, and we supply people to employers and providers across New South Wales.</p>
     </div>
-    ${photo("The BrightSteps team outside the Tamworth office, natural light, relaxed and approachable.", "Warehouse supervisor checking a roster on a tablet between shelving aisles", "warehouse-supervisor.webp")}
+    ${photo("The BrightSteps team outside the Tamworth office, natural light, relaxed and approachable.", "Warehouse supervisor checking a roster on a tablet between shelving aisles", "warehouse-supervisor.webp", { eager: true })}
   </div>
 </section>
 
@@ -241,8 +241,8 @@ ${ctaBand()}`,
   <div class="container">
     <div class="section-head"><h2>Connecting organisations with skilled and compassionate workers</h2><p class="lead">Our mission is to supply workers who promote dignity, safety and professionalism in every setting.</p></div>
     <div class="grid grid--3">
-      <div class="card reveal"><span class="icon-badge">${icon.shield}</span><h3 style="margin-top:var(--space-2)">Safety without compromise</h3><p>Every worker is fully screened, insured and verified before they start.</p></div>
-      <div class="card reveal"><span class="icon-badge">${icon.bolt}</span><h3 style="margin-top:var(--space-2)">Rapid mobilisation</h3><p>Our systems are built for 24/7 responsiveness, so gaps get filled quickly.</p></div>
+      <div class="card reveal"><span class="icon-badge">${icon.shield}</span><h3 style="margin-top:var(--space-2)">Safety without compromise</h3><p>Every worker is screened for their role and insured before they start.</p></div>
+      <div class="card reveal"><span class="icon-badge">${icon.bolt}</span><h3 style="margin-top:var(--space-2)">Responsive support</h3><p>Our team is available 24/7, so we can start filling gaps as soon as you call.</p></div>
       <div class="card reveal"><span class="icon-badge">${icon.home}</span><h3 style="margin-top:var(--space-2)">Community first</h3><p>As a local business, we invest in the people and organisations of our region.</p></div>
     </div>
   </div>
@@ -254,7 +254,7 @@ ${ctaBand()}`,
     <div class="reveal">
       
       <h2>Led by Director ${site.director}</h2>
-      <p>Under Edwin's leadership, BrightSteps has become a reliable partner in the Tamworth business community, known for responsive service and for treating workers and clients with respect.</p>
+      <p>Under Edwin's leadership, BrightSteps sets out to be a reliable partner to Tamworth businesses and providers, and to treat workers and clients with respect.</p>
       <!-- Add a short, factual bio (background, qualifications, why he started BrightSteps) supplied by Edwin. -->
       <p>Want to talk about a staffing partnership? Edwin and the team would like to hear from you.</p>
       <div class="btn-row">${btn("contact.html", "Contact us", "secondary", "about-contact")}${callBtn()}</div>
@@ -279,7 +279,7 @@ ${ctaBand({ h2: "Let's work together", text: "Whether you need staff or you're l
     description: "Industrial labour hire, disability support, community services, cleaning, transport and emergency staffing from BrightSteps in Tamworth. Short-term or contract.",
     crumbs: [["Services", ""]],
     plan: { purpose: "Overview of every service with routes to the four detailed pages; replaces the old Products page.", audience: "Employers and providers comparing options.", imagery: "Icon-led cards; no photos needed.", conversion: "Service cards, delivery models, CTA band.", schemaNote: "ItemList of Services (each detailed page carries its own Service schema)." },
-    schema: [{ "@context": "https://schema.org", "@type": "ItemList", name: "BrightSteps staffing services", itemListElement: ["industrial-labour-hire.html", "disability-support-staffing.html", "community-services-staffing.html", "emergency-short-term-staffing.html"].map((u, i) => ({ "@type": "ListItem", position: i + 1, url: `${site.url}/${u}` })) }],
+    schema: [{ "@context": "https://schema.org", "@type": "ItemList", name: "BrightSteps staffing services", itemListElement: ["industrial-labour-hire.html", "disability-support-staffing.html", "community-services-staffing.html", "emergency-short-term-staffing.html", "cleaning-domestic-support.html", "transport-community-access.html"].map((u, i) => ({ "@type": "ListItem", position: i + 1, url: pageUrl(u) })) }],
     body: `${pageHero({ crumbs: [["Services", ""]], eyebrow: "Services", h1: "Workforce solutions for industry and community", lead: "Dependable staffing across labour hire, disability support and community services, available short-term, in an emergency or on contract.", ctas: btn("request-staff.html", "Request staff", "primary", "services-hero-request") + callBtn() })}
 
 <section class="section">
@@ -294,10 +294,10 @@ ${ctaBand({ h2: "Let's work together", text: "Whether you need staff or you're l
     <div class="section-head"><h2>Every role we supply</h2><p>A single supplier for your industrial, care and support staffing needs.</p></div>
     <div class="grid grid--3">
       <div class="card cat-industrial"><span class="icon-badge">${icon.hardhat}</span><h3 style="margin-top:var(--space-2)">General labourers</h3><p>Experienced workers for mining, construction, warehousing and logistics.</p></div>
-      <div class="card cat-disability"><span class="icon-badge">${icon.heart}</span><h3 style="margin-top:var(--space-2)">Disability support workers</h3><p>In-home care, community access, Supported Independent Living (SIL) and respite.</p></div>
+      <div class="card cat-disability"><span class="icon-badge">${icon.heart}</span><h3 style="margin-top:var(--space-2)">Disability support workers</h3><p>In-home care, community access and respite, plus staff for registered Supported Independent Living (SIL) providers' homes.</p></div>
       <div class="card cat-community"><span class="icon-badge">${icon.people}</span><h3 style="margin-top:var(--space-2)">Community support workers</h3><p>Experienced personnel who make a positive impact in community programs.</p></div>
-      <div class="card cat-community"><span class="icon-badge">${icon.truck}</span><h3 style="margin-top:var(--space-2)">Transport &amp; community access</h3><p>Dedicated transport so participants can get to appointments, work and activities.</p></div>
-      <div class="card cat-disability"><span class="icon-badge">${icon.sparkle}</span><h3 style="margin-top:var(--space-2)">Cleaning &amp; domestic support</h3><p>Residential and commercial cleaning, plus help with daily household tasks.</p></div>
+      <div class="card cat-community"><span class="icon-badge">${icon.truck}</span><h3 style="margin-top:var(--space-2)">Transport &amp; community access</h3><p>Dedicated transport so participants can get to appointments, work and activities.</p><a class="text-link" href="transport-community-access.html">Transport &amp; community access</a></div>
+      <div class="card cat-disability"><span class="icon-badge">${icon.sparkle}</span><h3 style="margin-top:var(--space-2)">Cleaning &amp; domestic support</h3><p>Residential and commercial cleaning, plus help with daily household tasks.</p><a class="text-link" href="cleaning-domestic-support.html">Cleaning &amp; domestic support</a></div>
       <div class="card cat-emergency"><span class="icon-badge">${icon.doc}</span><h3 style="margin-top:var(--space-2)">Support coordinator assistants</h3><p>Administrative support that keeps coordination organised and on time.</p></div>
     </div>
   </div>
@@ -328,7 +328,7 @@ ${ctaBand()}`,
   {
     file: "employers.html",
     title: "For Employers: Labour Hire & Support Staff on Demand | BrightSteps",
-    description: "Need screened, insured staff fast? BrightSteps supplies labour hire and support workers across Australia, with 24/7 support, digital timesheets and simple invoicing.",
+    description: "Need screened, insured staff? BrightSteps supplies labour hire and support workers across NSW, with 24/7 support, digital timesheets and simple invoicing.",
     crumbs: [["For employers", ""]],
     plan: { purpose: "Persuade employers and providers to submit a staffing request.", audience: "Site managers, operations managers, disability and community service managers, procurement.", imagery: "Supervisor briefing a BrightSteps crew; coordinator reviewing a roster with a support worker.", conversion: "Hero CTAs, process, FAQ, CTA band.", schemaNote: "FAQPage, BreadcrumbList." },
     audience: "employer",
@@ -336,7 +336,8 @@ ${ctaBand()}`,
     body: (() => {
       const f = faq([
         ["What information do you need for a staffing request?", "The roles, number of workers, location, start date, expected duration and any site or participant requirements (for example inductions, licences or language). The <a href=\"request-staff.html\">request form</a> covers it all."],
-        ["Who employs the workers?", "BrightSteps manages the workers we supply, including screening, insurance and timesheets. Talk to us about the arrangement that suits your organisation."],
+        ["Who employs the workers?", "BrightSteps employs the workers we supply, usually as casual employees paid under the relevant award. We look after their screening, pay, insurance and timesheets. You direct their day-to-day work on site. See our <a href=\"client-terms.html\">client terms</a>."],
+        ["Who is responsible for safety on site?", "Safety is shared. You provide a safe workplace, a site induction and day-to-day supervision. We check that workers hold the tickets and PPE the role needs, and we follow up any incident with you. Our <a href=\"client-terms.html\">client terms</a> explain who does what."],
         ["How are shifts verified and billed?", "Shifts are verified through digital timesheets. We invoice weekly or fortnightly, with clear line items."],
         ["What happens if a worker can't make a shift?", "Our team is available 24/7. Call us and we will work to arrange a replacement as quickly as possible."],
         ["Do your rates include on-costs?", "Our indicative hourly rates include training, administration and insurance costs. All rates exclude GST. See the <a href=\"pricing.html\">pricing schedule</a>."],
@@ -347,8 +348,8 @@ ${ctaBand()}`,
   <div class="container">
     <div class="section-head"><h2>What you can expect from us</h2></div>
     <div class="grid grid--2">
-      <div class="feature reveal"><span class="icon-badge">${icon.bolt}</span><div><h3>Fast mobilisation</h3><p>We specialise in high-speed mobilisation, so you can keep projects and programs on track.</p></div></div>
-      <div class="feature reveal"><span class="icon-badge">${icon.shield}</span><div><h3>Screened workers</h3><p>Police checked and WWCC verified, with workers compensation and public liability insurance on every contract.</p></div></div>
+      <div class="feature reveal"><span class="icon-badge">${icon.bolt}</span><div><h3>Quick to respond</h3><p>We work to fill shifts quickly, so you can keep projects and programs on track.</p></div></div>
+      <div class="feature reveal"><span class="icon-badge">${icon.shield}</span><div><h3>Screened workers</h3><p>Screened for their role, including police checks, with workers compensation and public liability insurance on every contract.</p></div></div>
       <div class="feature reveal"><span class="icon-badge">${icon.clock}</span><div><h3>24/7 support</h3><p>Talk to our team any time about changes, replacements or urgent requests.</p></div></div>
       <div class="feature reveal"><span class="icon-badge">${icon.dollar}</span><div><h3>Transparent costs</h3><p>Published indicative rates, digital timesheets and simple weekly or fortnightly invoicing.</p></div></div>
     </div>
@@ -381,7 +382,7 @@ ${ctaBand({ h2: "Request staff in two minutes", text: "Share your requirements a
   {
     file: "find-work.html",
     title: "Find Work in Tamworth: Labour & Support Worker Jobs | BrightSteps",
-    description: "Looking for labouring, disability support, community or cleaning work in Tamworth or across Australia? Register with BrightSteps for supported shifts that suit you.",
+    description: "Looking for labouring, disability support, community or cleaning work in Tamworth or across NSW? Register with BrightSteps for supported shifts that suit you.",
     crumbs: [["Find work", ""]],
     audience: "candidate",
     plan: { purpose: "Give job seekers a clear reason and path to register.", audience: "Labourers, support workers, community workers, cleaners, drivers, admin assistants.", imagery: "Workers in their own words: a labourer at the end of a shift, a support worker with a participant (consented).", conversion: "Apply CTA in hero, mobile bar and footer of page; requirements checklist reduces drop-off.", schemaNote: "FAQPage, BreadcrumbList. Add JobPosting schema per live vacancy when jobs are listed." },
@@ -389,19 +390,20 @@ ${ctaBand({ h2: "Request staff in two minutes", text: "Share your requirements a
     body: (() => {
       const f = faq([
         ["Do I need experience?", "It depends on the role. Some roles need specific experience, licences or qualifications; others suit people who are reliable and keen to learn. Tell us about yourself in the application."],
-        ["Which checks do I need?", "Our workforce is police checked and WWCC verified. Some roles, such as disability support, may need extra checks (for example an NDIS Worker Screening Check). We will explain what applies to the roles you're interested in."],
+        ["Which checks do I need?", "Every worker needs a national police check. Roles with children need a Working With Children Check (WWCC), and most disability support roles need an NDIS Worker Screening Check. We will explain what applies to the roles you're interested in."],
+        ["Who will employ me?", "BrightSteps employs you, usually as a casual employee paid at least the minimum rate in the award that covers your role. We explain your pay rate and pay cycle before you start any role."],
         ["Can I choose my shifts?", "Tell us your availability when you register: weekdays, nights, weekends or on-call. We'll offer shifts that match."],
         ["How do I get paid?", "Your hours are recorded on digital timesheets. We will explain pay rates and pay cycles before you start any role."],
         ["Does it cost anything to register?", "No. Registering with BrightSteps is free."],
       ], "Job seeker FAQs", "candidate-faq");
-      return `${pageHero({ crumbs: [["Find work", ""]], eyebrow: "For job seekers", h1: "Find work that fits your skills and your life", lead: "We place people in industrial, disability support, community and cleaning roles in Tamworth and across Australia, and we support you every step of the way.", ctas: btn("apply.html", "Apply for work", "primary", "find-work-hero-apply") + callBtn(), accent: "cat-community" })}
+      return `${pageHero({ crumbs: [["Find work", ""]], eyebrow: "For job seekers", h1: "Find work that fits your skills and your life", lead: "We place people in industrial, disability support, community and cleaning roles in Tamworth and across New South Wales, and we support you every step of the way.", ctas: btn("apply.html", "Apply for work", "primary", "find-work-hero-apply") + callBtn(), accent: "cat-community" })}
 
 <section class="section">
   <div class="container">
     <div class="section-head"><h2>Types of work we offer</h2></div>
     <div class="grid grid--3">
       <div class="card cat-industrial reveal"><span class="icon-badge">${icon.hardhat}</span><h3 style="margin-top:var(--space-2)">Labour &amp; industrial</h3><p>General labouring for mining, construction, warehousing and logistics.</p></div>
-      <div class="card cat-disability reveal"><span class="icon-badge">${icon.heart}</span><h3 style="margin-top:var(--space-2)">Disability support</h3><p>In-home care, community access, SIL and respite support.</p></div>
+      <div class="card cat-disability reveal"><span class="icon-badge">${icon.heart}</span><h3 style="margin-top:var(--space-2)">Disability support</h3><p>In-home care, community access and respite, including shifts in registered SIL providers' homes.</p></div>
       <div class="card cat-community reveal"><span class="icon-badge">${icon.people}</span><h3 style="margin-top:var(--space-2)">Community &amp; domestic</h3><p>Community support, transport, cleaning and support coordination assistance.</p></div>
     </div>
   </div>

@@ -10,6 +10,7 @@ export const themes = {
   human: {
     name: "Human & Community",
     fonts: "family=Lexend:wght@500;600&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400",
+    localFonts: "assets/css/fonts.css", // self-hosted copies of the fonts above plus the wordmark (F5)
     themeColor: "#FFF9F2",
   },
   industrial: {
@@ -24,5 +25,6 @@ export const themes = {
   },
 };
 
-export const fontsHref = (key) =>
+// Themes with localFonts load their own copies; the rest still use Google Fonts (preview themes only).
+export const fontsHref = (key) => themes[key].localFonts ||
   `https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&${themes[key].fonts}&display=swap`;
