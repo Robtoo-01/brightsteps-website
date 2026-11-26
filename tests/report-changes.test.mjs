@@ -68,13 +68,14 @@ test("R12: employer FAQ says BrightSteps employs the workers", () => {
   assert.ok(read("find-work.html").includes("BrightSteps employs you"));
 });
 
-test("R17: news is out of the menu, footer and sitemap until it has posts", () => {
+test("R17 (updated 26 Nov 2026): news is published, indexed and linked from the footer, not the main menu", () => {
   for (const f of pages) {
     const html = read(f);
-    assert.ok(!nav(html).includes("news.html") && !footer(html).includes("news.html"), `${f} still links news`);
+    assert.ok(!nav(html).includes("news.html"), `${f}: news should stay out of the main menu`);
+    assert.ok(footer(html).includes('href="news.html"'), `${f}: footer missing news`);
   }
-  assert.match(read("news.html"), /<meta name="robots" content="noindex, follow">/);
-  assert.ok(!read("sitemap.xml").includes("news.html"));
+  assert.ok(!read("news.html").includes("noindex"));
+  assert.ok(read("sitemap.xml").includes("/news</loc>"));
 });
 
 test("R18: accessibility statement no longer says photos are placeholders", () => {

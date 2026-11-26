@@ -1,9 +1,9 @@
 import { site } from "../config.mjs";
 import { icon, btn, callBtn, pageHero, photo, faq, ctaBand, serviceSchema } from "../layout.mjs";
-import { standard, processSteps } from "./core.mjs";
+import { standard, standardCare, processSteps } from "./core.mjs";
 
 // One template for the four service pages; copy differs, structure stays consistent.
-function servicePage({ file, crumb, title, description, eyebrow, h1, lead, accent, iconName, roles, settings, benefitsTitle, benefits, photoBrief, photoAlt, photoSrc = "", note = "", aside = "", faqs, schemaType, related, plan }) {
+function servicePage({ file, crumb, title, description, eyebrow, h1, lead, accent, iconName, roles, settings, benefitsTitle, benefits, photoBrief, photoAlt, photoSrc = "", note = "", aside = "", faqs, schemaType, related, plan, care = true }) {
   const f = faq(faqs, "Common questions", "service-faq");
   return {
     file, title, description, plan,
@@ -34,7 +34,7 @@ function servicePage({ file, crumb, title, description, eyebrow, h1, lead, accen
 <section class="section section--navy on-dark">
   <div class="container">
     <div class="section-head"><h2>Screened, insured and supported</h2></div>
-    ${standard}
+    ${care ? standardCare : standard}
   </div>
 </section>
 
@@ -74,12 +74,13 @@ const rel = {
 export const pages = [
   servicePage({
     file: "industrial-labour-hire.html",
+    care: false,
     crumb: "Industrial labour hire",
-    title: "Industrial Labour Hire Tamworth: Mining & Construction | BrightSteps",
-    description: "General labourers for mining, construction, warehousing and logistics across NSW, from our Tamworth base. Screened for the role, insured and supported 24/7.",
+    title: "Labour Hire Tamworth: Mining & Construction Workers | BrightSteps",
+    description: "Ticketed labourers for mines, civil sites and warehouses in Tamworth, Gunnedah, Narrabri, the Hunter and beyond. From $70/hr ex GST. Call 0424 234 925, 24/7.",
     eyebrow: "Industrial labour hire",
-    h1: "Labour hire that keeps your site moving",
-    lead: "Reliable, experienced labourers for mining, construction, warehousing and logistics, matched to your site and backed by 24/7 support.",
+    h1: "Labourers for mines, civil sites and warehouses across regional NSW",
+    lead: "General and site labourers with the tickets your site needs, from Tamworth to Gunnedah, Narrabri and the Hunter. Book by phone or online, backed by a team on call 24/7.",
     accent: "cat-industrial",
     iconName: "hardhat",
     roles: ["General labourers", "Mining labourers", "Construction labourers", "Warehouse and logistics workers", "Site clean-up and support crews"],
@@ -106,11 +107,11 @@ export const pages = [
   servicePage({
     file: "disability-support-staffing.html",
     crumb: "Disability support staffing",
-    title: "Disability Support Workers Tamworth: In-Home & Respite | BrightSteps",
+    title: "Disability Support Workers for NDIS Providers, Tamworth | BrightSteps",
     description: "Screened disability support workers for in-home care, community access, respite and registered SIL providers' homes across NSW, supported 24/7.",
     eyebrow: "Disability support staffing",
-    h1: "Disability support workers who put people first",
-    lead: "Compassionate, screened support workers for in-home care, community access and respite, and for registered Supported Independent Living (SIL) providers' homes.",
+    h1: "Disability support workers for NDIS providers in Tamworth and the region",
+    lead: "Screened support workers for in-home care, community access and respite, and for registered Supported Independent Living (SIL) providers' homes. You stay the provider and direct the support; we supply people your participants can get to know.",
     accent: "cat-disability",
     iconName: "heart",
     roles: ["Disability support workers", "In-home care support", "Community access support", "Respite support", "Support workers for registered SIL providers' homes"],

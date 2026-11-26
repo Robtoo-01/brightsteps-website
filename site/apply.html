@@ -32,7 +32,7 @@
 <link rel="stylesheet" href="assets/css/themes/human.css">
 <script>document.documentElement.classList.add("js")</script>
 <script src="assets/js/main.js" defer></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"EmploymentAgency","@id":"https://brightstepsrecruitment.com.au/#organization","name":"BrightSteps Recruitment","url":"https://brightstepsrecruitment.com.au/","logo":"https://brightstepsrecruitment.com.au/assets/img/logo-horizontal.svg","image":"https://brightstepsrecruitment.com.au/assets/img/og-image.png","telephone":"+61424234925","email":"info@brightstepsrecruitment.com.au","taxID":"ABN 71 374 775 561","address":{"@type":"PostalAddress","streetAddress":"6A Edinburgh Avenue","addressLocality":"Tamworth","addressRegion":"NSW","postalCode":"2340","addressCountry":"AU"},"areaServed":[{"@type":"State","name":"New South Wales"},{"@type":"City","name":"Tamworth"}],"founder":{"@type":"Person","name":"Edwin Ngetich","jobTitle":"Director","image":"https://brightstepsrecruitment.com.au/assets/img/photos/edwin-ngetich.jpg"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"EmploymentAgency","@id":"https://brightstepsrecruitment.com.au/#organization","name":"BrightSteps Recruitment","url":"https://brightstepsrecruitment.com.au/","logo":"https://brightstepsrecruitment.com.au/assets/img/logo-horizontal.svg","image":"https://brightstepsrecruitment.com.au/assets/img/og-image.png","telephone":"+61424234925","email":"info@brightstepsrecruitment.com.au","taxID":"ABN 71 374 775 561","address":{"@type":"PostalAddress","streetAddress":"6A Edinburgh Avenue","addressLocality":"Tamworth","addressRegion":"NSW","postalCode":"2340","addressCountry":"AU"},"areaServed":[{"@type":"State","name":"New South Wales"},{"@type":"City","name":"Tamworth"},{"@type":"City","name":"Armidale"},{"@type":"City","name":"Gunnedah"},{"@type":"City","name":"Quirindi"},{"@type":"City","name":"Moree"},{"@type":"City","name":"Narrabri"},{"@type":"City","name":"Inverell"},{"@type":"City","name":"Glen Innes"},{"@type":"City","name":"Manilla"},{"@type":"City","name":"Werris Creek"},{"@type":"City","name":"Walcha"},{"@type":"City","name":"Uralla"},{"@type":"City","name":"Singleton"},{"@type":"City","name":"Muswellbrook"},{"@type":"City","name":"Scone"},{"@type":"City","name":"Newcastle"},{"@type":"City","name":"Sydney"}],"founder":{"@type":"Person","name":"Edwin Ngetich","jobTitle":"Director","image":"https://brightstepsrecruitment.com.au/assets/img/photos/edwin-ngetich.jpg"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://brightstepsrecruitment.com.au/"},{"@type":"ListItem","position":2,"name":"Find work","item":"https://brightstepsrecruitment.com.au/find-work"},{"@type":"ListItem","position":3,"name":"Apply for work","item":"https://brightstepsrecruitment.com.au/apply"}]}</script>
 </head>
 <body>
@@ -49,6 +49,7 @@
         <li class="has-sub"><a class="nav-sub-link" href="services.html">Services</a><button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-sub-services"><span><span class="nav-sub-label">Services</span><span class="nav-sub-hint">6 ways we can help</span></span><span class="nav-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></span></button><ul class="nav-sub" id="nav-sub-services"><li class="nav-sub-all"><a href="services.html">All services</a></li><li><a href="industrial-labour-hire.html">Industrial labour hire</a></li><li><a href="disability-support-staffing.html">Disability support staffing</a></li><li><a href="community-services-staffing.html">Community services staffing</a></li><li><a href="emergency-short-term-staffing.html">Emergency & short-term staffing</a></li><li><a href="cleaning-domestic-support.html">Cleaning & domestic support</a></li><li><a href="transport-community-access.html">Transport & community access</a></li></ul></li>
         <li><a href="employers.html">For employers</a></li>
         <li><a href="find-work.html">Find work</a></li>
+        <li><a href="jobs.html">Jobs</a></li>
         <li><a href="pricing.html">Pricing</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -84,7 +85,9 @@
     <p class="hint">All fields are required unless marked (optional).</p>
   </div>
   <div class="form-summary" tabindex="-1" role="alert" hidden><h2>There is a problem</h2><ul></ul></div>
-  <fieldset class="form-step" data-step="1"><legend class="step-title"><span class="step-count">Step 1 of 3</span>About you</legend><div class="field-grid">
+  <p class="form-role" data-role-line hidden>Applying for: <span data-role-name></span></p>
+      <input type="hidden" name="a-role" id="a-role" value="" data-prefill-role data-roles='{"general-labourer":"General labourer","mining-labourer":"Mining labourer","construction-labourer":"Construction labourer","warehouse-logistics":"Warehouse and logistics worker","disability-support-worker":"Disability support worker","community-support-worker":"Community support worker","transport-community-access":"Transport and community access driver","cleaner-domestic-support":"Cleaner and domestic support worker","support-coordinator-assistant":"Support coordinator assistant"}'>
+      <fieldset class="form-step" data-step="1"><legend class="step-title"><span class="step-count">Step 1 of 3</span>About you</legend><div class="field-grid">
         <div class="field">
   <label for="a-first">First name</label>
   
@@ -242,6 +245,9 @@
           <li><a href="about.html">About us</a></li>
           <li><a href="employers.html">For employers</a></li>
           <li><a href="find-work.html">Find work</a></li>
+          <li><a href="jobs.html">Jobs available</a></li>
+          <li><a href="areas-we-cover.html">Areas we cover</a></li>
+          <li><a href="news.html">News</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>

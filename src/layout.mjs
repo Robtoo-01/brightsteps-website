@@ -107,6 +107,7 @@ const nav = [
   ]],
   ["For employers", "employers.html"],
   ["Find work", "find-work.html"],
+  ["Jobs", "jobs.html"],
   ["Pricing", "pricing.html"],
   ["About", "about.html"],
   ["Contact", "contact.html"],
@@ -124,7 +125,7 @@ const orgSchema = {
   email: site.email,
   taxID: `ABN ${site.abn}`,
   address: { "@type": "PostalAddress", streetAddress: site.street, addressLocality: site.locality, addressRegion: site.region, postalCode: site.postcode, addressCountry: site.country },
-  areaServed: [...site.areas.map((name) => ({ "@type": "State", name })), { "@type": "City", name: "Tamworth" }],
+  areaServed: [...site.areas.map((name) => ({ "@type": "State", name })), ...Object.values(site.towns).flat().map((name) => ({ "@type": "City", name }))],
   founder: { "@type": "Person", name: site.director, jobTitle: "Director", image: `${site.url}/assets/img/photos/edwin-ngetich.jpg` },
   ...(site.social.length ? { sameAs: site.social.map((s) => s.url) } : {}),
 };
@@ -233,6 +234,9 @@ ${page.body}
           <li><a href="about.html">About us</a></li>
           <li><a href="employers.html">For employers</a></li>
           <li><a href="find-work.html">Find work</a></li>
+          <li><a href="jobs.html">Jobs available</a></li>
+          <li><a href="areas-we-cover.html">Areas we cover</a></li>
+          <li><a href="news.html">News</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>

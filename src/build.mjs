@@ -11,10 +11,12 @@ import { pages as core } from "./pages/core.mjs";
 import { pages as services } from "./pages/services.mjs";
 import { pages as conversion } from "./pages/conversion.mjs";
 import { pages as legal } from "./pages/legal.mjs";
+import { pages as growth } from "./pages/growth.mjs";
+import { pages as news } from "./pages/news.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const out = join(root, "site");
-const pages = [...core, ...services, ...conversion, ...legal];
+const pages = [...core, ...services, ...growth, ...news, ...conversion, ...legal];
 const strip = (s) => s.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
 
 // ---- Render pages ----

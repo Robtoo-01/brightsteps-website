@@ -60,3 +60,16 @@ Examples: a mailbox is hacked, a resume is emailed to the wrong person, or a for
 ## Spam
 
 The forms block most bots with a hidden honeypot field, a minimum fill time and the form service's spam filter. If spam still gets through, turn on the service's stricter filter or reCAPTCHA option. Avoid image CAPTCHAs: they block people with disability.
+
+## Job applications inbox (added 26 Nov 2026)
+
+Job applications from the Jobs page and the Apply page use the Netlify form `apply-form`. The role a person clicked on the Jobs page arrives in the `a-role` field.
+
+The inbox address is set in Netlify, not in the website code, so it never appears on the site:
+
+1. Netlify dashboard → the BrightSteps site → **Site configuration → Notifications → Emails and webhooks → Form submission notifications**.
+2. **Add notification → Email notification**.
+3. Event: *New form submission*. Form: **apply-form**. Email: the applications inbox.
+4. Save. Submit a test application from `/jobs` and check that it arrives.
+
+Staffing requests (`request-staff-form`) and contact messages (`contact-form`) keep their existing notifications.

@@ -35,11 +35,20 @@ export const serviceCards = `<div class="grid grid--4">
   </article>
 </div>`;
 
-export const standard = `<div class="grid grid--3">
-  <div class="feature reveal"><span class="icon-badge">${icon.shield}</span><div><h3>Fully screened</h3><p>Every worker is screened for their role, including a national police check, and a Working With Children Check (WWCC) and NDIS Worker Screening Check where the role requires them.</p></div></div>
-  <div class="feature reveal"><span class="icon-badge">${icon.clipboard}</span><div><h3>Insured and safe</h3><p>Workers compensation and public liability insurance cover every contract, so your project is protected.</p></div></div>
+// Screening block: worksite wording by default; care wording for disability, community, cleaning and transport pages.
+const standardBlock = (screen, insure) => `<div class="grid grid--3">
+  <div class="feature reveal"><span class="icon-badge">${icon.shield}</span><div><h3>Fully screened</h3><p>${screen}</p></div></div>
+  <div class="feature reveal"><span class="icon-badge">${icon.clipboard}</span><div><h3>Insured and safe</h3><p>${insure}</p></div></div>
   <div class="feature reveal"><span class="icon-badge">${icon.clock}</span><div><h3>Supported around the clock</h3><p>Our team is available 24/7 to manage changes, replacements and urgent requests.</p></div></div>
 </div>`;
+export const standard = standardBlock(
+  "Every worker is screened for their role, including a national police check. Tell us your tickets, licences and inductions, and we only send workers who hold them.",
+  "Workers compensation and public liability insurance cover every contract, so your project is protected.",
+);
+export const standardCare = standardBlock(
+  "Every worker is screened for their role, including a national police check, and a Working With Children Check (WWCC) and NDIS Worker Screening Check where the role requires them. We confirm each worker's checks before their first shift.",
+  "BrightSteps holds workers compensation and public liability insurance for every placement, so your organisation isn't carrying that risk.",
+);
 
 export const processSteps = `<ol class="steps steps--4">
   <li class="reveal"><h3>Request</h3><p>Tell us the roles, numbers, location and timing, online or by phone.</p></li>
@@ -52,7 +61,7 @@ const homeFaq = faq([
   ["How quickly can you supply staff?", "Timing depends on the role, the number of workers, the location and the checks your site needs. Call <a href=\"" + tel + "\">" + site.phone + "</a> for urgent requests and we will tell you straight away what we can do."],
   ["Are your workers screened and insured?", "Yes. Every worker is screened for their role, including a national police check, and a Working With Children Check (WWCC) and NDIS Worker Screening Check where the role requires them. We provide workers compensation and public liability insurance for every contract."],
   ["What does it cost?", "Our indicative rates start from $65 an hour (ex GST) and include training, administration and insurance. See the <a href=\"pricing.html\">pricing schedule</a> or <a href=\"request-staff.html\">request a quote</a> for your exact needs."],
-  ["Which areas do you cover?", "We are based in Tamworth and supply staff to employers and providers across New South Wales. We only take on interstate work where we hold the labour hire licence that state requires. Tell us where you need people and we will confirm what we can do."],
+  ["Which areas do you cover?", "We are based in Tamworth and supply workers across the New England and North West (including Armidale, Gunnedah, Quirindi, Moree and Narrabri), the Hunter (including Singleton and Newcastle) and Sydney. We only take on interstate work where we hold the labour hire licence that state requires. See <a href=\"areas-we-cover.html\">areas we cover</a>, or tell us where you need people and we will confirm what we can do."],
   ["I'm looking for work. How do I apply?", "Register through our <a href=\"apply.html\">online application</a>. Tell us the type of work you want and your availability, and our team will be in touch about suitable roles."],
 ]);
 
@@ -60,8 +69,8 @@ export const pages = [
   // ---------------- HOME ----------------
   {
     file: "index.html",
-    title: "Labour Hire & Disability Support Staffing Tamworth | BrightSteps",
-    description: "Screened, insured labour hire and disability support staff from Tamworth, supplied across NSW with 24/7 support. Request staff or find work today.",
+    title: "Labour Hire & Support Workers Tamworth, Regional NSW | BrightSteps",
+    description: "Screened, insured labourers and disability support workers from a Tamworth team that answers 24/7. Published rates. Request staff or find work today.",
     plan: {
       purpose: "Explain who BrightSteps serves in five seconds and route employers to Request Staff and candidates to Apply.",
       audience: "All: employers, care providers, procurement, job seekers.",
@@ -75,8 +84,8 @@ export const pages = [
   <div class="container hero-grid">
     <div>
       
-      <h1 id="hero-title">Reliable people. <em>Right when you need them.</em></h1>
-      <p class="lead">From Tamworth, BrightSteps supplies screened, insured and supported workers for industrial sites, disability support and community services across New South Wales, with 24/7 support.</p>
+      <h1 id="hero-title">Labour hire and support workers for regional NSW, <em>from a Tamworth team that answers 24/7.</em></h1>
+      <p class="lead">Screened, insured labourers for mines, civil sites and warehouses, and support workers for disability and community providers. Tell us the shift and we'll confirm who's coming.</p>
       <div class="btn-row">${btn("request-staff.html", "Request staff", "primary", "hero-request")}${btn("find-work.html", "Find work", "ghost", "hero-find-work")}</div>
       ${trust}
     </div>
@@ -85,8 +94,9 @@ export const pages = [
         <h2>How can we help today?</h2>
         <p>Choose your path. It takes about two minutes to get started.</p>
         <div class="hero-paths">
-          <a class="hero-path" href="request-staff.html" data-track="hero-path-employer"><span class="icon-badge">${icon.briefcase}</span><span><strong>I need staff</strong><span>Labour hire, support workers, urgent cover</span></span></a>
-          <a class="hero-path cat-community" href="apply.html" data-track="hero-path-candidate"><span class="icon-badge">${icon.user}</span><span><strong>I'm looking for work</strong><span>Register for industrial or care roles</span></span></a>
+          <a class="hero-path cat-industrial" href="industrial-labour-hire.html" data-track="hero-path-site"><span class="icon-badge">${icon.hardhat}</span><span><strong>I need workers on site</strong><span>Mining, construction, warehousing</span></span></a>
+          <a class="hero-path cat-disability" href="disability-support-staffing.html" data-track="hero-path-provider"><span class="icon-badge">${icon.heart}</span><span><strong>I run a disability or community service</strong><span>Support workers, transport, cleaning</span></span></a>
+          <a class="hero-path cat-community" href="jobs.html" data-track="hero-path-candidate"><span class="icon-badge">${icon.user}</span><span><strong>I'm looking for work</strong><span>See jobs and register</span></span></a>
           <a class="hero-path cat-industrial" href="${tel}" data-track="hero-path-call"><span class="icon-badge">${icon.phone}</span><span><strong>Call\u00a0${site.phone}</strong><span>Speak to our team, 24/7</span></span></a>
         </div>
       </div>
@@ -95,15 +105,12 @@ export const pages = [
 </section>
 
 <section class="section" aria-labelledby="who-title">
-  <div class="container split">
-    <div class="reveal">
-      
-      <h2 id="who-title">One trusted partner, from the worksite to the home</h2>
-      <p class="lead">Staff shortages stall projects and leave people without the support they rely on. We close those gaps with dependable people who arrive ready to work.</p>
-      <p>Site supervisors use us to keep crews at full strength. Disability and community providers trust us with workers who treat every participant with dignity, safety and professionalism. Our mission is the same in both settings: dependable staffing from fully screened, trained and supported workers.</p>
-      <a class="text-link" href="about.html">About BrightSteps</a>
+  <div class="container">
+    <div class="section-head"><h2 id="who-title">Urgent cover or planned staffing</h2><p class="lead">Two kinds of request, handled two ways.</p></div>
+    <div class="grid grid--2">
+      <div class="card cat-emergency reveal">${photo("", "Coordinator on the phone while checking a laptop at her desk", "coordinator-phone.webp")}<span class="icon-badge" style="margin-top:var(--space-3)">${icon.bolt}</span><h3 style="margin-top:var(--space-2)">A shift fell through today</h3><p>Call us, day or night. A real person in Tamworth answers, tells you on that call what we can cover, and starts on it straight away.</p><div class="btn-row">${callBtn("primary")}</div></div>
+      <div class="card cat-industrial reveal">${photo("", "Warehouse staff in hi-vis walking between pallet racks", "warehouse-team.webp")}<span class="icon-badge" style="margin-top:var(--space-3)">${icon.calendar}</span><h3 style="margin-top:var(--space-2)">You're planning a project, roster or leave</h3><p>Send us the roles, numbers, dates and location. We call to confirm the details, then send a written quote with the terms that apply.</p><div class="btn-row">${btn("request-staff.html", "Request staff", "secondary", "lanes-request")}</div></div>
     </div>
-    ${photo("Two shots side by side: a BrightSteps crew on site in hi-vis, and a support worker and participant out in the community.", "Warehouse staff in hi-vis walking between pallet racks", "warehouse-team.webp")}
   </div>
 </section>
 
@@ -204,11 +211,11 @@ ${site.showReviews ? `<section class="section section--sand" aria-labelledby="re
   <div class="container split">
     <div>
       
-      <h2 id="area-title">Based in Tamworth, working across New South Wales</h2>
-      <p class="lead">Our home is Tamworth in regional NSW. From here we supply screened, supported workers to employers and providers across New South Wales. We take on interstate work only where we hold the labour hire licence that state requires.</p>
-      <p>Find us at <a href="contact.html">${address}</a>.</p>
+      <h2 id="area-title">Based in Tamworth, supplying workers across regional NSW</h2>
+      <p class="lead">Our office is in Tamworth. From here we supply screened, supported workers to sites and providers across the New England and North West, the Hunter and Sydney. We take on interstate work only where we hold the labour hire licence that state requires.</p>
+      <p>Find us at <a href="contact.html">${address}</a>. <a class="text-link" href="areas-we-cover.html">See all areas we cover</a></p>
     </div>
-    <div><ul class="chips">${site.areas.map((a) => `<li>${a}</li>`).join("")}</ul></div>
+    <div><ul class="chips">${site.areas.map((a) => `<li>${a}</li>`).join("")}</ul><ul class="chips chips--towns">${Object.values(site.towns).flat().map((t) => `<li>${t}</li>`).join("")}</ul></div>
   </div>
 </section>
 
@@ -223,7 +230,7 @@ ${ctaBand()}`,
     crumbs: [["About us", ""]],
     plan: { purpose: "Build trust: who runs BrightSteps, why it exists and what it stands for.", audience: "Employers vetting a new supplier; candidates choosing an agency.", imagery: "Portrait of Edwin Ngetich in a real local setting; team photo outside the Tamworth office.", conversion: "CTA band, links to services and Find Work.", schemaNote: "EmploymentAgency with founder; AboutPage." },
     schema: [{ "@context": "https://schema.org", "@type": "AboutPage", name: "About BrightSteps Recruitment", url: `${site.url}/about` }],
-    body: `${pageHero({ crumbs: [["About us", ""]], eyebrow: "About us", h1: "Bridging the gap between quality talent and community need", lead: "BrightSteps Recruitment is an Australian-owned workforce solutions provider based in Tamworth, NSW. We believe recruitment should be more than a transaction." })}
+    body: `${pageHero({ crumbs: [["About us", ""]], eyebrow: "About us", h1: "Owned and run in Tamworth", lead: "BrightSteps Recruitment supplies screened, insured workers to industrial sites and to disability and community providers across regional NSW. When you call, you talk to the local team that does the work." })}
 
 <section class="section">
   <div class="container split">
@@ -239,7 +246,7 @@ ${ctaBand()}`,
 
 <section class="section section--sand">
   <div class="container">
-    <div class="section-head"><h2>Connecting organisations with skilled and compassionate workers</h2><p class="lead">Our mission is to supply workers who promote dignity, safety and professionalism in every setting.</p></div>
+    <div class="section-head"><h2>What we hold ourselves to</h2><p class="lead">Workers who are screened for the role, insured on every placement, and backed by a team you can reach at any hour.</p></div>
     <div class="grid grid--3">
       <div class="card reveal"><span class="icon-badge">${icon.shield}</span><h3 style="margin-top:var(--space-2)">Safety without compromise</h3><p>Every worker is screened for their role and insured before they start.</p></div>
       <div class="card reveal"><span class="icon-badge">${icon.bolt}</span><h3 style="margin-top:var(--space-2)">Responsive support</h3><p>Our team is available 24/7, so we can start filling gaps as soon as you call.</p></div>
@@ -254,7 +261,7 @@ ${ctaBand()}`,
     <div class="reveal">
       
       <h2>Led by Director ${site.director}</h2>
-      <p>Under Edwin's leadership, BrightSteps sets out to be a reliable partner to Tamworth businesses and providers, and to treat workers and clients with respect.</p>
+      <p>Edwin set up BrightSteps to give regional employers and providers a staffing agency they can actually reach, and to treat workers and clients with respect.</p>
       <!-- Add a short, factual bio (background, qualifications, why he started BrightSteps) supplied by Edwin. -->
       <p>Want to talk about a staffing partnership? Edwin and the team would like to hear from you.</p>
       <div class="btn-row">${btn("contact.html", "Contact us", "secondary", "about-contact")}${callBtn()}</div>
@@ -396,7 +403,7 @@ ${ctaBand({ h2: "Request staff in two minutes", text: "Share your requirements a
         ["How do I get paid?", "Your hours are recorded on digital timesheets. We will explain pay rates and pay cycles before you start any role."],
         ["Does it cost anything to register?", "No. Registering with BrightSteps is free."],
       ], "Job seeker FAQs", "candidate-faq");
-      return `${pageHero({ crumbs: [["Find work", ""]], eyebrow: "For job seekers", h1: "Find work that fits your skills and your life", lead: "We place people in industrial, disability support, community and cleaning roles in Tamworth and across New South Wales, and we support you every step of the way.", ctas: btn("apply.html", "Apply for work", "primary", "find-work-hero-apply") + callBtn(), accent: "cat-community" })}
+      return `${pageHero({ crumbs: [["Find work", ""]], eyebrow: "For job seekers", h1: "Find work that fits your skills and your life", lead: "We place people in industrial, disability support, community and cleaning roles in Tamworth and across New South Wales, and we support you every step of the way.", ctas: btn("jobs.html", "See jobs available", "primary", "find-work-hero-jobs") + btn("apply.html", "Apply for work", "ghost", "find-work-hero-apply"), accent: "cat-community" })}
 
 <section class="section">
   <div class="container">

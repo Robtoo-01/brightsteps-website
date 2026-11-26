@@ -340,6 +340,17 @@
   document.querySelectorAll("[data-for]").forEach((el) => { el.hidden = el.dataset.for !== sent; });
   if (sent && document.querySelector(`[data-for="${CSS.escape(sent)}"]`)) document.querySelectorAll("[data-for-default]").forEach((el) => { el.hidden = true; });
 
+  /* Apply form: ?role=<slug> from the Jobs page fills in the role (known roles only) */
+  const roleInput = document.querySelector("[data-prefill-role]");
+  if (roleInput) {
+    const title = JSON.parse(roleInput.dataset.roles)[new URLSearchParams(location.search).get("role")];
+    if (title) {
+      roleInput.value = title;
+      document.querySelector("[data-role-name]").textContent = title;
+      document.querySelector("[data-role-line]").hidden = false;
+    }
+  }
+
   /* Contact map: load Google Maps only after the visitor asks for it */
   document.querySelectorAll("[data-show-map]").forEach((btn) => btn.addEventListener("click", () => {
     const box = btn.closest(".map-consent");

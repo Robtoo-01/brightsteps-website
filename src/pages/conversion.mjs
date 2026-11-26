@@ -2,6 +2,8 @@ import { site } from "../config.mjs";
 import { icon, btn, callBtn, pageHero, faq, ctaBand, tel, mailto, address } from "../layout.mjs";
 import { field, choices, consent, form } from "../forms.mjs";
 import { processSteps } from "./core.mjs";
+import { openJobs } from "./growth.mjs";
+import { newsCards } from "./news.mjs";
 
 // Phone fields accept the ways people actually type numbers: 0424 234 925, 0424-234-925, (02) 6766 1234, +61 424 234 925 (F2).
 const PHONE = 'pattern="\\+?\\(?[0-9]{1,4}\\)?([ \\-]?[0-9]){6,14}" data-pattern-msg="Enter a phone number, like 0424 234 925 or (02) 6766 1234"';
@@ -23,13 +25,6 @@ const pricingFaq = faq([
   ["Are there extra charges for nights, weekends or public holidays?", "Rates can vary with shift times, award conditions and location. Your quote will set out the rates that apply to your request before any work starts."],
   ["Is there a minimum booking or a cancellation fee?", "Any minimum shift length, cancellation notice and charges are set out in your quote before work starts. Our <a href=\"client-terms.html\">client terms</a> explain how bookings, timesheets and invoices work."],
 ], "Pricing questions", "pricing-faq");
-
-const emptyNews = `<div class="empty-state">
-  <span class="icon-badge" style="margin:0 auto var(--space-2)">${icon.calendar}</span>
-  <h2 style="font-size:var(--step-1)">News and events are coming soon</h2>
-  <p>We'll share local workforce updates, hiring events and BrightSteps news here.</p>
-  <div class="btn-row" style="justify-content:center">${btn("apply.html", "Register for work", "secondary", "news-empty-apply")}${btn("contact.html", "Contact us", "ghost", "news-empty-contact")}</div>
-</div>`;
 
 export const pages = [
   // ---------------- PRICING ----------------
@@ -85,22 +80,14 @@ ${ctaBand({ h2: "Get a quote for your exact needs", text: "Tell us the roles, ho
     file: "news.html",
     title: "Events & News | BrightSteps Recruitment Tamworth",
     description: "Workforce updates, hiring events and company news from BrightSteps Recruitment in Tamworth, NSW, for local employers and job seekers.",
-    noindex: true, // Hidden from search and the menu until there are real posts (report R17). Remove this line and re-add the nav/footer links when publishing.
     crumbs: [["Events & news", ""]],
     plan: { purpose: "Local SEO and trust through regular, genuine updates (hiring days, community involvement, workforce tips).", audience: "Employers, candidates, local community.", imagery: "A real photo per article, 16:9, with descriptive alt text.", conversion: "Empty state and article footer CTAs.", schemaNote: "Blog / ItemList when posts exist; each post uses Article (or Event for events)." },
     schema: [{ "@context": "https://schema.org", "@type": "Blog", name: "BrightSteps Events & News", url: `${site.url}/news`, publisher: { "@id": `${site.url}/#organization` } }],
-    body: `${pageHero({ crumbs: [["Events & news", ""]], eyebrow: "Events & news", h1: "News and events from BrightSteps", lead: "Local workforce updates, hiring events and company news from Tamworth." })}
+    body: `${pageHero({ crumbs: [["Events & news", ""]], eyebrow: "Events & news", h1: "News and events from BrightSteps", lead: "Hiring updates, practical guides for workers, and company news from our Tamworth team." })}
 <section class="section">
   <div class="container">
-    <!-- When you publish posts, replace the empty state with cards like this (copy news-article-template.html for each post):
-    <div class="grid grid--3">
-      <article class="card news-card">
-        <p class="meta"><time datetime="2027-02-01">1 February 2027</time> · News</p>
-        <h2 style="font-size:var(--step-1)"><a href="news-your-post.html">Post title</a></h2>
-        <p>One or two sentence summary.</p>
-      </article>
-    </div> -->
-    ${emptyNews}
+    <!-- Posts come from src/pages/news.mjs: add a post there, then rebuild. -->
+    ${newsCards}
   </div>
 </section>
 ${ctaBand()}`,
@@ -240,7 +227,9 @@ ${ctaBand()}`,
   <div class="container form-layout">
     ${form({
       id: "apply-form", endpoint: site.forms.apply, submit: "Submit application", time: "3 short steps · about 5 minutes · free",
-      body: `<fieldset><legend>1. About you</legend><div class="field-grid">
+      body: `<p class="form-role" data-role-line hidden>Applying for: <span data-role-name></span></p>
+      <input type="hidden" name="a-role" id="a-role" value="" data-prefill-role data-roles='${JSON.stringify(Object.fromEntries(openJobs.map((j) => [j.slug, j.title])))}'>
+      <fieldset><legend>1. About you</legend><div class="field-grid">
         ${field("a-first", "First name", { required: true, attrs: 'autocomplete="given-name"', requiredMsg: "Enter your first name" })}
         ${field("a-last", "Last name", { required: true, attrs: 'autocomplete="family-name"', requiredMsg: "Enter your last name" })}
         ${field("a-email", "Email", { type: "email", required: true, attrs: 'autocomplete="email" spellcheck="false"', requiredMsg: "Enter your email address" })}

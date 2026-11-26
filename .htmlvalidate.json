@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "html-validate:recommended"
+  ],
+  "rules": {
+    "no-inline-style": "off",
+    "no-trailing-whitespace": "off",
+    "no-raw-characters": [
+      "error",
+      {
+        "relaxed": true
+      }
+    ],
+    "tel-non-breaking": [
+      "error",
+      {
+        "ignoreClasses": [
+          "header-call",
+          "nav-call-card",
+          "hero-path"
+        ]
+      }
+    ]
+  }
+}
