@@ -1,7 +1,7 @@
 {
-  "show": true,
-  "order": 20,
   "title": "Mining labourer",
+  "show": false,
+  "order": 20,
   "sector": "industrial",
   "towns": [
     "Gunnedah",
