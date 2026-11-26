@@ -1,7 +1,7 @@
 {
-  "show": true,
-  "order": 30,
   "title": "Construction labourer",
+  "show": false,
+  "order": 30,
   "sector": "industrial",
   "towns": [
     "Tamworth",
