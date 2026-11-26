@@ -1,4 +1,5 @@
 import { site } from "../config.mjs";
+import { lowestRate, esc } from "../content.mjs";
 import { icon, btn, callBtn, pageHero, photo, faq, ctaBand, tel, mailto, address, pageUrl } from "../layout.mjs";
 
 const trust = `<ul class="trust-list">
@@ -60,7 +61,7 @@ export const processSteps = `<ol class="steps steps--4">
 const homeFaq = faq([
   ["How quickly can you supply staff?", "Timing depends on the role, the number of workers, the location and the checks your site needs. Call <a href=\"" + tel + "\">" + site.phone + "</a> for urgent requests and we will tell you straight away what we can do."],
   ["Are your workers screened and insured?", "Yes. Every worker is screened for their role, including a national police check, and a Working With Children Check (WWCC) and NDIS Worker Screening Check where the role requires them. We provide workers compensation and public liability insurance for every contract."],
-  ["What does it cost?", "Our indicative rates start from $65 an hour (ex GST) and include training, administration and insurance. See the <a href=\"pricing.html\">pricing schedule</a> or <a href=\"request-staff.html\">request a quote</a> for your exact needs."],
+  ["What does it cost?", (Number.isFinite(lowestRate()) ? `Our indicative rates start from $${lowestRate()} an hour (ex GST) and include training, administration and insurance.` : "Our rates include training, administration and insurance.") + " See the <a href=\"pricing.html\">pricing schedule</a> or <a href=\"request-staff.html\">request a quote</a> for your exact needs."],
   ["Which areas do you cover?", "We are based in Tamworth and supply workers across the New England and North West (including Armidale, Gunnedah, Quirindi, Moree and Narrabri), the Hunter (including Singleton and Newcastle) and Sydney. We only take on interstate work where we hold the labour hire licence that state requires. See <a href=\"areas-we-cover.html\">areas we cover</a>, or tell us where you need people and we will confirm what we can do."],
   ["I'm looking for work. How do I apply?", "Register through our <a href=\"apply.html\">online application</a>. Tell us the type of work you want and your availability, and our team will be in touch about suitable roles."],
 ]);
@@ -215,7 +216,7 @@ ${site.showReviews ? `<section class="section section--sand" aria-labelledby="re
       <p class="lead">Our office is in Tamworth. From here we supply screened, supported workers to sites and providers across the New England and North West, the Hunter and Sydney. We take on interstate work only where we hold the labour hire licence that state requires.</p>
       <p>Find us at <a href="contact.html">${address}</a>. <a class="text-link" href="areas-we-cover.html">See all areas we cover</a></p>
     </div>
-    <div><ul class="chips">${site.areas.map((a) => `<li>${a}</li>`).join("")}</ul><ul class="chips chips--towns">${Object.values(site.towns).flat().map((t) => `<li>${t}</li>`).join("")}</ul></div>
+    <div><ul class="chips">${site.areas.map((a) => `<li>${a}</li>`).join("")}</ul><ul class="chips chips--towns">${Object.values(site.towns).flat().map((t) => `<li>${esc(t)}</li>`).join("")}</ul></div>
   </div>
 </section>
 

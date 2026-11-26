@@ -1,3 +1,5 @@
+import { regions } from "./content.mjs";
+
 // Single source of truth for business details. Change here, then run `node src/build.mjs`.
 export const site = {
   name: "BrightSteps Recruitment",
@@ -27,25 +29,10 @@ export const site = {
   // Service area: NSW only until labour hire licences are held in QLD, VIC, SA or the ACT (report R03, 24 Nov 2026).
   // Add a state here only once BrightSteps holds that state's licence. Shown as chips and in schema.
   areas: ["New South Wales"],
-  // Towns we supply workers to, all in NSW. Shown on the home page, Areas we cover, Jobs, and in schema.
-  towns: {
-    "New England & North West": ["Tamworth", "Armidale", "Gunnedah", "Quirindi", "Moree", "Narrabri", "Inverell", "Glen Innes", "Manilla", "Werris Creek", "Walcha", "Uralla"],
-    "Hunter": ["Singleton", "Muswellbrook", "Scone", "Newcastle"],
-    "Sydney": ["Sydney"],
-  },
-  // JOBS ON/OFF: true = the role shows on the Jobs page; false = hidden (its old Apply links still open a blank application).
-  // Change true/false, then rebuild and deploy (see docs/08-content-editing-guide.md, "Turn a job on or off").
-  jobs: {
-    "general-labourer": true,
-    "mining-labourer": true,
-    "construction-labourer": true,
-    "warehouse-logistics": true,
-    "disability-support-worker": true,
-    "community-support-worker": true,
-    "transport-community-access": true,
-    "cleaner-domestic-support": true,
-    "support-coordinator-assistant": true,
-  },
+  // Towns are edited in Pages CMS (content/settings/areas.json).
+  towns: Object.fromEntries(regions.map((r) => [r.name, r.towns])),
+
+
   // Reviews section on the home page. Off until there are real, consented reviews.
   showReviews: false,
   // Website developer credit shown in the footer.

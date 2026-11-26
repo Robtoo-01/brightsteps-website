@@ -4,6 +4,7 @@ import { field, choices, consent, form } from "../forms.mjs";
 import { processSteps } from "./core.mjs";
 import { openJobs } from "./growth.mjs";
 import { newsCards } from "./news.mjs";
+import { rates, rateKeys, price, esc } from "../content.mjs";
 
 // Phone fields accept the ways people actually type numbers: 0424 234 925, 0424-234-925, (02) 6766 1234, +61 424 234 925 (F2).
 const PHONE = 'pattern="\\+?\\(?[0-9]{1,4}\\)?([ \\-]?[0-9]){6,14}" data-pattern-msg="Enter a phone number, like 0424 234 925 or (02) 6766 1234"';
@@ -31,12 +32,12 @@ export const pages = [
   {
     file: "pricing.html",
     title: "Labour Hire & Support Worker Rates (ex GST) | BrightSteps Pricing",
-    description: "Transparent indicative rates: general labourer $70/hr, disability support worker $68/hr, transport and community access $65/hr (ex GST). Request a tailored quote.",
+    description: `Transparent indicative rates (ex GST): ${rateKeys.filter(price).slice(0, 3).map((k) => `${esc(rates[k].label).toLowerCase()} ${price(k)}/hr`).join(", ")}. Request a tailored quote.`,
     crumbs: [["Pricing schedule", ""]],
     plan: { purpose: "Show published rates (a differentiator) and convert price-checkers into quote requests.", audience: "Procurement, finance, operations and service managers.", imagery: "None; a clean rate table builds trust.", conversion: "Rate table with 'Get a quote' CTAs, FAQ, CTA band.", schemaNote: "OfferCatalog (Offers with UnitPriceSpecification, AUD, ex GST), FAQPage, BreadcrumbList." },
     schema: [{
       "@context": "https://schema.org", "@type": "OfferCatalog", name: "BrightSteps indicative hourly rates", url: `${site.url}/pricing`,
-      itemListElement: [["General labourer (mining or construction)", 70], ["Disability support worker", 68], ["Transport and community access", 65]].map(([name, price]) => ({
+      itemListElement: rateKeys.filter(price).map((k) => [rates[k].label, Number(rates[k].rate)]).map(([name, price]) => ({
         "@type": "Offer", itemOffered: { "@type": "Service", name }, seller: { "@id": `${site.url}/#organization` },
         priceSpecification: { "@type": "UnitPriceSpecification", price, priceCurrency: "AUD", unitCode: "HUR", valueAddedTaxIncluded: false },
       })),
@@ -50,16 +51,13 @@ export const pages = [
         <caption>Indicative hourly rates, excluding GST. Your quote confirms the final rate.</caption>
         <thead><tr><th scope="col">Role</th><th scope="col">What's included</th><th scope="col">Rate (ex GST)</th></tr></thead>
         <tbody>
-          <tr><th scope="row">General labourer<small>Mining and construction</small></th><td>Reliable, experienced staff who put on-site safety first.</td><td><span class="rate">$70</span><small>per hour</small></td></tr>
-          <tr><th scope="row">Disability support worker<small>In-home, community access, respite, registered SIL providers' homes</small></th><td>Screened, experienced personnel. Supported by our 24/7 team. Under review for the award increase from 1 December 2026.</td><td><span class="rate">$68</span><small>per hour</small></td></tr>
-          <tr><th scope="row"><a href="transport-community-access.html">Transport &amp; community access</a></th><td>Reliable transport backed by 24/7 management support. Vehicle costs negotiable.</td><td><span class="rate">$65</span><small>per hour + vehicle</small></td></tr>
-          <tr><th scope="row">Community support worker</th><td>Experienced personnel for community programs.</td><td><a href="request-staff.html" data-track="pricing-quote-community">Get a quote</a></td></tr>
-          <tr><th scope="row"><a href="cleaning-domestic-support.html">Cleaner / domestic support</a><small>Residential and commercial</small></th><td>Flexible solutions with full insurance.</td><td><a href="request-staff.html" data-track="pricing-quote-cleaning">Get a quote</a></td></tr>
-          <tr><th scope="row">Support coordinator assistant</th><td>Administrative focus, streamlined timesheets and billing.</td><td><a href="request-staff.html" data-track="pricing-quote-sca">Get a quote</a></td></tr>
+          ${rateKeys.map((k) => { const r = rates[k]; const link = {"transport":"transport-community-access.html","cleaner":"cleaning-domestic-support.html"}[k];
+            const name = link ? `<a href="${link}">${esc(r.label)}</a>` : esc(r.label);
+            return `<tr><th scope="row">${name}${r.detail ? `<small>${esc(r.detail)}</small>` : ""}</th><td>${esc(r.included)}</td><td>${price(k) ? `<span class="rate">${price(k)}</span><small>${esc(r.unit)}</small>` : `<a href="request-staff.html" data-track="pricing-quote-${k}">Get a quote</a>`}</td></tr>`; }).join("\n          ")}
         </tbody>
       </table>
     </div>
-    <p class="hint" style="margin-top:var(--space-2)">Rates are a guide and may vary with shift times, award conditions, location and requirements. Your written quote sets out the rates that apply before work starts. The disability support rate is being reviewed for the SCHADS Award increase that starts on 1 December 2026. See our <a href="client-terms.html">client terms</a>.</p>
+    <p class="hint" style="margin-top:var(--space-2)">${esc(rates.footnote)} See our <a href="client-terms.html">client terms</a>.</p>
   </div>
 </section>
 
@@ -228,7 +226,7 @@ ${ctaBand()}`,
     ${form({
       id: "apply-form", endpoint: site.forms.apply, submit: "Submit application", time: "3 short steps · about 5 minutes · free",
       body: `<p class="form-role" data-role-line hidden>Applying for: <span data-role-name></span></p>
-      <input type="hidden" name="a-role" id="a-role" value="" data-prefill-role data-roles='${JSON.stringify(Object.fromEntries(openJobs.map((j) => [j.slug, j.title])))}'>
+      <input type="hidden" name="a-role" id="a-role" value="" data-prefill-role data-roles="${esc(JSON.stringify(Object.fromEntries(openJobs.map((j) => [j.slug, j.title]))))}">
       <fieldset><legend>1. About you</legend><div class="field-grid">
         ${field("a-first", "First name", { required: true, attrs: 'autocomplete="given-name"', requiredMsg: "Enter your first name" })}
         ${field("a-last", "Last name", { required: true, attrs: 'autocomplete="family-name"', requiredMsg: "Enter your last name" })}

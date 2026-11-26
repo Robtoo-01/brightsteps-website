@@ -1,6 +1,7 @@
 import { site } from "../config.mjs";
 import { icon, btn, callBtn, pageHero, photo, faq, ctaBand, serviceSchema } from "../layout.mjs";
 import { standard, standardCare, processSteps } from "./core.mjs";
+import { price, priceText } from "../content.mjs";
 
 // One template for the four service pages; copy differs, structure stays consistent.
 function servicePage({ file, crumb, title, description, eyebrow, h1, lead, accent, iconName, roles, settings, benefitsTitle, benefits, photoBrief, photoAlt, photoSrc = "", note = "", aside = "", faqs, schemaType, related, plan, care = true }) {
@@ -77,7 +78,7 @@ export const pages = [
     care: false,
     crumb: "Industrial labour hire",
     title: "Labour Hire Tamworth: Mining & Construction Workers | BrightSteps",
-    description: "Ticketed labourers for mines, civil sites and warehouses in Tamworth, Gunnedah, Narrabri, the Hunter and beyond. From $70/hr ex GST. Call 0424 234 925, 24/7.",
+    description: `Ticketed labourers for mines, civil sites and warehouses in Tamworth, Gunnedah, Narrabri, the Hunter and beyond. ${price("generalLabourer") ? `From ${price("generalLabourer")}/hr ex GST.` : "Priced by quote."} Call 0424 234 925, 24/7.`,
     eyebrow: "Industrial labour hire",
     h1: "Labourers for mines, civil sites and warehouses across regional NSW",
     lead: "General and site labourers with the tickets your site needs, from Tamworth to Gunnedah, Narrabri and the Hunter. Book by phone or online, backed by a team on call 24/7.",
@@ -96,7 +97,7 @@ export const pages = [
     photoSrc: "industrial-worker.webp",
     faqs: [
       ["Can you supply workers with specific tickets or licences?", "Yes. Tell us what your site needs (for example a White Card, forklift licence or specific inductions) and we will match workers who hold them."],
-      ["What does a general labourer cost?", "Our indicative rate for a general labourer for mining or construction is $70 an hour, excluding GST. It includes training, administration and insurance costs. <a href=\"pricing.html\">See pricing</a>."],
+      ["What does a general labourer cost?", `Our indicative rate for a general labourer for mining or construction is ${priceText("generalLabourer")}. It includes training, administration and insurance costs. <a href="pricing.html">See pricing</a>.`],
       ["Can you supply a whole crew?", "Yes. From one worker to a full crew, tell us the numbers and timing and we will confirm what we can mobilise."],
       ["Who is responsible for safety on site?", "Safety is shared. You provide a safe site, a site induction and day-to-day supervision. We check that workers hold the tickets and PPE the role needs, and we follow up any incident with you. See our <a href=\"client-terms.html\">client terms</a>."],
     ],
@@ -129,7 +130,7 @@ export const pages = [
     faqs: [
       ["What checks do your support workers have?", "Every worker is screened for their role, including a national police check, and a WWCC and NDIS Worker Screening Check where the role requires them. We confirm each worker's checks before placing them. Tell us about any extra screening your organisation or participants need, and we will confirm which workers meet it."],
       ["Do you deliver SIL?", "No. We supply support workers to providers. Supported Independent Living must be delivered by a provider registered with the NDIS Quality and Safeguards Commission. In a SIL home, your organisation remains that provider."],
-      ["What does a disability support worker cost?", "Our indicative rate for a disability support worker is $68 an hour, excluding GST, including training, administration and insurance costs. We are reviewing this rate for the award increase that starts on 1 December 2026, and your quote confirms the current rate. <a href=\"pricing.html\">See pricing</a>."],
+      ["What does a disability support worker cost?", `Our indicative rate for a disability support worker is ${priceText("disabilitySupportWorker")}, including training, administration and insurance costs. Your quote confirms the current rate. <a href="pricing.html">See pricing</a>.`],
       ["Can you provide regular workers for continuity?", "Yes. Let us know if you want the same workers on a regular roster and we will work to keep continuity for your participants."],
       ["How do I raise a concern about a worker?", "Call us any time on " + site.phone + ". Our <a href=\"complaints.html\">feedback and complaints</a> page explains how we handle concerns, and how participants can contact the NDIS Quality and Safeguards Commission."],
     ],
@@ -159,7 +160,7 @@ export const pages = [
     photoAlt: "Carer holding hands and laughing with an older woman in a lounge room",
     photoSrc: "community-care.webp",
     faqs: [
-      ["What does transport and community access cost?", "Our indicative rate is $65 an hour, excluding GST. The hourly rate is fixed and vehicle costs are negotiable. <a href=\"transport-community-access.html\">See transport and community access</a>."],
+      ["What does transport and community access cost?", `Our indicative rate is ${priceText("transport")}. The hourly rate is fixed and vehicle costs are negotiable. <a href="transport-community-access.html">See transport and community access</a>.`],
       ["Do you provide cleaning for both homes and businesses?", "Yes. We supply residential and commercial cleaners, plus domestic support with daily household tasks. <a href=\"cleaning-domestic-support.html\">See cleaning and domestic support</a>."],
       ["What does a support coordinator assistant do?", "They provide administrative support, such as scheduling, records and timesheets, so coordinators can focus on participants."],
     ],
@@ -252,7 +253,7 @@ pages.push(
     roles: ["Driver-support workers", "Community access support", "Transport to appointments, work and activities"],
     settings: "Participants' homes, appointments, workplaces and community activities in Tamworth and across New South Wales.",
     aside: glance([
-      "<strong>Rate:</strong> $65 an hour (ex GST) plus vehicle costs",
+      `<strong>Rate:</strong> ${price("transport") ? `${price("transport")} an hour (ex GST) plus vehicle costs` : "priced by quote"}`,
       "<strong>Vehicle costs:</strong> negotiable, and agreed in your quote before the first trip",
       "<strong>Vehicle and insurance:</strong> we confirm in writing whose vehicle is used and how it is insured",
       "<strong>Terms:</strong> see our <a href=\"client-terms.html\">client terms</a>",
@@ -264,7 +265,7 @@ pages.push(
       ["dollar", "Clear costs", "An hourly rate plus vehicle costs, agreed in your quote before the first trip."],
     ],
     faqs: [
-      ["What does transport and community access cost?", "Our indicative rate is $65 an hour, excluding GST, plus vehicle costs. Vehicle costs are negotiable and set out in your quote. <a href=\"pricing.html\">See pricing</a>."],
+      ["What does transport and community access cost?", `Our indicative rate is ${priceText("transport")}, plus vehicle costs. Vehicle costs are negotiable and set out in your quote. <a href="pricing.html">See pricing</a>.`],
       ["Whose vehicle is used?", "It depends on the booking. Before the first trip we confirm in writing which vehicle will be used and how it is insured."],
       ["Can the worker support the participant at the destination?", "Yes. Our workers can support participants during appointments and activities, as well as driving them there and back."],
     ],
