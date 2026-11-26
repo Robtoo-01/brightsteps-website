@@ -1,7 +1,7 @@
 {
+  "title": "Support worker",
   "show": true,
-  "order": 50,
-  "title": "Disability support worker",
+  "order": 49,
   "sector": "disability",
   "towns": [
     "Tamworth",
