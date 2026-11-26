@@ -1,7 +1,7 @@
 {
-  "show": true,
-  "order": 90,
   "title": "Support coordinator assistant",
+  "show": false,
+  "order": 90,
   "sector": "community",
   "towns": [
     "Tamworth",
