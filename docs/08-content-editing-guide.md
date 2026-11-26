@@ -100,26 +100,7 @@ npm run lint
 - Keep the two journeys separate: "Request staff" for employers, "Apply for work" for job seekers.
 - Link text should say where it goes ("See pricing"), never "click here".
 
-## Turn a job on or off (added 26 Nov 2026)
+## Jobs, news, rates and towns: use Pages CMS (updated 26 Nov 2026)
 
-Every advert on the Jobs page has a switch in `src/config.mjs`, in the `jobs:` list:
-
-```js
-jobs: {
-  "general-labourer": false,          // hidden
-  "disability-support-worker": true,  // shown
-  ...
-},
-```
-
-1. Change `true` to `false` to hide a role, or `false` to `true` to show it again. Change nothing else on the line.
-2. Rebuild and deploy:
-   - **If Netlify builds from GitHub:** edit `src/config.mjs` on github.com (pencil icon) and commit. Netlify rebuilds and publishes in about a minute.
-   - **If you upload the site by hand:** run `npm run build`, then drag the `site` folder onto the Netlify deploys page.
-3. Check `/jobs` on the live site.
-
-A hidden role disappears from the Jobs page. If someone follows an old link for it, the application form opens without the role filled in, so their application still arrives. With every role off, the Jobs page shows "We're not advertising specific roles right now" and a Register button.
-
-## Add a news post
-
-Posts live in `src/pages/news.mjs`, newest first. Copy one block, give it a new `file` name (starting `news-`), `date`, `tag`, `title`, `summary` (110–165 characters) and `body`, then rebuild. The post appears on the News page and in the sitemap automatically.
+These four are now edited in Pages CMS, not in code. See [11-content-editor.md](11-content-editor.md) for setup (IT manager) and the manager's guide.
+The content lives in `content/` as JSON files; `src/content.mjs` reads and checks it at build time.

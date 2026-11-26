@@ -511,7 +511,7 @@ Full copy: see `site/jobs.html`.
 **Heading structure**
 
 - H1: Where we supply workers
-  - H2: New England & North West
+  - H2: New England &amp; North West
   - H2: Hunter
   - H2: Sydney
   - H2: What we supply in these areas
@@ -522,32 +522,6 @@ Full copy: see `site/jobs.html`.
   - H2: Need people in your town?
 
 Full copy: see `site/areas-we-cover.html`.
-
----
-
-## We're registering workers across regional NSW (`news-hiring-regional-nsw.html`)
-
-| | |
-|---|---|
-| Purpose | News post. |
-| Audience | Employers, job seekers, local community. |
-| SEO title | We're registering workers across regional NSW | BrightSteps (59 chars) |
-| Meta description | Casual labouring, mining, disability support, community, transport and cleaning roles from Tamworth to the Hunter and Sydney. Here's what we're looking for. (156 chars) |
-| Indexing | index, canonical |
-| Calls to action | Request staff · Looking for work? See jobs |
-| Conversion elements | Links to Jobs and services; CTA band. |
-| Imagery | None yet; add a real photo when available. |
-| Internal links | `index.html`, `news.html`, `jobs.html`, `apply.html`, `request-staff.html` |
-| Schema | EmploymentAgency, Article, BreadcrumbList (Article.) |
-
-**Heading structure**
-
-- H1: We're registering workers across regional NSW
-  - H2: Who we're looking for
-  - H2: How to apply
-  - H2: Need reliable people on the ground?
-
-Full copy: see `site/news-hiring-regional-nsw.html`.
 
 ---
 
@@ -569,11 +543,36 @@ Full copy: see `site/news-hiring-regional-nsw.html`.
 **Heading structure**
 
 - H1: Where BrightSteps supplies workers
-  - H2: Towns we cover
   - H2: What we supply
   - H2: Need reliable people on the ground?
 
 Full copy: see `site/news-areas-we-cover.html`.
+
+---
+
+## We&#39;re registering workers across regional NSW (`news-hiring-regional-nsw.html`)
+
+| | |
+|---|---|
+| Purpose | News post. |
+| Audience | Employers, job seekers, local community. |
+| SEO title | We&#39;re registering workers across regional NSW | BrightSteps (63 chars) |
+| Meta description | Casual labouring, mining, disability support, community, transport and cleaning roles from Tamworth to the Hunter and Sydney. Here&#39;s what we&#39;re looking for. (164 chars) |
+| Indexing | index, canonical |
+| Calls to action | Request staff · Looking for work? See jobs |
+| Conversion elements | Links to Jobs and services; CTA band. |
+| Imagery | None yet; add a real photo when available. |
+| Internal links | `index.html`, `news.html`, `jobs.html`, `apply.html`, `request-staff.html` |
+| Schema | EmploymentAgency, Article, BreadcrumbList (Article.) |
+
+**Heading structure**
+
+- H1: We&#39;re registering workers across regional NSW
+  - H2: Who we're looking for
+  - H2: How to apply
+  - H2: Need reliable people on the ground?
+
+Full copy: see `site/news-hiring-regional-nsw.html`.
 
 ---
 
@@ -584,7 +583,7 @@ Full copy: see `site/news-areas-we-cover.html`.
 | Purpose | News post. |
 | Audience | Employers, job seekers, local community. |
 | SEO title | How to get an NDIS Worker Check in NSW | BrightSteps (52 chars) |
-| Meta description | Most disability support roles need an NDIS Worker Check. Here's how the NSW process works, step by step, and what to bring. (123 chars) |
+| Meta description | Most disability support roles need an NDIS Worker Check. Here&#39;s how the NSW process works, step by step, and what to bring. (127 chars) |
 | Indexing | index, canonical |
 | Calls to action | Request staff · Looking for work? See jobs |
 | Conversion elements | Links to Jobs and services; CTA band. |
@@ -612,7 +611,7 @@ Full copy: see `site/news-ndis-worker-check-nsw.html`.
 | Purpose | News post. |
 | Audience | Employers, job seekers, local community. |
 | SEO title | What is a White Card, and how do you get one in NSW? | BrightSteps (66 chars) |
-| Meta description | You need a White Card to work on a construction site. Here's how to get one in NSW and how long it stays valid. (111 chars) |
+| Meta description | You need a White Card to work on a construction site. Here&#39;s how to get one in NSW and how long it stays valid. (115 chars) |
 | Indexing | index, canonical |
 | Calls to action | Request staff · Looking for work? See jobs |
 | Conversion elements | Links to Jobs and services; CTA band. |
@@ -638,7 +637,7 @@ Full copy: see `site/news-white-card-nsw.html`.
 | Purpose | Show published rates (a differentiator) and convert price-checkers into quote requests. |
 | Audience | Procurement, finance, operations and service managers. |
 | SEO title | Labour Hire & Support Worker Rates (ex GST) | BrightSteps Pricing (65 chars) |
-| Meta description | Transparent indicative rates: general labourer $70/hr, disability support worker $68/hr, transport and community access $65/hr (ex GST). Request a tailored quote. (162 chars) |
+| Meta description | Transparent indicative rates (ex GST): general labourer $70/hr, disability support worker $68/hr, transport &amp; community access $65/hr. Request a tailored quote. (164 chars) |
 | Indexing | index, canonical |
 | Calls to action | Get a quote · Call 0424 234 925 · Request staff |
 | Conversion elements | Rate table with 'Get a quote' CTAs, FAQ, CTA band. |
@@ -673,14 +672,14 @@ Full copy: see `site/pricing.html`.
 | Calls to action | Request staff · Call 0424 234 925 |
 | Conversion elements | Empty state and article footer CTAs. |
 | Imagery | A real photo per article, 16:9, with descriptive alt text. |
-| Internal links | `index.html`, `news-hiring-regional-nsw.html`, `news-areas-we-cover.html`, `news-ndis-worker-check-nsw.html`, `news-white-card-nsw.html`, `request-staff.html` |
+| Internal links | `index.html`, `news-areas-we-cover.html`, `news-hiring-regional-nsw.html`, `news-ndis-worker-check-nsw.html`, `news-white-card-nsw.html`, `request-staff.html` |
 | Schema | EmploymentAgency, Blog, BreadcrumbList (Blog / ItemList when posts exist; each post uses Article (or Event for events).) |
 
 **Heading structure**
 
 - H1: News and events from BrightSteps
-  - H2: We're registering workers across regional NSW
   - H2: Where BrightSteps supplies workers
+  - H2: We&#39;re registering workers across regional NSW
   - H2: How to get an NDIS Worker Check in NSW
   - H2: What is a White Card, and how do you get one in NSW?
   - H2: Need reliable people on the ground?

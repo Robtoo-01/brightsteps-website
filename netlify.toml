@@ -1,0 +1,8 @@
+# Netlify builds the site from GitHub on every commit (including edits made in Pages CMS).
+# The build needs no packages. If it finds a problem, it stops and the live site stays as it was.
+[build]
+  command = "node src/build.mjs"
+  publish = "site"
+
+[build.environment]
+  NODE_VERSION = "22"

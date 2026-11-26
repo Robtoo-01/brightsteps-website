@@ -41,7 +41,7 @@ test("Care pages no longer use construction wording for insurance", () => {
 });
 
 test("Every job advert's Apply button maps to a role the form knows", () => {
-  const roles = JSON.parse(read("apply.html").match(/data-roles='([^']+)'/)[1]);
+  const roles = JSON.parse(read("apply.html").match(/data-roles="([^"]+)"/)[1].replaceAll("&quot;", '"'));
   const slugs = [...read("jobs.html").matchAll(/href="apply\.html\?role=([a-z-]+)"/g)].map((m) => m[1]);
   assert.equal(slugs.length, 9);
   for (const s of slugs) assert.ok(roles[s], `no role for ${s}`);
@@ -67,14 +67,3 @@ test("News: every post is listed on the news page, indexed and cites official so
   assert.ok(read("news-white-card-nsw.html").includes("https://www.safework.nsw.gov.au/licences-and-registrations/white-cards"));
 });
 
-test("Jobs switch: a role set to false in config disappears from the Jobs page and the Apply form", async () => {
-  const { site } = await import("../src/config.mjs");
-  for (const k of Object.keys(site.jobs)) site.jobs[k] = k === "disability-support-worker";
-  const growth = await import("../src/pages/growth.mjs?switch-test");
-  assert.deepEqual(growth.openJobs.map((j) => j.slug), ["disability-support-worker"]);
-  const jobsPage = growth.pages.find((p) => p.file === "jobs.html").body;
-  assert.equal([...jobsPage.matchAll(/apply\.html\?role=/g)].length, 1);
-  for (const k of Object.keys(site.jobs)) site.jobs[k] = false;
-  const none = await import("../src/pages/growth.mjs?none-test");
-  assert.ok(none.pages.find((p) => p.file === "jobs.html").body.includes("not advertising specific roles right now"));
-});
