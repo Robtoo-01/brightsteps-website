@@ -44,7 +44,7 @@ cover = f"""<div class="cover">
 <img src="{LOGO}" width="300" alt="BrightSteps Recruitment">
 <h1>Website documentation</h1>
 <p>brightstepsrecruitment.com.au</p>
-<p>BrightSteps Recruitment · 6A Edinburgh Avenue, Tamworth NSW 2340 · ABN 71 374 775 561</p>
+<p>BrightSteps Recruitment · 6A Edinburgh Avenue, Tamworth NSW 2340 · ABN 18 296 245 747</p>
 <p>Updated 24 November 2026</p>
 <h2>Contents</h2>
 <ul class="toc">{''.join(f'<li>{t}</li>' for t in toc)}</ul>

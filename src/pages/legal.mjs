@@ -164,7 +164,7 @@ export const pages = [
   // Source: BrightSteps Legal Notice (PDF, January 2026), with ABN, address and contact details added.
   legalPage("terms.html", "Legal notice & terms",
     "Legal Notice & Website Terms | BrightSteps Recruitment",
-    "Legal notice, business details and website terms of use for BrightSteps Recruitment, Tamworth NSW. ABN 71 374 775 561.",
+    `Legal notice, business details and website terms of use for BrightSteps Recruitment, Tamworth NSW. ABN ${site.abn}.`,
     "Legal notice and website terms",
     `Last updated: ${site.lastUpdated}`,
     `<h2>1. Company information</h2>

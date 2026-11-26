@@ -59,7 +59,7 @@ const footer = new Footer({
     para(run(""), { after: 80, border: { top: { style: BorderStyle.SINGLE, size: 6, color: "DCE1E6", space: 1 } } }),
     para([
       run("BrightSteps Recruitment", { size: 15, color: NAVY, bold: true }),
-      run("   ·   6A Edinburgh Avenue, Tamworth NSW 2340   ·   ABN 71 374 775 561", { size: 15, color: SLATE }),
+      run("   ·   6A Edinburgh Avenue, Tamworth NSW 2340   ·   ABN 18 296 245 747", { size: 15, color: SLATE }),
     ], { align: AlignmentType.CENTER, after: 40 }),
     para([
       run("Reliable people. Right when you need them.", { size: 15, color: TEAL, bold: true }),

@@ -67,3 +67,12 @@ test("News: every post is listed on the news page, indexed and cites official so
   assert.ok(read("news-white-card-nsw.html").includes("https://www.safework.nsw.gov.au/licences-and-registrations/white-cards"));
 });
 
+
+test("The ABN in config passes the official ABN checksum", async () => {
+  const { site } = await import("../src/config.mjs");
+  const d = site.abn.replace(/\s/g, "").split("").map(Number);
+  assert.equal(d.length, 11);
+  d[0] -= 1;
+  const sum = d.reduce((t, n, i) => t + n * [10, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19][i], 0);
+  assert.equal(sum % 89, 0, `${site.abn} is not a valid ABN`);
+});

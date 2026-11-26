@@ -30,7 +30,7 @@ The full audit is section 1 (`docs/01-audit.md`). In short, the original site ha
 | Calls to action | Request staff (employers), Get a quote (pricing), Find work / Apply for work (candidates), Contact us, Call 0424 234 925 |
 | Trust content | Police check and WWCC, workers compensation and public liability insurance, 24/7 support, locally owned in Tamworth, Director Edwin Ngetich, the four-step process, published rates ($70 / $68 / $65 per hour, ex GST) |
 | Policies | Privacy policy and legal notice (based on your January 2026 PDFs), accessibility statement, cookie choice |
-| Business details | 6A Edinburgh Avenue, Tamworth NSW 2340 · 0424 234 925 · info@brightstepsrecruitment.com.au · ABN 71 374 775 561 |
+| Business details | 6A Edinburgh Avenue, Tamworth NSW 2340 · 0424 234 925 · info@brightstepsrecruitment.com.au · ABN 18 296 245 747 |
 | Clearly labelled placeholders | Photos (each with a shot brief) and review cards (marked "Placeholder: not a real review") |
 
 ## 3. Issues to fix: status

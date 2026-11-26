@@ -89,7 +89,10 @@ test("R19: contact page loads no Google map until asked", () => {
 });
 
 test("Unchanged: ABN, GST and Director wording", () => {
-  for (const f of pages) assert.ok(read(f).includes("ABN 71 374 775 561"), `${f} lost the ABN`);
+  for (const f of pages) {
+    assert.ok(read(f).includes("ABN 18 296 245 747"), `${f} lost the ABN`);
+    assert.ok(!read(f).includes("71 374 775 561"), `${f} still shows the old ABN`);
+  }
   assert.ok(read("pricing.html").includes("All rates exclude GST."));
   assert.ok(read("terms.html").includes("<strong>Director:</strong> Edwin Ngetich"));
   assert.ok(read("about.html").includes("Led by Director Edwin Ngetich"));

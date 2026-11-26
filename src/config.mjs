@@ -10,7 +10,7 @@ export const site = {
   phoneIntl: "+61424234925",
   // Owner decision (23 Nov 2026): use the brightstepsrecruitment domain for email, matching the website.
   email: "info@brightstepsrecruitment.com.au",
-  abn: "71 374 775 561",
+  abn: "18 296 245 747",
   street: "6A Edinburgh Avenue",
   locality: "Tamworth",
   region: "NSW",

@@ -870,7 +870,7 @@ Full copy: see `site/privacy.html`.
 | Purpose | Australian business identification and website terms. Based on the business's own January 2026 legal notice. |
 | Audience | Clients, procurement, legal reviewers. |
 | SEO title | Legal Notice & Website Terms | BrightSteps Recruitment (54 chars) |
-| Meta description | Legal notice, business details and website terms of use for BrightSteps Recruitment, Tamworth NSW. ABN 71 374 775 561. (118 chars) |
+| Meta description | Legal notice, business details and website terms of use for BrightSteps Recruitment, Tamworth NSW. ABN 18 296 245 747. (118 chars) |
 | Indexing | index, canonical |
 | Calls to action | None |
 | Conversion elements | Contact details. |
