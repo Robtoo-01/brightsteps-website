@@ -1,0 +1,29 @@
+{
+  "show": true,
+  "order": 60,
+  "title": "Community support worker",
+  "sector": "community",
+  "towns": [
+    "Tamworth",
+    "Armidale",
+    "Gunnedah",
+    "Inverell"
+  ],
+  "intro": "Work with community organisations on programs that keep people connected: group activities, outreach, and day programs.",
+  "duties": [
+    "Running and supporting group activities",
+    "One-on-one community support",
+    "Helping clients reach services and appointments",
+    "Keeping accurate records"
+  ],
+  "need": [
+    "Right to work in Australia",
+    "National police check (we can arrange)",
+    "Working With Children Check where the role needs it"
+  ],
+  "nice": [
+    "Certificate in community services or individual support",
+    "Driver licence",
+    "Experience with Aboriginal or culturally diverse communities"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "show": true,
+  "order": 20,
+  "title": "Mining labourer",
+  "sector": "industrial",
+  "towns": [
+    "Gunnedah",
+    "Narrabri",
+    "Singleton",
+    "Muswellbrook"
+  ],
+  "intro": "Labouring shifts on and around mine sites in the Gunnedah Basin and the Hunter, including shutdowns, wash bays, site services and general labouring.",
+  "duties": [
+    "General labouring, housekeeping and wash-down",
+    "Shutdown and maintenance support",
+    "Material handling and stores",
+    "Working to mine site safety systems"
+  ],
+  "need": [
+    "Right to work in Australia",
+    "White Card",
+    "Willingness to complete site inductions and drug and alcohol testing",
+    "Driver licence and reliable transport"
+  ],
+  "nice": [
+    "Coal Board medical",
+    "Previous mine site experience",
+    "Working at heights or confined space tickets"
+  ]
+}

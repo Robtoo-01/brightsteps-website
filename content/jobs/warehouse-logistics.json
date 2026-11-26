@@ -1,0 +1,29 @@
+{
+  "show": true,
+  "order": 40,
+  "title": "Warehouse and logistics worker",
+  "sector": "industrial",
+  "towns": [
+    "Tamworth",
+    "Moree",
+    "Newcastle",
+    "Sydney"
+  ],
+  "intro": "Shifts in warehouses, distribution centres and grain and freight facilities, including peak-season work.",
+  "duties": [
+    "Pick, pack and dispatch",
+    "Receiving and checking stock",
+    "Forklift operation where licensed",
+    "Keeping the floor clean and safe"
+  ],
+  "need": [
+    "Right to work in Australia",
+    "Steel-capped boots",
+    "Able to do physical work for a full shift"
+  ],
+  "nice": [
+    "Forklift licence (LF)",
+    "RF scanner or warehouse system experience",
+    "Harvest or grain receival experience"
+  ]
+}

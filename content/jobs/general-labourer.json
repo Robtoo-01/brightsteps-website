@@ -1,0 +1,33 @@
+{
+  "show": true,
+  "order": 10,
+  "title": "General labourer",
+  "sector": "industrial",
+  "towns": [
+    "Tamworth",
+    "Gunnedah",
+    "Quirindi",
+    "Narrabri",
+    "Moree",
+    "Armidale",
+    "Inverell"
+  ],
+  "intro": "Steady casual work on construction, agricultural, industrial and warehouse sites. Good for people who like being on their feet and want regular shifts close to home.",
+  "duties": [
+    "Site set-up, clean-up and material handling",
+    "Loading, unloading and stacking",
+    "Helping trades and operators keep the job moving",
+    "Following site safety rules and inductions"
+  ],
+  "need": [
+    "Right to work in Australia",
+    "White Card (construction induction)",
+    "Steel-capped boots",
+    "Reliable way to get to site"
+  ],
+  "nice": [
+    "Forklift licence",
+    "Previous site or warehouse experience",
+    "Driver licence"
+  ]
+}

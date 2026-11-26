@@ -1,0 +1,27 @@
+{
+  "show": true,
+  "order": 90,
+  "title": "Support coordinator assistant",
+  "sector": "community",
+  "towns": [
+    "Tamworth",
+    "Armidale"
+  ],
+  "intro": "Help support coordinators keep participant plans, bookings and paperwork organised and on time.",
+  "duties": [
+    "Booking supports and managing calendars",
+    "Preparing reports and service agreements",
+    "Keeping records accurate and confidential",
+    "Liaising with providers and participants"
+  ],
+  "need": [
+    "Right to work in Australia",
+    "NDIS Worker Screening Check (or willing to apply)",
+    "Strong computer and writing skills"
+  ],
+  "nice": [
+    "NDIS or disability sector experience",
+    "Certificate IV in Disability or a related field",
+    "Experience with CRM or case management software"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "show": true,
+  "order": 80,
+  "title": "Cleaner and domestic support worker",
+  "sector": "community",
+  "towns": [
+    "Tamworth",
+    "Armidale",
+    "Gunnedah",
+    "Singleton"
+  ],
+  "intro": "Residential and commercial cleaning, plus help with everyday household tasks for people who need it.",
+  "duties": [
+    "General and detailed cleaning",
+    "Laundry, linen and kitchen tidying",
+    "Commercial and office cleans",
+    "Following safe chemical use"
+  ],
+  "need": [
+    "Right to work in Australia",
+    "National police check (we can arrange)",
+    "Reliable transport"
+  ],
+  "nice": [
+    "NDIS Worker Screening Check for in-home roles",
+    "Commercial cleaning experience",
+    "Driver licence"
+  ]
+}

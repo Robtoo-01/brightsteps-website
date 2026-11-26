@@ -1,0 +1,30 @@
+{
+  "show": true,
+  "order": 30,
+  "title": "Construction labourer",
+  "sector": "industrial",
+  "towns": [
+    "Tamworth",
+    "Armidale",
+    "Newcastle",
+    "Sydney"
+  ],
+  "intro": "Day labour and longer-term placements on residential, commercial and civil construction sites.",
+  "duties": [
+    "Site preparation, clean-up and waste removal",
+    "Assisting carpenters, concreters and other trades",
+    "Handling materials and tools safely",
+    "Traffic control where you hold the ticket"
+  ],
+  "need": [
+    "Right to work in Australia",
+    "White Card",
+    "Own PPE: steel caps, hi-vis, long pants",
+    "Reliable way to get to site"
+  ],
+  "nice": [
+    "Traffic control ticket",
+    "Concreting or formwork experience",
+    "Driver licence"
+  ]
+}

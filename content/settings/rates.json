@@ -1,0 +1,45 @@
+{
+  "generalLabourer": {
+    "label": "General labourer",
+    "detail": "Mining and construction",
+    "included": "Reliable, experienced staff who put on-site safety first.",
+    "rate": 70,
+    "unit": "per hour"
+  },
+  "disabilitySupportWorker": {
+    "label": "Disability support worker",
+    "detail": "In-home, community access, respite, registered SIL providers' homes",
+    "included": "Screened, experienced personnel. Supported by our 24/7 team. Under review for the award increase from 1 December 2026.",
+    "rate": 68,
+    "unit": "per hour"
+  },
+  "transport": {
+    "label": "Transport & community access",
+    "detail": "",
+    "included": "Reliable transport backed by 24/7 management support. Vehicle costs negotiable.",
+    "rate": 65,
+    "unit": "per hour + vehicle"
+  },
+  "communitySupportWorker": {
+    "label": "Community support worker",
+    "detail": "",
+    "included": "Experienced personnel for community programs.",
+    "rate": null,
+    "unit": "per hour"
+  },
+  "cleaner": {
+    "label": "Cleaner / domestic support",
+    "detail": "Residential and commercial",
+    "included": "Flexible solutions with full insurance.",
+    "rate": null,
+    "unit": "per hour"
+  },
+  "supportCoordinatorAssistant": {
+    "label": "Support coordinator assistant",
+    "detail": "",
+    "included": "Administrative focus, streamlined timesheets and billing.",
+    "rate": null,
+    "unit": "per hour"
+  },
+  "footnote": "Rates are a guide and may vary with shift times, award conditions, location and requirements. Your written quote sets out the rates that apply before work starts. The disability support rate is being reviewed for the SCHADS Award increase that starts on 1 December 2026."
+}

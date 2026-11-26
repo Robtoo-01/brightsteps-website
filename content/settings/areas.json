@@ -1,0 +1,36 @@
+{
+  "regions": [
+    {
+      "name": "New England & North West",
+      "towns": [
+        "Tamworth",
+        "Armidale",
+        "Gunnedah",
+        "Quirindi",
+        "Moree",
+        "Narrabri",
+        "Inverell",
+        "Glen Innes",
+        "Manilla",
+        "Werris Creek",
+        "Walcha",
+        "Uralla"
+      ]
+    },
+    {
+      "name": "Hunter",
+      "towns": [
+        "Singleton",
+        "Muswellbrook",
+        "Scone",
+        "Newcastle"
+      ]
+    },
+    {
+      "name": "Sydney",
+      "towns": [
+        "Sydney"
+      ]
+    }
+  ]
+}

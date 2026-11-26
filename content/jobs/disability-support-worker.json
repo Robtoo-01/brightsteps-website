@@ -1,0 +1,36 @@
+{
+  "show": true,
+  "order": 50,
+  "title": "Disability support worker",
+  "sector": "disability",
+  "towns": [
+    "Tamworth",
+    "Armidale",
+    "Gunnedah",
+    "Quirindi",
+    "Moree",
+    "Narrabri",
+    "Inverell",
+    "Glen Innes",
+    "Newcastle",
+    "Sydney"
+  ],
+  "intro": "Support NDIS participants at home, in the community, in respite and in registered SIL providers' homes. Day, evening, weekend, overnight and sleepover shifts.",
+  "duties": [
+    "Personal care and daily living support",
+    "Community access and social activities",
+    "Supporting participants' goals, choices and independence",
+    "Shift notes and reporting to the provider"
+  ],
+  "need": [
+    "Right to work in Australia",
+    "NDIS Worker Screening Check (or willing to apply)",
+    "Working With Children Check where the role needs it",
+    "Current First Aid and CPR"
+  ],
+  "nice": [
+    "Certificate III or IV in Individual Support or Disability",
+    "Driver licence and a comprehensively insured car",
+    "Manual handling and medication assistance training"
+  ]
+}

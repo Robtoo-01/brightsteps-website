@@ -1,0 +1,31 @@
+{
+  "show": true,
+  "order": 70,
+  "title": "Transport and community access driver",
+  "sector": "community",
+  "towns": [
+    "Tamworth",
+    "Armidale",
+    "Gunnedah",
+    "Quirindi",
+    "Moree"
+  ],
+  "intro": "Drive participants to appointments, work and activities, then support them when they get there.",
+  "duties": [
+    "Safe door-to-door transport",
+    "Support at appointments and outings",
+    "Helping with mobility aids",
+    "Recording kilometres and shift notes"
+  ],
+  "need": [
+    "Right to work in Australia",
+    "Full driver licence with a clean record",
+    "NDIS Worker Screening Check (or willing to apply)",
+    "Current First Aid and CPR"
+  ],
+  "nice": [
+    "Your own comprehensively insured car",
+    "Wheelchair-accessible vehicle experience",
+    "Support work experience"
+  ]
+}
