@@ -1,0 +1,191 @@
+# Pages CMS settings: what the BrightSteps manager can edit at app.pagescms.org.
+# Each save commits to GitHub; Netlify rebuilds and publishes the site in about a minute.
+# If a change breaks a rule (for example a summary that is too long), the build stops and the live site stays as it was.
+
+content:
+  # ---------------- JOBS ----------------
+  - name: jobs
+    label: Jobs
+    type: collection
+    path: content/jobs
+    format: json
+    filename: "{primary}.json"
+    view:
+      fields: [title, show, towns]
+      primary: title
+      sort: [order, title]
+    fields:
+      - name: title
+        label: Job title
+        type: string
+        required: true
+        options:
+          maxlength: 60
+      - name: show
+        label: Show on website
+        type: boolean
+        default: true
+        description: Untick to hide this job from the Jobs page. You can tick it again later.
+      - name: order
+        label: Position on the Jobs page
+        type: number
+        default: 100
+        description: Lower numbers appear first (10, 20, 30...).
+      - name: sector
+        label: Type of work
+        type: select
+        required: true
+        options:
+          values:
+            - name: industrial
+              label: Industrial (labouring, mining, warehouse)
+            - name: disability
+              label: Disability support
+            - name: community
+              label: Community, transport, cleaning, admin
+      - name: towns
+        label: Towns
+        type: string
+        list: true
+        required: true
+        description: One town per line.
+      - name: intro
+        label: Short description
+        type: text
+        required: true
+        description: Two or three sentences about the work.
+      - name: duties
+        label: What you'll do
+        type: string
+        list: true
+      - name: need
+        label: What you need
+        type: string
+        list: true
+      - name: nice
+        label: Great if you also have
+        type: string
+        list: true
+
+  # ---------------- NEWS ----------------
+  - name: news
+    label: News
+    type: collection
+    path: content/news
+    format: json
+    filename:
+      template: "{year}-{month}-{day}-{primary}.json"
+      field: create
+    view:
+      fields: [title, date, tag]
+      primary: title
+      sort: [date]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+        options:
+          maxlength: 57
+      - name: date
+        label: Date
+        type: date
+        required: true
+      - name: tag
+        label: Label
+        type: select
+        options:
+          values: [News, Hiring, Guide, Event]
+      - name: summary
+        label: Summary
+        type: string
+        required: true
+        description: Shown on the News page and in Google. Between 110 and 160 characters.
+        options:
+          minlength: 110
+          maxlength: 160
+      - name: body
+        label: Article
+        type: rich-text
+        required: true
+        options:
+          format: html
+          media: false
+
+  # ---------------- RATES ----------------
+  - name: rates
+    label: Rates
+    type: file
+    path: content/settings/rates.json
+    format: json
+    fields:
+      - name: generalLabourer
+        label: General labourer
+        component: rate
+      - name: disabilitySupportWorker
+        label: Disability support worker
+        component: rate
+      - name: transport
+        label: Transport & community access
+        component: rate
+      - name: communitySupportWorker
+        label: Community support worker
+        component: rate
+      - name: cleaner
+        label: Cleaner / domestic support
+        component: rate
+      - name: supportCoordinatorAssistant
+        label: Support coordinator assistant
+        component: rate
+      - name: footnote
+        label: Note under the rates table
+        type: text
+
+  # ---------------- AREAS ----------------
+  - name: areas
+    label: Areas we cover
+    type: file
+    path: content/settings/areas.json
+    format: json
+    fields:
+      - name: regions
+        label: Regions
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: Region name
+            type: string
+            required: true
+          - name: towns
+            label: Towns
+            type: string
+            list: true
+            required: true
+
+components:
+  rate:
+    type: object
+    fields:
+      - name: label
+        label: Name shown in the table
+        type: string
+        required: true
+      - name: detail
+        label: Small print under the name
+        type: string
+      - name: included
+        label: What's included
+        type: text
+      - name: rate
+        label: Hourly rate, $ ex GST
+        type: number
+        description: Leave empty to show "Get a quote" instead of a price.
+      - name: unit
+        label: Unit
+        type: string
+        description: For example "per hour" or "per hour + vehicle".
+
+settings:
+  commit:
+    identity: user
