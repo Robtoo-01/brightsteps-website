@@ -1,7 +1,7 @@
 {
-  "show": true,
-  "order": 40,
   "title": "Warehouse and logistics worker",
+  "show": false,
+  "order": 40,
   "sector": "industrial",
   "towns": [
     "Tamworth",
